@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>इंडिपॉप ९० — 90s Music, a tape by Amit Singh</title>
+<title>Indian Pop Music of 90s</title>
 <meta name="theme-color" content="#0f0c12">
 <meta name="description" content="इंडिपॉप ९० — a 41-song 90s indipop cassette played on a stereo deck. Side A and Side B, reels rolling.">
-<meta property="og:title" content="इंडिपॉप ९० — नब्बे के गाने, एक घूमती हुई रील">
+<meta property="og:title" content="Indian Pop Music of 90s">
 <meta property="og:description" content="A 41-song 90s indipop cassette played on a stereo deck.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
@@ -48,7 +48,8 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
   background:linear-gradient(135deg,var(--mag),#ff6b1a);
   box-shadow:0 0 0 2px rgba(242,236,226,.85),0 6px 22px rgba(255,45,149,.45);
   font-family:var(--black);font-size:19px;color:#141013;transform:rotate(-4deg)}
-.bug h1{font-family:var(--deva);font-size:23px;line-height:1;font-weight:800}
+.bug h1{font-family:var(--black);font-size:clamp(15px,2.1vw,22px);line-height:1.05;
+  font-weight:900;letter-spacing:-.015em;text-transform:uppercase}
 .bug .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-top:5px}
 .hmeta{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
 .pill{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
@@ -314,6 +315,11 @@ body:not(.playing) .marq span{animation-play-state:paused}
 .slid input::-moz-range-thumb{width:12px;height:18px;border-radius:2px;border:1px solid rgba(0,0,0,.8);
   background:linear-gradient(178deg,#6a626c,#332e35);box-shadow:0 1px 3px rgba(0,0,0,.8)}
 
+/* a cassette in flight, from the rack to the deck */
+.flyer{position:fixed;z-index:400;pointer-events:none;border-radius:5px;
+  transform-origin:50% 50%;will-change:transform,opacity;
+  box-shadow:0 26px 64px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.6)}
+
 /* ---------- rack ---------- */
 .rack{margin-top:20px;border-radius:10px;padding:18px 18px 16px;
   background:linear-gradient(178deg,#262029 0%,#1a161c 40%,#121016 100%);
@@ -477,14 +483,13 @@ body.playing .mini.now .mhub{animation-play-state:running}
     <div class="bug">
       <div class="mark">९०</div>
       <div>
-        <h1>इंडिपॉप ९०</h1>
+        <h1>Indian Pop Music of 90s</h1>
         <div class="sub">Nabbe ke gaane, ek ghoomti hui reel</div>
       </div>
     </div>
     <div class="hmeta">
       <div class="pill">Tape · <b>41</b> songs</div>
       <div class="pill">Side <b id="pillSide">A</b> · SP</div>
-      <div class="pill">API <b id="apiTag" style="color:rgba(242,236,226,.4)">…</b></div>
       <button class="sfxbtn on" id="sfxToggle" title="Mute the deck's mechanical sounds">♪ Deck sounds</button>
       <div class="clock" id="clock">00:00:00</div>
     </div>
@@ -732,7 +737,7 @@ body.playing .mini.now .mhub{animation-play-state:running}
   <!-- ============ RACK ============ -->
   <div class="rack">
     <div class="rhead">
-      <h2>90s Music <em>·</em> इंडिपॉप ९०</h2>
+      <h2>Indian Pop Music of 90s</h2>
       <div class="by">A tape by Amit Singh · 41 songs</div>
     </div>
 
@@ -1320,7 +1325,7 @@ function buildRack(){
       b.classList.add('blocked');
       b.title += '  (owner has disabled embedding — opens on YouTube)';
     }
-    b.addEventListener('click', () => load(i, true));
+    b.addEventListener('click', () => loadFrom(i, b));
     (i < SIDE_A_END ? $('gridA') : $('gridB')).appendChild(b);
     thumbFor(b.querySelector('.mart'), b.querySelector('.mbg'), tr.id);
   });
@@ -1369,10 +1374,59 @@ function paint(i){
   [...document.querySelectorAll('.mini')].forEach(r =>
     r.classList.toggle('now', +r.dataset.i === i));
   if (window.tuneTo) window.tuneTo(i);
-  document.title = tr.t + ' — ' + tr.a + ' · इंडिपॉप ९०';
+  document.title = tr.t + ' — ' + tr.a + ' · Indian Pop Music of 90s';
 }
 
 function setState(s){ $('tagState').textContent = s; }
+
+/* ===== picking a cassette off the rack =====
+   The tape you tap lifts out of the rack, arcs across the page and drops
+   into the deck's well, which is roughly what your hands used to do. */
+function flyCassette(miniEl, done){
+  const srcEl = miniEl && miniEl.querySelector('.mcase');
+  const cass  = $('cass');
+  if (!srcEl || !cass || matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      typeof srcEl.animate !== 'function'){ done(); return; }
+
+  const s = srcEl.getBoundingClientRect();
+  const d = cass.getBoundingClientRect();
+  if (!s.width || !d.width){ done(); return; }
+
+  const ghost = srcEl.cloneNode(true);
+  ghost.classList.add('flyer');
+  ghost.style.left   = s.left + 'px';
+  ghost.style.top    = s.top  + 'px';
+  ghost.style.width  = s.width  + 'px';
+  ghost.style.height = s.height + 'px';
+  document.body.appendChild(ghost);
+
+  const scale = d.width / s.width;
+  const dx = (d.left + d.width/2)  - (s.left + s.width/2);
+  const dy = (d.top  + d.height/2) - (s.top  + s.height/2);
+
+  const anim = ghost.animate([
+    { transform:'translate(0,0) scale(1) rotate(0deg)', opacity:1 },
+    { transform:'translate('+(dx*0.5)+'px,'+(dy*0.5 - Math.max(50, d.height*0.35))+'px) '+
+                'scale('+(1+(scale-1)*0.55)+') rotate(-6deg)', opacity:1, offset:0.55 },
+    { transform:'translate('+dx+'px,'+(dy - d.height*0.16)+'px) scale('+scale+') rotate(0deg)',
+      opacity:1, offset:0.88 },
+    { transform:'translate('+dx+'px,'+dy+'px) scale('+scale+') rotate(0deg)', opacity:0 }
+  ], { duration: 760, easing:'cubic-bezier(.32,.08,.24,1)', fill:'forwards' });
+
+  let finished = false;
+  const finish = () => { if (finished) return; finished = true;
+                         ghost.remove(); done(); };
+  anim.onfinish = finish;
+  setTimeout(finish, 1100);          // never strand the deck if the animation stalls
+}
+
+function loadFrom(i, miniEl){
+  if (busy) return;
+  const deck = document.querySelector('.deck');
+  if (deck) deck.scrollIntoView({behavior:'smooth', block:'center'});
+  SFX.wake();
+  setTimeout(() => flyCassette(miniEl, () => load(i, true)), 300);
+}
 
 /* ===== cassette load / eject ===== */
 function load(i, play){
