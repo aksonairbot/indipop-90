@@ -42,8 +42,10 @@ button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:
 #vig{position:fixed;inset:0;z-index:82;pointer-events:none;
   background:radial-gradient(ellipse at 50% 42%,transparent 46%,rgba(0,0,0,.72) 100%)}
 
-#wrap{position:relative;z-index:10;max-width:1180px;margin:0 auto;
-  padding:max(14px,env(safe-area-inset-top)) 16px max(22px,env(safe-area-inset-bottom))}
+/* full-bleed: the deck and the rack use the whole screen */
+#wrap{position:relative;z-index:10;max-width:none;margin:0 auto;width:100%;
+  padding:max(14px,env(safe-area-inset-top)) clamp(14px,2.2vw,42px)
+          max(22px,env(safe-area-inset-bottom))}
 
 /* ---------- header ---------- */
 header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
@@ -83,7 +85,11 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .deck::before{left:0;border-radius:12px 0 0 12px}
 .deck::after{right:0;border-radius:0 12px 12px 0}
 .deckin{position:relative;z-index:2;margin:0 12px;display:grid;
-  grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:16px}
+  grid-template-columns:minmax(0,0.92fr) minmax(0,1fr);gap:clamp(16px,2vw,34px)}
+@media (min-width:1500px){
+  .deckin{grid-template-columns:minmax(0,620px) minmax(0,1fr)}
+  .mini{flex:0 0 148px;width:148px}
+}
 
 .brandstrip{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
   gap:12px;padding-bottom:11px;border-bottom:1px solid rgba(0,0,0,.55);
@@ -773,6 +779,7 @@ body.appmode .sfxbtn.popout{display:none}
         <button class="key" id="shufBtn" title="Shuffle (S)"><i>⤨</i><b>SHUF</b></button>
         <button class="key" id="rptBtn" title="Repeat (R)"><i>↻</i><b>RPT</b></button>
         <button class="key" id="vidBtn" title="Show the video window"><i>▣</i><b>VIDEO</b></button>
+        <button class="key" id="liveBtn" title="Tune in to the shared station (L)"><i>◉</i><b>LIVE</b></button>
         <div class="spacer"></div>
         <div class="sidesw">
           <button id="sideA" class="on">SIDE A</button>
@@ -1591,6 +1598,7 @@ async function coverToDeck(i, miniEl, onDone){
 
 function loadFrom(i, miniEl){
   if (busy) return;
+  if (live) setLive(false);          // choosing your own tape leaves the station
   SFX.wake();
 
   let settled = false;
@@ -1660,6 +1668,56 @@ function eject(){
     document.body.classList.add('ejected');
     setTimeout(() => { busy = false; setState('STOP'); }, 500);
   }, 260);
+}
+
+/* ===== the shared station =====
+   Everyone hears the same second of the same song without a server between
+   them. The running order is a loop, and the position in that loop is derived
+   from the wall clock — so two people who tune in are, by construction, at the
+   same point. Devices keep their clocks within a second of real time, and any
+   drift beyond three seconds is pulled back automatically. */
+const TAPE_TOTAL = () => TAPE.reduce((n,t) => n + (t.d || 240), 0);
+function stationNow(){
+  const total = TAPE_TOTAL();
+  if (!total) return {i:0, offset:0};
+  let pos = Math.floor(Date.now()/1000) % total;
+  for (let i=0;i<TAPE.length;i++){
+    const d = TAPE[i].d || 240;
+    if (pos < d) return {i, offset:pos};
+    pos -= d;
+  }
+  return {i:0, offset:0};
+}
+let live = false;
+function setLive(on){
+  live = on;
+  const b = $('liveBtn');
+  b.style.background = on ? 'linear-gradient(178deg,#ff5a8a,#c2185b)' : '';
+  b.style.color = on ? '#fff' : '';
+  $('tagState').textContent = on ? 'LIVE' : (playing ? 'PLAY' : 'STOP');
+  if (on){
+    setShuffle(false);
+    const {i, offset} = stationNow();
+    wantPlay = true;
+    if (i !== idx) load(i, true);
+    seekWhenReady(offset);
+    notice('Tuned in to the station',
+      'Everyone with this page open on LIVE is hearing the same second of the same '+
+      'song — the running order and the position in it are both worked out from the '+
+      'clock, so no server is needed to keep you together. Press LIVE again to go '+
+      'back to picking your own tapes.');
+  } else {
+    $('notice').hidden = true;
+  }
+}
+function seekWhenReady(offset, tries){
+  tries = tries || 0;
+  if (ready && player && player.getDuration && player.getDuration() > 0){
+    player.seekTo(offset, true);
+    if (wantPlay) player.playVideo();
+    return;
+  }
+  if (tries < 40) setTimeout(() => seekWhenReady(offset, tries+1), 250);
 }
 
 /* ===== what plays next =====
@@ -1865,6 +1923,15 @@ function tick(){
   $('tapeL').setAttribute('r', (74 - prog*28).toFixed(1));
   $('tapeR').setAttribute('r', (46 + prog*28).toFixed(1));
   $('recLed').classList.toggle('on', playing);
+
+  // hold the station in step
+  if (live && ready && player && player.getCurrentTime && !busy){
+    const s = stationNow();
+    if (s.i !== idx){ load(s.i, true); seekWhenReady(s.offset); }
+    else if (playing && Math.abs(player.getCurrentTime() - s.offset) > 3){
+      player.seekTo(s.offset, true);
+    }
+  }
 }
 
 /* ===== tuning dial =====
@@ -2051,6 +2118,7 @@ function toggleVideo(){
 $('shufBtn').addEventListener('click',()=>setShuffle(!shuffle));
 $('rptBtn').addEventListener('click',cycleRepeat);
 $('vidBtn').addEventListener('click',toggleVideo);
+$('liveBtn').addEventListener('click',()=>setLive(!live));
 
 /* ===== running as its own window =====
    A page cannot strip its own address bar — browsers reserve that, so you
@@ -2149,6 +2217,7 @@ document.addEventListener('keydown', e => {
   else if (e.key.toLowerCase() === 'e') loaded ? eject() : load(idx, false);
   else if (e.key.toLowerCase() === 's') setShuffle(!shuffle);
   else if (e.key.toLowerCase() === 'r') cycleRepeat();
+  else if (e.key.toLowerCase() === 'l') setLive(!live);
 });
 
 /* ===== go ===== */
