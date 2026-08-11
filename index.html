@@ -81,10 +81,83 @@ button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:
   .mcap .mt{font-size:10.5px}
   .mcap .ma{font-size:8.5px}
 }
-@media (min-width:1900px){
+@media (min-width:1900px) and (max-width:1719px){
   #wrap{grid-template-columns:minmax(0,1120px) clamp(340px,20vw,470px)}
   .rack .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* Wider still, and a rail of tape furniture opens on the left, so the deck
+   stands in the middle of the room rather than leaning against one wall.
+   Below 1720px there is no room to spare and the rail stays away. */
+.side{display:none}
+@media (min-width:1720px){
+  #wrap{max-width:2060px;
+    grid-template-columns:clamp(228px,13.5vw,310px) minmax(0,1120px) clamp(286px,19vw,400px);
+    grid-template-areas:
+      "head head head"
+      "side deck rack"
+      "side card rack"
+      "side note rack"
+      "side pad  rack"}
+  .side{grid-area:side;display:flex;flex-direction:column;gap:13px;
+    position:sticky;top:14px;align-self:start;max-height:calc(100vh - 28px);
+    overflow-y:auto;overflow-x:hidden;
+    scrollbar-width:thin;scrollbar-color:rgba(242,236,226,.24) transparent}
+  .side::-webkit-scrollbar{width:7px}
+  .side::-webkit-scrollbar-thumb{background:rgba(242,236,226,.22);border-radius:4px}
+}
+@media (min-width:2000px){
+  #wrap{grid-template-columns:clamp(258px,13vw,340px) minmax(0,1120px) clamp(358px,18vw,470px)}
+  .rack .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+/* ---------- the side rail: spines, who's on the tape, the numbers ---------- */
+.spanel{border:1px solid var(--line);border-radius:11px;padding:13px 13px 12px;
+  background:linear-gradient(172deg,rgba(242,236,226,.05),rgba(0,0,0,.30));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.sph{font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:10px}
+.spine{display:block;width:100%;text-align:left;position:relative;overflow:hidden;
+  border-radius:7px;padding:9px 12px 10px 17px;margin-bottom:8px;font-family:var(--sans);
+  background:linear-gradient(168deg,#4a4553,#241f2c);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 5px 14px rgba(0,0,0,.5);
+  transition:transform .14s,box-shadow .14s}
+.spine:last-child{margin-bottom:0}
+.spine::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--amber)}
+.spine.b::before{background:var(--cyan)}
+.spine:hover{transform:translateX(3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 7px 18px rgba(0,0,0,.6)}
+.spine i{display:block;font-style:normal;font-family:var(--black);font-size:10.5px;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--paper)}
+.spine b{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:rgba(242,236,226,.48)}
+.spine em{display:block;font-style:normal;font-family:var(--hand);font-size:15px;
+  line-height:1.1;color:#ff86b4;margin-top:1px}
+.spine.on{box-shadow:inset 0 0 0 1px var(--mag),inset 0 1px 0 rgba(255,255,255,.16),
+  0 6px 18px rgba(255,45,149,.22)}
+.slist{display:grid;gap:1px;max-height:min(300px,34vh);overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:thin;scrollbar-color:rgba(242,236,226,.2) transparent}
+.slist::-webkit-scrollbar{width:6px}
+.slist::-webkit-scrollbar-thumb{background:rgba(242,236,226,.2);border-radius:3px}
+.slist button{display:flex;width:100%;gap:8px;align-items:baseline;text-align:left;
+  padding:4px 6px;border-radius:5px;font-family:var(--sans);font-size:11.5px;
+  color:rgba(242,236,226,.72);transition:background .12s,color .12s}
+.slist button:hover{background:rgba(242,236,226,.07);color:var(--paper)}
+.slist button span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slist button b{font-family:var(--mono);font-size:9px;color:var(--dim);flex:none}
+.slist button:hover b{color:var(--mag)}
+.sfacts{display:grid;grid-template-columns:auto 1fr;gap:7px 10px;align-items:baseline}
+.sfacts dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim)}
+.sfacts dd{text-align:right;font-size:11.5px;color:rgba(242,236,226,.86);
+  font-variant-numeric:tabular-nums}
+
+.stnp{font-size:11px;line-height:1.5;color:rgba(242,236,226,.6);margin-bottom:10px}
+.spanel.stn{border-color:rgba(255,90,138,.32);
+  background:linear-gradient(172deg,rgba(255,45,149,.10),rgba(0,0,0,.32))}
+.stnbtn{display:block;width:100%;margin-top:11px;padding:8px 10px;border-radius:7px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(255,90,138,.5);color:#ffd7e4;background:rgba(194,24,91,.2);
+  transition:.13s}
+.stnbtn:hover{background:var(--mag);border-color:var(--mag);color:#1a0a12;font-weight:700}
 
 /* ---------- the inlay, the paper card that lived in the case ---------- */
 .jcard{position:relative;margin-top:14px;display:grid;
@@ -679,6 +752,35 @@ body.appmode .sfxbtn.popout{display:none}
       <div class="clock" id="clock">00:00:00</div>
     </div>
   </header>
+
+  <!-- ============ SIDE RAIL (wide screens only) ============ -->
+  <aside class="side">
+    <div class="spanel">
+      <div class="sph">The tape</div>
+      <button class="spine" id="spineA" type="button">
+        <i>Side A</i><b id="spineAN">01–21</b><em id="spineAT">—</em>
+      </button>
+      <button class="spine b" id="spineB" type="button">
+        <i>Side B</i><b id="spineBN">22–54</b><em id="spineBT">—</em>
+      </button>
+    </div>
+    <div class="spanel">
+      <div class="sph">Who's on it</div>
+      <div class="slist" id="artistList"></div>
+    </div>
+    <div class="spanel">
+      <div class="sph">The numbers</div>
+      <dl class="sfacts" id="tapeFacts"></dl>
+    </div>
+    <div class="spanel stn" id="stnPanel">
+      <div class="sph">The station</div>
+      <p class="stnp">One running order, played off the clock. Everyone tuned in
+        hears the same second of the same song — open it on a second device and
+        it lands in the same place.</p>
+      <dl class="sfacts"><dt>Loop</dt><dd id="stnLoop">—</dd></dl>
+      <button class="stnbtn" id="stnBtn" type="button">Leave the station</button>
+    </div>
+  </aside>
 
   <!-- ============ DECK ============ -->
   <div class="deck">
@@ -1544,6 +1646,70 @@ function sideBlurb(side){
   return 'Side ' + side + ' — ' + (to-from) + ' songs, ' + (h ? h + ' hr ' : '') + m + ' min';
 }
 
+/* ===== the side rail =====
+   Everything here is worked out from the running order itself, so it stays
+   true if the tape ever changes. Built once; only the side marker moves. */
+function hm(sec){
+  const h = Math.floor(sec/3600), m = Math.round((sec%3600)/60);
+  return (h ? h + ' hr ' : '') + m + ' min';
+}
+function secsOf(side){
+  const from = side === 'A' ? 0 : SIDE_A_END;
+  const to   = side === 'A' ? SIDE_A_END : TAPE.length;
+  let n = 0; for (let k = from; k < to; k++) n += TAPE[k].d || 240;
+  return n;
+}
+function buildSide(){
+  $('spineAN').textContent = '01–' + pad(SIDE_A_END);
+  $('spineBN').textContent = pad(SIDE_A_END+1) + '–' + TAPE.length;
+  $('spineAT').textContent = SIDE_A_END + ' songs, ' + hm(secsOf('A'));
+  $('spineBT').textContent = (TAPE.length - SIDE_A_END) + ' songs, ' + hm(secsOf('B'));
+  $('spineA').addEventListener('click', () => { leaveStation(); load(0, wantPlay); });
+  $('spineB').addEventListener('click', () => { leaveStation(); load(SIDE_A_END, wantPlay); });
+
+  const by = new Map();
+  TAPE.forEach((t,i) => {
+    const k = (t.a || '').trim() || 'Unknown';
+    if (!by.has(k)) by.set(k, {n:0, first:i});
+    by.get(k).n++;
+  });
+  const names = [...by.entries()].sort((a,b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
+  const box = $('artistList'); box.innerHTML = '';
+  names.forEach(([name, info]) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span>' + esc(name) + '</span><b>' + info.n + '</b>';
+    b.title = info.n + (info.n > 1 ? ' songs on this tape' : ' song on this tape');
+    b.addEventListener('click', () =>
+      loadFrom(info.first, document.querySelector('.mini[data-i="' + info.first + '"]')));
+    box.appendChild(b);
+  });
+
+  const ds = TAPE.map(t => t.d || 240);
+  const total = ds.reduce((a,b) => a+b, 0);
+  const hi = TAPE[ds.indexOf(Math.max.apply(null, ds))];
+  const lo = TAPE[ds.indexOf(Math.min.apply(null, ds))];
+  const rows = [
+    ['Songs',    TAPE.length],
+    ['Runs for', hm(total)],
+    ['Voices',   names.length],
+    ['Longest',  fmt(hi.d || 240)],
+    ['Shortest', fmt(lo.d || 240)],
+    ['Average',  fmt(Math.round(total / ds.length))]
+  ];
+  $('tapeFacts').innerHTML =
+    rows.map(r => '<dt>' + r[0] + '</dt><dd>' + r[1] + '</dd>').join('');
+
+  $('stnLoop').textContent = hm(total);
+  $('stnBtn').addEventListener('click', () => setLive(!live));
+}
+function paintStation(){
+  const b = $('stnBtn'); if (!b) return;
+  const t = live ? 'Leave the station' : 'Tune in';
+  if (b.textContent !== t) b.textContent = t;
+}
+buildSide();
+
 /* ===== paint ===== */
 function paint(i){
   const tr = TAPE[i], side = sideOf(i);
@@ -1557,6 +1723,8 @@ function paint(i){
   $('pillSide').textContent = side;
   $('sideA').classList.toggle('on', side === 'A');
   $('sideB').classList.toggle('on', side === 'B');
+  $('spineA').classList.toggle('on', side === 'A');
+  $('spineB').classList.toggle('on', side === 'B');
 
   // the paper inlay
   $('jNum').textContent   = pad(i+1);
@@ -1936,7 +2104,7 @@ function setLive(on, opts){
   b.style.color = on ? '#fff' : '';
   $('tagState').textContent = on ? 'LIVE' : (playing ? 'PLAY' : 'STOP');
   if (!opts.silent) rememberStation(on);
-  paintOnAir();
+  paintOnAir(); paintStation();
   if (on){
     setShuffle(false);
     resyncStation(!opts.cue);
