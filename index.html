@@ -42,10 +42,44 @@ button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:
 #vig{position:fixed;inset:0;z-index:82;pointer-events:none;
   background:radial-gradient(ellipse at 50% 42%,transparent 46%,rgba(0,0,0,.72) 100%)}
 
-/* full-bleed: the deck and the rack use the whole screen */
-#wrap{position:relative;z-index:10;max-width:none;margin:0 auto;width:100%;
-  padding:max(14px,env(safe-area-inset-top)) clamp(14px,2.2vw,42px)
+#wrap{position:relative;z-index:10;max-width:1180px;margin:0 auto;width:100%;
+  padding:max(14px,env(safe-area-inset-top)) clamp(14px,2vw,26px)
           max(22px,env(safe-area-inset-bottom))}
+
+/* On a wide screen the deck keeps its own size — stretching a stereo just makes
+   it look wrong — and the room that frees up becomes a standing rack of tapes
+   down the side, the way they'd sit on a shelf next to the hi-fi. */
+@media (min-width:1400px){
+  #wrap{max-width:1780px;
+    display:grid;justify-content:center;align-content:start;
+    grid-template-columns:minmax(0,1120px) clamp(290px,22vw,400px);
+    grid-template-areas:"head head" "deck rack" "note rack" "pad  rack";
+    column-gap:clamp(18px,1.8vw,30px)}
+  header{grid-area:head}
+  .deck  {grid-area:deck}
+  .notice{grid-area:note}
+  .rack  {grid-area:rack;margin-top:0;align-self:start;
+          position:sticky;top:14px;max-height:calc(100vh - 28px);
+          overflow-y:auto;overflow-x:hidden;padding:15px 14px 14px;
+          scrollbar-width:thin;scrollbar-color:rgba(242,236,226,.26) transparent}
+  .rack::-webkit-scrollbar{width:7px}
+  .rack::-webkit-scrollbar-thumb{background:rgba(242,236,226,.24);border-radius:4px}
+  /* beside the deck the queue reads better as a standing shelf than a rail */
+  .rack .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:13px 11px;overflow:visible;padding:0}
+  .rail{margin-bottom:16px}
+  .rail .fade,.rail .nav{display:none}
+  .mini{flex:none;width:auto}
+  .shelfhead .hint{display:none}
+  .rhead h2{font-size:20px}
+  .rhead .by{font-size:8.5px}
+  .mcap .mt{font-size:10.5px}
+  .mcap .ma{font-size:8.5px}
+}
+@media (min-width:1900px){
+  #wrap{grid-template-columns:minmax(0,1120px) clamp(340px,20vw,470px)}
+  .rack .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 
 /* ---------- header ---------- */
 header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
@@ -61,6 +95,22 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .pill{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
   border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--dim);white-space:nowrap}
 .pill b{color:var(--paper)}
+.onair{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9px;
+  letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(255,90,138,.55);
+  border-radius:999px;padding:5px 11px;color:#ffd7e4;background:rgba(194,24,91,.18);
+  transition:.14s;white-space:nowrap;cursor:pointer;max-width:360px;overflow:hidden}
+.onair .dot{flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:#ff5a8a;
+  animation:pulseair 1.8s infinite}
+.onair small{color:rgba(255,215,228,.62);letter-spacing:.08em;text-transform:none;font-size:9px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.onair:hover{border-color:#ff5a8a}
+.onair.off{border-color:var(--line);background:rgba(0,0,0,.25);color:var(--dim)}
+.onair.off .dot{background:#5a5550;animation:none;box-shadow:none}
+.onair.off small{color:var(--dim)}
+@keyframes pulseair{0%{box-shadow:0 0 0 0 rgba(255,90,138,.62)}
+  70%{box-shadow:0 0 0 7px rgba(255,90,138,0)}100%{box-shadow:0 0 0 0 rgba(255,90,138,0)}}
+@media (max-width:900px){.onair{font-size:8.5px;padding:4px 9px;max-width:100%}
+  .onair small{font-size:8.5px}}
 .clock{font-family:var(--mono);font-size:11px;letter-spacing:.13em;color:var(--amber)}
 
 /* ---------- cover ---------- */
@@ -86,10 +136,7 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .deck::after{right:0;border-radius:0 12px 12px 0}
 .deckin{position:relative;z-index:2;margin:0 12px;display:grid;
   grid-template-columns:minmax(0,0.92fr) minmax(0,1fr);gap:clamp(16px,2vw,34px)}
-@media (min-width:1500px){
-  .deckin{grid-template-columns:minmax(0,620px) minmax(0,1fr)}
-  .mini{flex:0 0 148px;width:148px}
-}
+
 
 .brandstrip{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
   gap:12px;padding-bottom:11px;border-bottom:1px solid rgba(0,0,0,.55);
@@ -544,7 +591,11 @@ body.appmode .sfxbtn.popout{display:none}
       </div>
     </div>
     <div class="hmeta">
-      <div class="pill">Tape · <b>41</b> songs</div>
+      <div class="pill">Tape · <b id="pillCount">41</b> songs</div>
+      <button class="onair" id="onair" type="button"
+              title="The station: everyone listening hears the same second of the same song">
+        <span class="dot"></span><b id="onairTxt">ON AIR</b><small id="onairSub">tuning in…</small>
+      </button>
       <div class="pill">Side <b id="pillSide">A</b> · SP</div>
       <button class="sfxbtn on" id="sfxToggle" title="Mute the deck's mechanical sounds">♪ Deck sounds</button>
       <button class="sfxbtn popout" id="popBtn" title="Open in its own window, free of the browser bar">⤢ Pop out</button>
@@ -796,7 +847,7 @@ body.appmode .sfxbtn.popout{display:none}
   <div class="rack">
     <div class="rhead">
       <h2>Indian Pop Music of 90s</h2>
-      <div class="by">A tape by Amit Singh · 41 songs</div>
+      <div class="by" id="byLine">A tape by Amit Singh · 41 songs</div>
     </div>
 
     <div class="shelfhead"><b>SIDE A</b><span id="cntA">01–21</span><span class="ln"></span><span class="hint">scroll →</span></div>
@@ -1680,7 +1731,7 @@ const TAPE_TOTAL = () => TAPE.reduce((n,t) => n + (t.d || 240), 0);
 function stationNow(){
   const total = TAPE_TOTAL();
   if (!total) return {i:0, offset:0};
-  let pos = Math.floor(Date.now()/1000) % total;
+  let pos = (Date.now()/1000) % total;
   for (let i=0;i<TAPE.length;i++){
     const d = TAPE[i].d || 240;
     if (pos < d) return {i, offset:pos};
@@ -1689,27 +1740,65 @@ function stationNow(){
   return {i:0, offset:0};
 }
 let live = false;
-function setLive(on){
+const STATION_PREF = 'indipop_station';
+function rememberStation(on){ try{ localStorage.setItem(STATION_PREF, on ? '1' : '0'); }catch(e){} }
+function wantsStation(){
+  try{ return localStorage.getItem(STATION_PREF) !== '0'; }catch(e){ return true; }
+}
+
+/* Put the deck exactly where the station is right now. `play` false = cue only,
+   which is what a cold page load needs (browsers will not start audio unasked). */
+function resyncStation(play){
+  const s = stationNow();
+  if (play) wantPlay = true;
+  if (s.i !== idx || !loaded){ load(s.i, !!play); seekWhenReady(s.offset); return; }
+  if (ready && player && player.seekTo){
+    player.seekTo(s.offset, true);
+    if (play) player.playVideo();
+  } else {
+    seekWhenReady(s.offset);
+  }
+}
+
+let onairLast = '', stationBooted = false;
+function paintOnAir(){
+  const el = $('onair'); if (!el) return;
+  if (!stationBooted && !live) return;   // don't flash OFF AIR before we've decided
+  el.classList.toggle('off', !live);
+  const s = stationNow();
+  const sub = live
+    ? 'now playing for everyone · ' + (TAPE[s.i] ? TAPE[s.i].t : '')
+    : 'tap to listen along with everyone';
+  const key = (live?'1':'0') + sub;
+  if (key === onairLast) return;
+  onairLast = key;
+  $('onairTxt').textContent = live ? 'ON AIR' : 'OFF AIR';
+  $('onairSub').textContent = sub;
+}
+
+function setLive(on, opts){
+  opts = opts || {};
   live = on;
   const b = $('liveBtn');
   b.style.background = on ? 'linear-gradient(178deg,#ff5a8a,#c2185b)' : '';
   b.style.color = on ? '#fff' : '';
   $('tagState').textContent = on ? 'LIVE' : (playing ? 'PLAY' : 'STOP');
+  if (!opts.silent) rememberStation(on);
+  paintOnAir();
   if (on){
     setShuffle(false);
-    const {i, offset} = stationNow();
-    wantPlay = true;
-    if (i !== idx) load(i, true);
-    seekWhenReady(offset);
-    notice('Tuned in to the station',
+    resyncStation(!opts.cue);
+    if (!opts.quiet) notice('Tuned in to the station',
       'Everyone with this page open on LIVE is hearing the same second of the same '+
       'song — the running order and the position in it are both worked out from the '+
-      'clock, so no server is needed to keep you together. Press LIVE again to go '+
-      'back to picking your own tapes.');
+      'clock, so no server is needed to keep you together. Open it on your phone and '+
+      'your laptop at once and both will be on the same line of the same song. '+
+      'Press LIVE again to go back to picking your own tapes.');
   } else {
     $('notice').hidden = true;
   }
 }
+function leaveStation(){ if (live) setLive(false); }
 function seekWhenReady(offset, tries){
   tries = tries || 0;
   if (ready && player && player.getDuration && player.getDuration() > 0){
@@ -1756,6 +1845,8 @@ function advance(){
 /* ===== transport ===== */
 function toggle(){
   if (IS_FILE){ localPanel(idx); return; }
+  // on the station, PLAY always means "join where everyone else is right now"
+  if (live && !playing){ resyncStation(true); return; }
   if (!loaded){ load(idx, true); return; }
   if (!ready || !player){ wantPlay = true; return; }
   if (playing) player.pauseVideo(); else { wantPlay = true; player.playVideo(); }
@@ -1927,11 +2018,12 @@ function tick(){
   // hold the station in step
   if (live && ready && player && player.getCurrentTime && !busy){
     const s = stationNow();
-    if (s.i !== idx){ load(s.i, true); seekWhenReady(s.offset); }
-    else if (playing && Math.abs(player.getCurrentTime() - s.offset) > 3){
+    if (s.i !== idx){ load(s.i, playing || wantPlay); seekWhenReady(s.offset); }
+    else if (playing && Math.abs(player.getCurrentTime() - s.offset) > 2){
       player.seekTo(s.offset, true);
     }
   }
+  paintOnAir();
 }
 
 /* ===== tuning dial =====
@@ -2119,6 +2211,12 @@ $('shufBtn').addEventListener('click',()=>setShuffle(!shuffle));
 $('rptBtn').addEventListener('click',cycleRepeat);
 $('vidBtn').addEventListener('click',toggleVideo);
 $('liveBtn').addEventListener('click',()=>setLive(!live));
+$('onair').addEventListener('click',()=>setLive(!live));
+// a phone that has been asleep comes back seconds behind — catch it up
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && live) resyncStation(playing || wantPlay);
+});
+window.addEventListener('online', () => { if (live) resyncStation(playing || wantPlay); });
 
 /* ===== running as its own window =====
    A page cannot strip its own address bar — browsers reserve that, so you
@@ -2197,15 +2295,16 @@ $('sfxToggle').addEventListener('click', e => {
 $('playBtn').addEventListener('click', toggle);
 $('stopBtn').addEventListener('click', stopAll);
 $('ejectBtn').addEventListener('click', () => loaded ? eject() : load(idx, false));
-$('rewBtn').addEventListener('click', () => load(idx-1, wantPlay));
-$('ffBtn').addEventListener('click',  () => shuffle ? load(nextIndex(), wantPlay) : load(idx+1, wantPlay));
+$('rewBtn').addEventListener('click', () => { leaveStation(); load(idx-1, wantPlay); });
+$('ffBtn').addEventListener('click',  () => { leaveStation(); load(shuffle ? nextIndex() : idx+1, wantPlay); });
 $('recBtn').addEventListener('click', () => {
   setState('PROT'); setTimeout(() => setState(playing?'PLAY':'STOP'), 1400);
 });
-$('sideA').addEventListener('click', () => load(0, wantPlay));
-$('sideB').addEventListener('click', () => load(SIDE_A_END, wantPlay));
+$('sideA').addEventListener('click', () => { leaveStation(); load(0, wantPlay); });
+$('sideB').addEventListener('click', () => { leaveStation(); load(SIDE_A_END, wantPlay); });
 $('bar').addEventListener('click', e => {
   if (!ready || !player || !player.getDuration) return;
+  leaveStation();
   const r = e.currentTarget.getBoundingClientRect();
   player.seekTo(Math.min(1,Math.max(0,(e.clientX-r.left)/r.width)) * (player.getDuration()||0), true);
 });
@@ -2224,7 +2323,17 @@ document.addEventListener('keydown', e => {
 paint(0); setPlayUI(false); setState('STOP'); tick();
 setInterval(tick, 250);
 railsRefresh(); setTimeout(railsRefresh, 400);
-setTimeout(() => load(0, false), 450);
+$('pillCount').textContent = TAPE.length;
+$('byLine').textContent = 'A tape by Amit Singh · ' + TAPE.length + ' songs';
+$('cntB').textContent = (SIDE_A_END+1) + '\u2013' + TAPE.length;
+setTimeout(() => {
+  // Fresh visitors land on the station, so two people who open the page are
+  // already on the same song. Anyone who picked their own tape last time
+  // (that choice is remembered on the device) starts where they left off.
+  stationBooted = true;
+  if (wantsStation()) setLive(true, {cue:true, quiet:true, silent:true});
+  else { load(0, false); paintOnAir(); }
+}, 450);
 syncFromApi();
 
 if (!IS_FILE){
