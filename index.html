@@ -34,7 +34,11 @@ body{background:var(--room);color:var(--paper);font-family:var(--sans);
 button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:inherit}
 
 #room{position:fixed;inset:0;z-index:0;
-  background:radial-gradient(ellipse at 50% 12%,#33162c 0%,#1a1119 46%,#0a080c 100%)}
+  background:
+    radial-gradient(900px 540px at 50% -10%, rgba(255,45,149,.20), transparent 68%),
+    radial-gradient(760px 520px at 8% 74%, rgba(255,171,46,.09), transparent 70%),
+    radial-gradient(700px 500px at 96% 30%, rgba(0,229,255,.055), transparent 68%),
+    radial-gradient(ellipse at 50% 12%,#33162c 0%,#1a1119 46%,#0a080c 100%)}
 #grain{position:fixed;inset:-50%;z-index:81;pointer-events:none;opacity:.11;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.6'/></svg>");
   animation:grain .5s steps(3) infinite}
@@ -53,10 +57,11 @@ button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:
   #wrap{max-width:1780px;
     display:grid;justify-content:center;align-content:start;
     grid-template-columns:minmax(0,1120px) clamp(290px,22vw,400px);
-    grid-template-areas:"head head" "deck rack" "note rack" "pad  rack";
+    grid-template-areas:"head head" "deck rack" "card rack" "note rack" "pad  rack";
     column-gap:clamp(18px,1.8vw,30px)}
   header{grid-area:head}
   .deck  {grid-area:deck}
+  .jcard {grid-area:card}
   .notice{grid-area:note}
   .rack  {grid-area:rack;margin-top:0;align-self:start;
           position:sticky;top:14px;max-height:calc(100vh - 28px);
@@ -81,6 +86,72 @@ button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:
   .rack .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 
+/* ---------- the inlay, the paper card that lived in the case ---------- */
+.jcard{position:relative;margin-top:14px;display:grid;
+  grid-template-columns:112px minmax(0,1fr) minmax(206px,252px);
+  gap:20px;align-items:center;overflow:hidden;
+  border:1px solid var(--line);border-radius:12px;padding:16px 20px 16px 27px;
+  background:linear-gradient(172deg,rgba(242,236,226,.062),rgba(0,0,0,.34));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 20px 46px rgba(0,0,0,.5)}
+.jcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;
+  background:linear-gradient(180deg,var(--mag),#ff6b1a 55%,var(--amber))}
+.jart{position:relative;width:112px;aspect-ratio:1;border-radius:7px;overflow:hidden;
+  background:#181320;box-shadow:0 8px 20px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.09)}
+.jart img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .3s}
+.jart img.ok{opacity:1}
+.jnum{position:absolute;left:0;bottom:0;font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:.14em;padding:3px 7px;background:rgba(0,0,0,.74);color:var(--amber);
+  border-top-right-radius:6px}
+.jmain{min-width:0}
+.jkick{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.jkick i{font-style:normal;font-family:var(--black);font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--amber)}
+.jkick .jrule{flex:0 0 34px;height:1px;background:rgba(242,236,226,.2)}
+.jkick em{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim)}
+.jcard h3{font-family:var(--black);font-size:clamp(18px,2.3vw,28px);line-height:1.04;
+  letter-spacing:-.022em;text-transform:uppercase}
+.jby{font-size:12.5px;letter-spacing:.02em;color:rgba(242,236,226,.66);margin-top:5px}
+.jhand{font-family:var(--hand);font-size:17px;line-height:1.1;color:#ff86b4;
+  margin-top:8px;transform:rotate(-.7deg);transform-origin:left center}
+.jnext{align-self:stretch;min-width:0;border-left:1px solid var(--line);padding-left:18px;
+  display:flex;flex-direction:column;justify-content:center}
+.jnexth{font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:9px}
+.jnext ol{list-style:none;display:grid;gap:8px}
+.jnext li{display:flex;gap:9px;align-items:baseline;font-size:11.5px;min-width:0;
+  color:rgba(242,236,226,.78);cursor:pointer;transition:color .12s}
+.jnext li:hover{color:var(--paper)}
+.jnext li:hover b{color:var(--mag)}
+.jnext li b{font-family:var(--mono);font-size:9px;color:var(--dim);flex:none;transition:color .12s}
+.jnext li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.jtracks{display:none}
+@media (min-width:1400px){
+  .jtracks{display:block;grid-column:1 / -1;margin-top:15px;padding-top:14px;
+    border-top:1px solid var(--line)}
+  .jtcols{column-count:3;column-gap:26px}
+  .jtracks .jt{display:flex;gap:9px;align-items:baseline;min-width:0;padding:2.5px 5px;
+    break-inside:avoid;-webkit-column-break-inside:avoid;
+    border-radius:4px;font-size:11.5px;color:rgba(242,236,226,.70);
+    cursor:pointer;transition:background .12s,color .12s}
+  .jtracks .jt:hover{background:rgba(242,236,226,.07);color:var(--paper)}
+  .jtracks .jt b{font-family:var(--mono);font-size:9px;color:rgba(242,236,226,.32);flex:none}
+  .jtracks .jt span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .jtracks .jt.now{color:var(--paper);background:rgba(255,45,149,.14)}
+  .jtracks .jt.now b{color:var(--mag)}
+  .jtracks .jhd{font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+}
+@media (min-width:1900px){ .jtcols{column-count:4} }
+@media (min-width:1400px) and (max-height:820px){ .jtracks{display:none} }
+@media (max-width:900px){
+  .jcard{grid-template-columns:74px minmax(0,1fr);gap:13px;padding:13px 14px 13px 19px;margin-top:12px}
+  .jart{width:74px}
+  .jhand{font-size:15px;margin-top:6px}
+  .jnext{grid-column:1 / -1;border-left:0;border-top:1px solid var(--line);
+    padding-left:0;padding-top:12px}
+}
+
 /* ---------- header ---------- */
 header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
 .bug{display:flex;align-items:center;gap:11px}
@@ -88,8 +159,13 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
   background:linear-gradient(135deg,var(--mag),#ff6b1a);
   box-shadow:0 0 0 2px rgba(242,236,226,.85),0 6px 22px rgba(255,45,149,.45);
   font-family:var(--black);font-size:19px;color:#141013;transform:rotate(-4deg)}
-.bug h1{font-family:var(--black);font-size:clamp(15px,2.1vw,22px);line-height:1.05;
-  font-weight:900;letter-spacing:-.015em;text-transform:uppercase}
+.bug h1{font-family:var(--black);font-size:clamp(17px,2.5vw,28px);line-height:1;
+  font-weight:900;letter-spacing:-.022em;text-transform:uppercase;
+  background:linear-gradient(96deg,#fff6ea 12%,#ffd9e6 52%,#ffc98a 92%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.bug .ttl{position:relative;padding-bottom:6px}
+.bug .ttl::after{content:'';position:absolute;left:0;bottom:0;width:54px;height:2px;
+  border-radius:2px;background:linear-gradient(90deg,var(--mag),var(--amber))}
 .bug .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-top:5px}
 .hmeta{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
 .pill{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
@@ -558,8 +634,10 @@ body.appmode .sfxbtn.popout{display:none}
   .mcap .ma{font-size:8px}
   .rhead h2{font-size:19px}
   .notice{font-size:9.5px;padding:9px 10px}
+  header{gap:10px;margin-bottom:11px}
   .hmeta{gap:7px}
-  .pill,.sfxbtn{font-size:8.5px;padding:4px 8px}
+  .pill{display:none}          /* the deck's own display already says all this */
+  .sfxbtn{font-size:8.5px;padding:4px 8px}
   .clock{font-size:10px}
 }
 @media (max-width:420px){
@@ -585,18 +663,17 @@ body.appmode .sfxbtn.popout{display:none}
   <header>
     <div class="bug">
       <div class="mark">९०</div>
-      <div>
+      <div class="ttl">
         <h1>Indian Pop Music of 90s</h1>
         <div class="sub">Nabbe ke gaane, ek ghoomti hui reel</div>
       </div>
     </div>
     <div class="hmeta">
-      <div class="pill">Tape · <b id="pillCount">41</b> songs</div>
+      <div class="pill">Tape · <b id="pillCount">41</b> songs · Side <b id="pillSide">A</b></div>
       <button class="onair" id="onair" type="button"
               title="The station: everyone listening hears the same second of the same song">
         <span class="dot"></span><b id="onairTxt">ON AIR</b><small id="onairSub">tuning in…</small>
       </button>
-      <div class="pill">Side <b id="pillSide">A</b> · SP</div>
       <button class="sfxbtn on" id="sfxToggle" title="Mute the deck's mechanical sounds">♪ Deck sounds</button>
       <button class="sfxbtn popout" id="popBtn" title="Open in its own window, free of the browser bar">⤢ Pop out</button>
       <div class="clock" id="clock">00:00:00</div>
@@ -841,12 +918,28 @@ body.appmode .sfxbtn.popout{display:none}
     </div>
   </div>
 
+  <!-- ============ INLAY ============ -->
+  <div class="jcard">
+    <div class="jart"><img id="jArt" alt="" referrerpolicy="no-referrer"><span class="jnum" id="jNum">01</span></div>
+    <div class="jmain">
+      <div class="jkick"><i id="jSide">Side A</i><span class="jrule"></span><em id="jStamp">Track 01</em></div>
+      <h3 id="jTitle">—</h3>
+      <div class="jby" id="jBy">—</div>
+      <div class="jhand" id="jHand">—</div>
+    </div>
+    <div class="jnext">
+      <div class="jnexth">Up next</div>
+      <ol id="jList"></ol>
+    </div>
+    <div class="jtracks" id="jTracks"></div>
+  </div>
+
   <div class="notice" id="notice" hidden></div>
 
   <!-- ============ RACK ============ -->
   <div class="rack">
     <div class="rhead">
-      <h2>Indian Pop Music of 90s</h2>
+      <h2>Tape <em>Index</em></h2>
       <div class="by" id="byLine">A tape by Amit Singh · 41 songs</div>
     </div>
 
@@ -1442,6 +1535,15 @@ function buildRack(){
 }
 buildRack();
 
+/* How long each side runs — the sort of thing you'd bic-pen onto the inlay. */
+function sideBlurb(side){
+  const from = side === 'A' ? 0 : SIDE_A_END;
+  const to   = side === 'A' ? SIDE_A_END : TAPE.length;
+  let sec = 0; for (let k = from; k < to; k++) sec += TAPE[k].d || 240;
+  const h = Math.floor(sec/3600), m = Math.round((sec%3600)/60);
+  return 'Side ' + side + ' — ' + (to-from) + ' songs, ' + (h ? h + ' hr ' : '') + m + ' min';
+}
+
 /* ===== paint ===== */
 function paint(i){
   const tr = TAPE[i], side = sideOf(i);
@@ -1455,6 +1557,42 @@ function paint(i){
   $('pillSide').textContent = side;
   $('sideA').classList.toggle('on', side === 'A');
   $('sideB').classList.toggle('on', side === 'B');
+
+  // the paper inlay
+  $('jNum').textContent   = pad(i+1);
+  $('jSide').textContent  = 'Side ' + side;
+  $('jStamp').textContent = 'Track ' + pad(i+1) + ' of ' + TAPE.length;
+  $('jTitle').textContent = tr.t;
+  $('jBy').textContent    = tr.a + (tr.d ? '  ·  ' + fmt(tr.d) : '');
+  $('jHand').textContent  = sideBlurb(side);
+  thumbFor($('jArt'), null, tr.id);
+  const ol = $('jList'); ol.innerHTML = '';
+  for (let k = 1; k <= 3; k++){
+    const j = (i + k) % TAPE.length, nt = TAPE[j];
+    const li = document.createElement('li');
+    li.innerHTML = '<b>' + pad(j+1) + '</b><span>' + esc(nt.t) + ' — ' + esc(nt.a) + '</span>';
+    li.title = 'Play ' + nt.t;
+    li.addEventListener('click', () =>
+      loadFrom(j, document.querySelector('.mini[data-i="' + j + '"]')));
+    ol.appendChild(li);
+  }
+
+  const jt = $('jTracks');
+  if (jt){
+    const from = side === 'A' ? 0 : SIDE_A_END;
+    const to   = side === 'A' ? SIDE_A_END : TAPE.length;
+    let html = '';
+    for (let k = from; k < to; k++){
+      html += '<div class="jt' + (k === i ? ' now' : '') + '" data-j="' + k + '">' +
+              '<b>' + pad(k+1) + '</b><span>' + esc(TAPE[k].t) + '</span></div>';
+    }
+    jt.innerHTML = '<div class="jhd">Everything on side ' + side + '</div>' +
+                   '<div class="jtcols">' + html + '</div>';
+    jt.querySelectorAll('.jt').forEach(el => el.addEventListener('click', () => {
+      const j = +el.dataset.j;
+      loadFrom(j, document.querySelector('.mini[data-i="' + j + '"]'));
+    }));
+  }
 
   const nx = TAPE[(i+1) % TAPE.length];
   const line = pad(i+1)+'. '+tr.t.toUpperCase()+'  —  '+tr.a.toUpperCase()
