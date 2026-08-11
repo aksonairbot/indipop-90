@@ -420,11 +420,6 @@ body.appmode .sfxbtn.popout{display:none}
 .mini.now .mcap .ma{color:rgba(255,45,149,.65)}
 .mini.blocked .qslot{opacity:.5;filter:grayscale(.6)}
 
-.foot{margin-top:4px;padding-top:11px;border-top:1px solid rgba(242,236,226,.12);
-  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.foot a{color:rgba(242,236,226,.55)}
-.foot a:hover{color:var(--mag)}
 
 /* The player must be a real, on-screen, sensibly-sized element: browsers
    refuse to start media in a 1x1 or off-screen frame. It lives inside the
@@ -480,14 +475,9 @@ body.appmode .sfxbtn.popout{display:none}
   .anal{padding:5px 6px 4px}
   .anal .cap{font-size:6.5px}
 
-  /* amplifier: source chips, then dial and tone side by side */
-  .amp{grid-template-columns:1fr;gap:9px;padding-top:10px}
-  .srcbtns{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-  .srcbtns button{padding:6px 2px;font-size:7.5px;letter-spacing:.06em}
-  .dialstrip{height:34px}
-  .seclab{margin-bottom:4px;font-size:7px}
-  .slid{grid-template-columns:26px minmax(0,1fr) 18px;gap:6px}
-  .tones{gap:4px}
+  /* the amplifier strip is desktop-only: on a phone it costs more room than
+     it earns, and nothing in it is needed to play the tape */
+  .amp{display:none}
 
   /* transport: one compact grid, glyphs only, PLAY given the room */
   .transport{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
@@ -816,12 +806,6 @@ body.appmode .sfxbtn.popout{display:none}
       <button class="nav l" data-rail="railB" data-d="-1" aria-label="Scroll left">◀</button>
       <button class="nav r" data-rail="railB" data-d="1" aria-label="Scroll right">▶</button>
       <div class="grid" id="gridB"></div>
-    </div>
-
-    <div class="foot">
-      <span>Click a cassette to load it · Space = play/pause · ← → = track · S = shuffle · R = repeat · E = eject</span>
-      <span id="apiLine">Checking the playlist…</span>
-      <span>after <a href="https://roadways.wtf/" target="_blank" rel="noopener">roadways.wtf</a></span>
     </div>
   </div>
 
