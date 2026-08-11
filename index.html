@@ -1753,12 +1753,26 @@ function resyncStation(play){
   if (play) wantPlay = true;
   if (s.i !== idx || !loaded){ load(s.i, !!play); seekWhenReady(s.offset); return; }
   if (ready && player && player.seekTo){
+    if (play) player.playVideo();          // a stopped player ignores a bare seek
     player.seekTo(s.offset, true);
-    if (play) player.playVideo();
+    if (play){
+      player.playVideo();
+      // once sound is actually coming out, land on the exact live second
+      clearTimeout(resyncSettle);
+      resyncSettle = setTimeout(() => {
+        if (!live || !player || !player.getPlayerState) return;
+        if (player.getPlayerState() !== 1) return;
+        const n = stationNow();
+        if (n.i === idx && Math.abs(player.getCurrentTime() - n.offset) > 1.5){
+          player.seekTo(n.offset, true);
+        }
+      }, 1400);
+    }
   } else {
     seekWhenReady(s.offset);
   }
 }
+let resyncSettle = 0;
 
 let onairLast = '', stationBooted = false;
 function paintOnAir(){
