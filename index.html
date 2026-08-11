@@ -140,7 +140,8 @@ body.ejected .cass{transform:translate(-50%,132%) rotate(1.4deg);opacity:.25}
 .label .artbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   font-size:0;color:transparent;opacity:0;transition:opacity .45s;
   filter:blur(15px) saturate(1.6) brightness(.46);transform:scale(1.16)}
-.label .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+.label .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 42%;
   font-size:0;color:transparent;opacity:0;transition:opacity .45s;
   filter:saturate(1.12) contrast(1.04)}
 .label.hasart .art,.label.hasart .artbg{opacity:1}
@@ -324,7 +325,8 @@ body.appmode .sfxbtn.popout{display:none}
 
 /* a cassette in flight, from the rack to the deck */
 /* the flight stage: cover rises, tape slides out of it, tape enters the deck */
-.flystage{position:fixed;inset:0;z-index:500;pointer-events:none}
+.flystage{position:fixed;inset:0;z-index:500;pointer-events:none;perspective:1400px;
+  transform-style:preserve-3d}
 .flystage::before{content:"";position:absolute;inset:0;background:rgba(6,4,10,0);
   transition:background .35s ease}
 .flystage.dim::before{background:rgba(6,4,10,.62)}
@@ -339,7 +341,7 @@ body.appmode .sfxbtn.popout{display:none}
 .flytape .ftlabel{position:absolute;z-index:2;left:5.5%;right:5.5%;top:6%;height:64%;
   border-radius:2px;overflow:hidden;background:#e8e0cf;
   box-shadow:0 1px 3px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.28)}
-.flytape .ftlabel img{width:100%;height:100%;object-fit:cover;display:block}
+.flytape .ftlabel img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block}
 
 /* ---------- rack ---------- */
 .rack{margin-top:20px;border-radius:10px;padding:18px 18px 16px;
@@ -774,47 +776,60 @@ body.appmode .sfxbtn.popout{display:none}
 
 <script>
 const TAPE = [
- {id:'4R9Sy4PEOH8', t:'Ab Mujhe Raat Din',        a:'Sonu Nigam'},
- {id:'4TPlNOiUK9k', t:'Dooba Dooba',              a:'Silk Route'},
- {id:'8wRX93nSsOQ', t:'Ahista',                   a:'Pankaj Udhas'},
- {id:'YW6deNQMoe8', t:'Piya Basanti',             a:'Ustad Sultan Khan & Chitra'},
- {id:'iSlc3DnC_GY', t:'Jab Samne Tum Aa Jate Ho', a:'Jagjit Singh'},
- {id:'EHhCVN825zs', t:'Dekha Hai Teri Aankhon Ko',a:'Sadu'},
- {id:'qECTS-t_eQU', t:'Sochta Hun Uska Dil',      a:'Babul Supriyo'},
- {id:'X00i-KKbmu4', t:'Kitni Haseen Zindagi',     a:'Lucky Ali'},
- {id:'PzAsTeHT77E', t:'Meri Chunar Udd Udd Jaye', a:'Falguni Pathak'},
- {id:'gZjnUcJy-Rw', t:'Dil Kya Kare',             a:'Adnan Sami'},
- {id:'vbT7V13P8a4', t:'Aiyo Rama',                a:'Indipop'},
- {id:'yroiJib3avQ', t:'Tera Chehra',              a:'Adnan Sami'},
- {id:'m91koeJzRfw', t:'Aana Meri Gully',          a:'Euphoria'},
- {id:'KD8TxFY_hwY', t:'Pal Pal Teri Yaad',        a:'Falguni Pathak'},
- {id:'VnuAKmEwXiA', t:'Tanha Dil',                a:'Shaan'},
- {id:'CTZ0ylAudZI', t:'Kabhi Yaadon Mein Aaun',   a:'Abhijeet'},
- {id:'7eT7Ibyj0QI', t:'Chalne Lagi Hawayein',     a:'Abhijeet'},
- {id:'78MvcVuXGHY', t:'Is Kadar Pyar Hai Tumse',  a:'Sonu Nigam'},
- {id:'HtlJykR0rtI', t:'Kya Soorat Hai',           a:'Bombay Vikings'},
- {id:'6NjEobhb0Qc', t:'Yaaron',                   a:'KK'},
- {id:'TdjY9Tk7ZCM', t:'Yeh Hawa Kehti Hai Kya',   a:'Jai Walia'},
- {id:'h7r3VMVVpLk', t:'Deewana Tera',             a:'Sonu Nigam'},
- {id:'N0wST_k_feA', t:'Woh Pehli Baar',           a:'Vishal Dadlani'},
- {id:'FxzzLucsx9A', t:'Aankhon Mein',             a:'Jai Walia'},
- {id:'BUzCnq4xcMo', t:'Deewane Hoke Hum',         a:'Sonu Nigam'},
- {id:'UU-vP3WWYrA', t:'Ho Gayi Hai Mohabbat',     a:'Aslam'},
- {id:'2LkKAcnLcHM', t:'Deewana Tera',             a:'Sonu Nigam'},
- {id:'rII0ikL9cdQ', t:'Dhoom Pichuck',            a:'Euphoria'},
- {id:'nwXq1iKFmjY', t:'Tera Mera Pyar',           a:'Prem & Hardeep'},
- {id:'myds4MqB_pQ', t:'Ab Mujhe Raat Din',        a:'Sonu Nigam'},
- {id:'lFycsQXQpW8', t:'Tera Milna Pal Do Pal Ka', a:'Sonu Nigam'},
- {id:'fC2v9Qy_m4c', t:'Kuchh Tum Socho',          a:'Sonu Nigam'},
- {id:'fMKwk8jlur0', t:'Mohabbat Kabhi Maine',     a:'Sonu Nigam'},
- {id:'Z96jt2jIDfM', t:'Mona Re',                  a:'Bombay Vikings'},
- {id:'-Q2SWVgKWOc', t:'Koi Lauta De Woh',         a:'Abhijeet'},
- {id:'5jhJEg7JOa4', t:'Tu',                       a:'Sonu Nigam'},
- {id:'S4LFWlv9Xm4', t:'Sun Soniye',               a:'Nitin Bali'},
- {id:'QYik1AmONiI', t:'Lafzon Mein',              a:'Abhijeet Sawant'},
- {id:'wRCnWDa_W10', t:'Neele Neele Ambar Par',    a:'Nitin Bali'},
- {id:'96XGtKC1cdQ', t:'Woh Beete Din',            a:'Tanya'},
- {id:'-DUoP6iDr6E', t:'Tu Tu Hai Wahi (Remix)',   a:'Vaishali Samant'}
+ {id:'4R9Sy4PEOH8', t:'Ab Mujhe Raat Din', a:'Sonu Nigam', d:386},
+ {id:'4TPlNOiUK9k', t:'Dooba Dooba', a:'Silk Route', d:304},
+ {id:'8wRX93nSsOQ', t:'Ahista', a:'Pankaj Udhas', d:435},
+ {id:'YW6deNQMoe8', t:'Piya Basanti', a:'Ustad Sultan Khan & Chitra', d:277},
+ {id:'iSlc3DnC_GY', t:'Jab Samne Tum Aa Jate Ho', a:'Jagjit Singh', d:411},
+ {id:'EHhCVN825zs', t:'Dekha Hai Teri Aankhon Ko', a:'Sadu', d:237},
+ {id:'qECTS-t_eQU', t:'Sochta Hun Uska Dil', a:'Babul Supriyo', d:257},
+ {id:'X00i-KKbmu4', t:'Kitni Haseen Zindagi', a:'Lucky Ali', d:256},
+ {id:'PzAsTeHT77E', t:'Meri Chunar Udd Udd Jaye', a:'Falguni Pathak', d:410},
+ {id:'gZjnUcJy-Rw', t:'Dil Kya Kare', a:'Adnan Sami', d:328},
+ {id:'vbT7V13P8a4', t:'Aiyo Rama', a:'Indipop', d:287},
+ {id:'yroiJib3avQ', t:'Tera Chehra', a:'Adnan Sami', d:393},
+ {id:'m91koeJzRfw', t:'Aana Meri Gully', a:'Euphoria', d:283},
+ {id:'KD8TxFY_hwY', t:'Pal Pal Teri Yaad', a:'Falguni Pathak', d:362},
+ {id:'VnuAKmEwXiA', t:'Tanha Dil', a:'Shaan', d:292},
+ {id:'CTZ0ylAudZI', t:'Kabhi Yaadon Mein Aaun', a:'Abhijeet', d:368},
+ {id:'7eT7Ibyj0QI', t:'Chalne Lagi Hawayein', a:'Abhijeet', d:364},
+ {id:'78MvcVuXGHY', t:'Is Kadar Pyar Hai Tumse', a:'Sonu Nigam', d:325},
+ {id:'HtlJykR0rtI', t:'Kya Soorat Hai', a:'Bombay Vikings', d:234},
+ {id:'6NjEobhb0Qc', t:'Yaaron', a:'KK', d:269},
+ {id:'TdjY9Tk7ZCM', t:'Yeh Hawa Kehti Hai Kya', a:'Jai Walia', d:329},
+ {id:'h7r3VMVVpLk', t:'Deewana Tera', a:'Sonu Nigam', d:361},
+ {id:'N0wST_k_feA', t:'Woh Pehli Baar', a:'Vishal Dadlani', d:272},
+ {id:'FxzzLucsx9A', t:'Aankhon Mein', a:'Jai Walia', d:272},
+ {id:'BUzCnq4xcMo', t:'Deewane Hoke Hum', a:'Sonu Nigam', d:337},
+ {id:'UU-vP3WWYrA', t:'Ho Gayi Hai Mohabbat', a:'Aslam', d:247},
+ {id:'2LkKAcnLcHM', t:'Deewana Tera', a:'Sonu Nigam', d:361},
+ {id:'rII0ikL9cdQ', t:'Dhoom Pichuck', a:'Euphoria', d:290},
+ {id:'nwXq1iKFmjY', t:'Tera Mera Pyar', a:'Prem & Hardeep', d:374},
+ {id:'myds4MqB_pQ', t:'Ab Mujhe Raat Din', a:'Sonu Nigam', d:383},
+ {id:'lFycsQXQpW8', t:'Tera Milna Pal Do Pal Ka', a:'Sonu Nigam', d:352},
+ {id:'fC2v9Qy_m4c', t:'Kuchh Tum Socho', a:'Sonu Nigam', d:397},
+ {id:'fMKwk8jlur0', t:'Mohabbat Kabhi Maine', a:'Sonu Nigam', d:330},
+ {id:'Z96jt2jIDfM', t:'Mona Re', a:'Bombay Vikings', d:301},
+ {id:'-Q2SWVgKWOc', t:'Koi Lauta De Woh', a:'Abhijeet', d:339},
+ {id:'5jhJEg7JOa4', t:'Tu', a:'Sonu Nigam', d:267},
+ {id:'S4LFWlv9Xm4', t:'Sun Soniye', a:'Nitin Bali', d:243},
+ {id:'QYik1AmONiI', t:'Lafzon Mein', a:'Abhijeet Sawant', d:267},
+ {id:'wRCnWDa_W10', t:'Neele Neele Ambar Par', a:'Nitin Bali', d:234},
+ {id:'96XGtKC1cdQ', t:'Woh Beete Din', a:'Tanya', d:224},
+ {id:'-DUoP6iDr6E', t:'Tu Tu Hai Wahi (Remix)', a:'Vaishali Samant', d:369},
+ {id:'2wqXLa3vCk0', t:'Gallan Goodiyaan', a:'Yashita Sharma', d:297},
+ {id:'BKQzhPLIqps', t:'Maaeri', a:'Euphoria', d:333},
+ {id:'_T_MOxNGsks', t:'Tunak Tunak Tun', a:'Daler Mehndi', d:304},
+ {id:'HzDLVTmJFyg', t:'Jaane Kisne', a:'Shiamak Davar', d:243},
+ {id:'47AiwqbSvj8', t:'Chandni Raten', a:'Partners In Rhyme', d:339},
+ {id:'eCa1uvGu3PY', t:'Suno To Diwana Dil', a:'Kamaal Khan', d:225},
+ {id:'QYjWBK-98iM', t:'Na Jaane', a:'Nitin Bali', d:298},
+ {id:'5wzHwUB85fs', t:'Ghar Aja Sohniya', a:'Bally Jagpal & Shazia Manzoor', d:274},
+ {id:'4d64evMa3-Y', t:'Sayonee', a:'Junoon', d:305},
+ {id:'LFv-Pew3h90', t:'Made in India', a:'Alisha Chinai', d:267},
+ {id:'47DjAwOPuy8', t:'Woh Pyaar Mera', a:'Alisha Chinai', d:287},
+ {id:'h7HY6naAG5A', t:'Oh Ho Ho Ho', a:'Sukhbir', d:368},
+ {id:'coSX7DqD7MY', t:'Bulla Ki Jana', a:'Rabbi Shergill', d:318}
 ];
 
 /* ============================================================
@@ -1214,7 +1229,21 @@ function thumbFor(imgEl, bgEl, id){
    by HTTP referrer to your own domain, and to the YouTube Data
    API alone. Set it to '' to run purely on the built-in list.
    ============================================================ */
-const YT_API_KEY  = 'AIzaSyCYmzxVNbFilz-6XNfooeuQyE_5DCfTZ6k';
+/* No key is stored here. A key placed in a web page is readable by anyone who
+   opens view-source — it cannot be encrypted, because the browser has to send
+   the real value to Google. The 54 tracks below are baked in, so the deck runs
+   fully without one. If you want live playlist sync, supply your own
+   referrer-restricted key at runtime and it stays on your machine only:
+     localStorage.setItem('indipop_yt_key', 'YOUR_RESTRICTED_KEY')
+   or append ?key=... to the URL once. Nothing is ever committed. */
+const YT_API_KEY = (() => {
+  try {
+    const fromUrl = new URLSearchParams(location.search).get('key');
+    if (fromUrl){ localStorage.setItem('indipop_yt_key', fromUrl);
+                  history.replaceState(null,'',location.pathname); return fromUrl; }
+    return localStorage.getItem('indipop_yt_key') || '';
+  } catch(e){ return ''; }
+})();
 const YT_PLAYLIST = 'PLErS26AGDxXQ';
 
 const durSec = iso => {
@@ -1230,7 +1259,11 @@ function apiStatus(tag, msg){
 }
 
 async function syncFromApi(){
-  if (!YT_API_KEY){ apiStatus('OFF','Running on the built-in track list.'); return; }
+  if (!YT_API_KEY){
+    apiStatus('OFF', TAPE.length+' tracks, built in. Live playlist sync is off — '+
+      'no API key is stored in this page by design.');
+    return;
+  }
   const base = 'https://www.googleapis.com/youtube/v3/';
   try {
     let items = [], pageToken = '';
@@ -1460,9 +1493,13 @@ async function coverToDeck(i, miniEl, onDone){
 
   // --- lift the sleeve to the middle of the screen ---
   await run(sleeve, [
-    {transform:'translate(0,0) scale(1) rotate(0deg)'},
-    {transform:'translate('+toCentreX+'px,'+toCentreY+'px) scale('+grow+') rotate(-3deg)'}
-  ], {duration:480, easing:'cubic-bezier(.22,.7,.25,1)'});
+    {transform:'translate(0,0) scale(1) rotateY(0deg) rotateZ(0deg)'},
+    {transform:'translate('+(toCentreX*0.55)+'px,'+(toCentreY*0.55 - 26)+'px) '+
+               'scale('+(1+(grow-1)*0.6)+') rotateY(-16deg) rotateZ(-5deg)', offset:0.55},
+    {transform:'translate('+toCentreX+'px,'+toCentreY+'px) scale('+grow+') '+
+               'rotateY(0deg) rotateZ(-3deg)'}
+  ], {duration:560, easing:'cubic-bezier(.2,.75,.24,1)'});
+  await wait(90);
 
   // --- the tape slides out of the sleeve ---
   SFX.eject();
@@ -1470,15 +1507,19 @@ async function coverToDeck(i, miniEl, onDone){
   tape.style.opacity = '1';
   await Promise.all([
     run(tape, [
-      {transform:'translate('+toCentreX+'px,'+toCentreY+'px) scale('+grow+')'},
-      {transform:'translate('+(toCentreX + slide*grow*0.42)+'px,'+
-                 (toCentreY + 6)+'px) scale('+grow+') rotate(1.5deg)'}
-    ], {duration:620, easing:'cubic-bezier(.3,.9,.3,1)'}),
+      {transform:'translate('+toCentreX+'px,'+toCentreY+'px) scale('+grow+') rotateZ(0deg)'},
+      {transform:'translate('+(toCentreX + slide*grow*0.14)+'px,'+(toCentreY+2)+
+                 'px) scale('+grow+') rotateZ(.6deg)', offset:0.35},
+      {transform:'translate('+(toCentreX + slide*grow*0.44)+'px,'+(toCentreY + 6)+
+                 'px) scale('+grow+') rotateZ(1.6deg)'}
+    ], {duration:700, easing:'cubic-bezier(.34,.85,.3,1)'}),
     run(sleeve, [
-      {transform:'translate('+toCentreX+'px,'+toCentreY+'px) scale('+grow+') rotate(-3deg)', opacity:1},
-      {transform:'translate('+(toCentreX - slide*grow*0.30)+'px,'+
-                 (toCentreY + 10)+'px) scale('+grow+') rotate(-8deg)', opacity:0}
-    ], {duration:620, easing:'ease-out'})
+      {transform:'translate('+toCentreX+'px,'+toCentreY+'px) scale('+grow+') rotateZ(-3deg)', opacity:1},
+      {transform:'translate('+(toCentreX - slide*grow*0.16)+'px,'+(toCentreY+4)+
+                 'px) scale('+grow+') rotateZ(-6deg)', opacity:.85, offset:0.45},
+      {transform:'translate('+(toCentreX - slide*grow*0.34)+'px,'+(toCentreY + 14)+
+                 'px) scale('+(grow*0.96)+') rotateZ(-11deg)', opacity:0}
+    ], {duration:700, easing:'ease-out'})
   ]);
   sleeve.remove();
   await wait(180);
@@ -1487,6 +1528,12 @@ async function coverToDeck(i, miniEl, onDone){
   if (deck) deck.scrollIntoView({behavior:'smooth', block:'center'});
   await Promise.race([ new Promise(r => afterScrollSettles(r)), wait(1200) ]);
   stage.classList.remove('dim');
+
+  // the door lifts and any tape already in there rides out, so the incoming
+  // one drops into an open, empty well rather than through a shut lid
+  document.body.classList.add('dooropen');
+  if (loaded){ SFX.eject(); document.body.classList.add('ejected'); }
+  await wait(loaded ? 420 : 200);
 
   const cassEl = $('cass');
   const d = cassEl.getBoundingClientRect();
@@ -1501,7 +1548,8 @@ async function coverToDeck(i, miniEl, onDone){
                'px) scale('+((grow+finalScale)/2)+') rotate(0deg)', opacity:1, offset:0.55},
     {transform:'translate('+fx+'px,'+(fy - d.height*0.14)+'px) scale('+finalScale+') rotate(0deg)', opacity:1, offset:0.87},
     {transform:'translate('+fx+'px,'+fy+'px) scale('+finalScale+') rotate(0deg)', opacity:0}
-  ], {duration:760, easing:'cubic-bezier(.3,.05,.2,1)'});
+  ], {duration:820, easing:'cubic-bezier(.32,.04,.2,1)'});
+  SFX.insert();
 }
 
 function loadFrom(i, miniEl){
