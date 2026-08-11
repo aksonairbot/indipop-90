@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Indian Pop Music of 90s</title>
 <meta name="theme-color" content="#0f0c12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Indipop 90">
 <meta name="description" content="इंडिपॉप ९० — a 41-song 90s indipop cassette played on a stereo deck. Side A and Side B, reels rolling.">
 <meta property="og:title" content="Indian Pop Music of 90s">
 <meta property="og:description" content="A 41-song 90s indipop cassette played on a stereo deck.">
@@ -269,6 +273,9 @@ body:not(.playing) .marq span{animation-play-state:paused}
   background:rgba(0,0,0,.25);transition:.12s;white-space:nowrap}
 .sfxbtn.on{color:#0b2015;background:linear-gradient(178deg,#3ddc84,#1f9c58);
   border-color:#3ddc84;font-weight:700}
+.sfxbtn.popout{color:var(--paper);border-color:rgba(242,236,226,.4)}
+.sfxbtn.popout:hover{background:var(--mag);border-color:var(--mag);color:#141013;font-weight:700}
+body.appmode .sfxbtn.popout{display:none}
 .key.big{min-width:74px;font-weight:700}
 .key.play.active{background:linear-gradient(178deg,#3ddc84,#1f9c58);color:#0b2015;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 0 rgba(0,0,0,.6)}
@@ -358,58 +365,59 @@ body:not(.playing) .marq span{animation-play-state:paused}
 .nav:hover{background:var(--mag);border-color:var(--mag);color:#141013}
 .nav.l{left:-6px}.nav.r{right:-6px}
 
-.mini{flex:0 0 152px;width:152px;scroll-snap-align:start;display:block;text-align:left;
-  padding:0;background:none;border:none;cursor:pointer;transition:transform .16s}
-.mini:hover{transform:translateY(-4px)}
-.mcase{position:relative;aspect-ratio:1.61;border-radius:5px;padding:0;overflow:hidden;
-  background:linear-gradient(168deg,#4a4553 0%,#332f3b 45%,#211e28 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -2px 5px rgba(0,0,0,.85),
-             0 6px 16px rgba(0,0,0,.6);
-  border:1px solid rgba(255,255,255,.1);transition:.16s}
-.mini:hover .mcase{box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 12px 26px rgba(0,0,0,.7)}
-.mini.now .mcase{border-color:var(--mag);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 0 0 2px rgba(255,45,149,.55),
-             0 12px 28px rgba(255,45,149,.28),0 8px 20px rgba(0,0,0,.7)}
-.mlabel{position:absolute;z-index:2;left:5.5%;right:5.5%;top:6%;height:64%;
-  border-radius:2px;overflow:hidden;background:#efe7d6;
-  box-shadow:0 1px 3px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.25);
-  transform:rotate(-.3deg)}
-.mlabel .mbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+.mini{flex:0 0 138px;width:138px;scroll-snap-align:start;display:block;text-align:left;
+  padding:0;background:none;border:none;cursor:pointer;transition:transform .18s ease}
+.mini:hover{transform:translateY(-6px)}
+
+/* a cassette standing in its case, seen face on */
+.mcase{position:relative;aspect-ratio:.72;border-radius:3px;overflow:hidden;
+  background:#0d0b11;
+  box-shadow:0 8px 18px rgba(0,0,0,.7), 0 2px 4px rgba(0,0,0,.6),
+             inset 0 0 0 1px rgba(255,255,255,.16);
+  transition:box-shadow .18s ease}
+.mini:hover .mcase{box-shadow:0 16px 34px rgba(0,0,0,.78),inset 0 0 0 1px rgba(255,255,255,.3)}
+.mini.now .mcase{box-shadow:0 0 0 2px var(--mag),0 14px 34px rgba(255,45,149,.4),
+                 0 8px 20px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.3)}
+
+/* the printed inlay behind the plastic */
+.mface{position:absolute;inset:0;overflow:hidden;background:#e8e0cf}
+.mface .mbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   font-size:0;color:transparent;opacity:0;transition:opacity .35s;
-  filter:blur(9px) saturate(1.6) brightness(.48);transform:scale(1.18)}
-.mlabel .mart{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  filter:blur(16px) saturate(1.7) brightness(.62);transform:scale(1.25)}
+.mface .mart{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
   font-size:0;color:transparent;opacity:0;transition:opacity .35s;
-  filter:saturate(1.12) contrast(1.04)}
-.mlabel .mart.ok,.mlabel .mbg.ok{opacity:1}
+  filter:saturate(1.14) contrast(1.05)}
+.mface .mart.ok,.mface .mbg.ok{opacity:1}
 .mpaper{position:absolute;inset:0;transition:opacity .35s;
-  background:linear-gradient(178deg,#fbf7ec 0 44%,#c84a22 44% 100%)}
-.mlabel .mart.ok ~ .mpaper{opacity:0}
-.mscrim{position:absolute;left:0;right:0;bottom:0;height:56%;
-  background:linear-gradient(to top,rgba(10,7,12,.88),rgba(10,7,12,.5) 50%,rgba(10,7,12,0))}
-.mfall{position:absolute;z-index:3;left:5%;right:5%;top:12%;
-  font-family:var(--hand);font-weight:700;font-size:12px;line-height:1.05;
-  color:#22201c;transition:opacity .3s;overflow:hidden;
+  background:linear-gradient(160deg,#f3ead6,#d8c9ad 60%,#b9a684)}
+.mface .mart.ok ~ .mpaper{opacity:0}
+.mgrad{position:absolute;left:0;right:0;bottom:0;height:46%;
+  background:linear-gradient(to top,rgba(6,5,9,.94),rgba(6,5,9,.6) 48%,rgba(6,5,9,0))}
+
+.mtitle{position:absolute;z-index:3;left:8%;right:8%;bottom:15%;
+  font-family:var(--sans);font-weight:800;font-size:11px;line-height:1.16;color:#fff;
+  text-shadow:0 1px 6px rgba(0,0,0,.95);overflow:hidden;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.mlabel .mart.ok ~ .mpaper ~ .mscrim ~ .mfall{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.95)}
-.mno{position:absolute;z-index:4;right:4%;top:5%;font-family:var(--mono);font-size:7.5px;
-  font-weight:700;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.95)}
-.mwin{position:absolute;inset:0;z-index:3;width:100%;height:100%;display:block;pointer-events:none}
-.mhub{transform-origin:50% 50%;animation:spin 2.4s linear infinite;animation-play-state:paused}
-.mini:hover .mhub{animation-play-state:running}
-body.playing .mini.now .mhub{animation-play-state:running}
-.mcap{margin-top:8px}
-.mcap .mt{font-family:var(--sans);font-weight:800;font-size:11.5px;line-height:1.22;
-  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.mcap .ma{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:2px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mini.now .mcap .mt{color:var(--mag)}
-.mini.now .mcap .ma{color:rgba(255,45,149,.6)}
+.martist{position:absolute;z-index:3;left:8%;right:8%;bottom:6%;
+  font-family:var(--mono);font-size:8.5px;color:var(--yel);
+  text-shadow:0 1px 5px rgba(0,0,0,.95);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini.now .mtitle{color:#fff}
+.mini.now .martist{color:var(--mag)}
+
+/* the case itself: hinge down the left edge, and light on the plastic */
+.mhinge{position:absolute;z-index:4;left:0;top:0;bottom:0;width:9%;
+  background:linear-gradient(90deg,rgba(255,255,255,.34),rgba(255,255,255,.06) 45%,
+             rgba(0,0,0,.34));
+  box-shadow:inset -1px 0 0 rgba(0,0,0,.45)}
+.msheen{position:absolute;z-index:5;inset:0;pointer-events:none;
+  background:linear-gradient(118deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.05) 16%,
+             rgba(255,255,255,0) 34%,rgba(255,255,255,0) 62%,rgba(255,255,255,.13) 82%,
+             rgba(255,255,255,.02) 100%)}
+.mno{position:absolute;z-index:6;right:5%;top:3.5%;font-family:var(--mono);font-size:8px;
+  font-weight:700;color:#fff;background:rgba(8,6,12,.72);padding:1px 5px;border-radius:2px;
+  text-shadow:none}
 .mini.blocked .mcase{opacity:.5;filter:grayscale(.6)}
-.mini.blocked .mcase::after{content:"EMBED OFF";position:absolute;left:50%;top:50%;z-index:6;
-  transform:translate(-50%,-50%) rotate(-9deg);font-family:var(--mono);font-size:8px;
-  letter-spacing:.14em;background:rgba(10,7,16,.9);border:1px solid rgba(255,59,48,.7);
-  color:#ff6b60;padding:3px 7px;border-radius:2px;white-space:nowrap}
-.mini.blocked .mcap .mt{color:rgba(242,236,226,.5)}
+.mini.blocked .mtitle{color:rgba(255,255,255,.6)}
 
 .foot{margin-top:4px;padding-top:11px;border-top:1px solid rgba(242,236,226,.12);
   font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
@@ -462,7 +470,7 @@ body.playing .mini.now .mhub{animation-play-state:running}
   .spacer{display:none}
   .sidesw{grid-column:1/-1;width:100%}
   .sidesw button{flex:1}
-  .mini{flex:0 0 124px;width:124px}
+  .mini{flex:0 0 112px;width:112px}
   .grid{gap:10px}
   .nav{display:none}
   .rack{padding:14px 13px 13px}
@@ -491,6 +499,7 @@ body.playing .mini.now .mhub{animation-play-state:running}
       <div class="pill">Tape · <b>41</b> songs</div>
       <div class="pill">Side <b id="pillSide">A</b> · SP</div>
       <button class="sfxbtn on" id="sfxToggle" title="Mute the deck's mechanical sounds">♪ Deck sounds</button>
+      <button class="sfxbtn popout" id="popBtn" title="Open in its own window, free of the browser bar">⤢ Pop out</button>
       <div class="clock" id="clock">00:00:00</div>
     </div>
   </header>
@@ -1282,25 +1291,6 @@ async function syncFromApi(){
   }
 }
 
-/* a small copy of the deck window: the same spline hubs and tape pack */
-const MINI_WIN =
-  '<svg class="mwin" viewBox="0 0 1000 621" preserveAspectRatio="none" aria-hidden="true">'+
-    '<rect x="250" y="252" width="500" height="156" rx="9" fill="#0a0810"/>'+
-    '<circle cx="362" cy="330" r="72" fill="#33200f"/>'+
-    '<circle cx="638" cy="330" r="48" fill="#33200f"/>'+
-    ['362','638'].map(cx =>
-      '<g class="mhub" style="transform-origin:'+(+cx/10)+'% 53.1%">'+
-        '<circle cx="'+cx+'" cy="330" r="44" fill="#ddd8cf"/>'+
-        '<circle cx="'+cx+'" cy="330" r="28" fill="#0b0910"/>'+
-        [0,60,120].map(a =>
-          '<g transform="rotate('+a+' '+cx+' 330)" fill="#ddd8cf">'+
-            '<rect x="'+(+cx-6)+'" y="300" width="12" height="16" rx="3"/>'+
-            '<rect x="'+(+cx-6)+'" y="344" width="12" height="16" rx="3"/>'+
-          '</g>').join('')+
-      '</g>').join('')+
-    '<rect x="250" y="252" width="500" height="156" rx="9" fill="none" stroke="rgba(0,0,0,.8)" stroke-width="4"/>'+
-  '</svg>';
-
 function buildRack(){
   $('gridA').innerHTML = ''; $('gridB').innerHTML = '';
   TAPE.forEach((tr,i) => {
@@ -1309,18 +1299,18 @@ function buildRack(){
     b.title = pad(i+1)+' · '+tr.t+' — '+tr.a;
     b.innerHTML =
       '<div class="mcase">'+
-        '<div class="mlabel">'+
+        '<div class="mface">'+
           '<img class="mbg" alt="" aria-hidden="true" referrerpolicy="no-referrer" src="data:image/svg+xml;utf8,'+
             '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3C/svg%3E">'+
           '<img class="mart" alt="" referrerpolicy="no-referrer" src="data:image/svg+xml;utf8,'+
             '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3C/svg%3E">'+
-          '<div class="mpaper"></div><div class="mscrim"></div>'+
-          '<div class="mfall">'+esc(tr.t)+'</div>'+
-          '<div class="mno">'+pad(i+1)+'</div>'+
-        '</div>'+ MINI_WIN +
-      '</div>'+
-      '<div class="mcap"><div class="mt">'+esc(tr.t)+'</div>'+
-      '<div class="ma">'+esc(tr.a)+(tr.d?' · '+fmt(tr.d):'')+'</div></div>';
+          '<div class="mpaper"></div><div class="mgrad"></div>'+
+        '</div>'+
+        '<div class="mtitle">'+esc(tr.t)+'</div>'+
+        '<div class="martist">'+esc(tr.a)+(tr.d?' · '+fmt(tr.d):'')+'</div>'+
+        '<div class="mhinge"></div><div class="msheen"></div>'+
+        '<div class="mno">'+pad(i+1)+'</div>'+
+      '</div>';
     if (tr.ok === false){
       b.classList.add('blocked');
       b.title += '  (owner has disabled embedding — opens on YouTube)';
@@ -1873,6 +1863,66 @@ function toggleVideo(){
 $('shufBtn').addEventListener('click',()=>setShuffle(!shuffle));
 $('rptBtn').addEventListener('click',cycleRepeat);
 $('vidBtn').addEventListener('click',toggleVideo);
+
+/* ===== running as its own window =====
+   A page cannot strip its own address bar — browsers reserve that, so you
+   always know what site you are on. The two legitimate routes are a popup
+   window (almost no chrome, draggable, works instantly) and installing it
+   as an app (no chrome at all). Both are wired up here. */
+const inAppMode = matchMedia('(display-mode: standalone)').matches ||
+                  matchMedia('(display-mode: minimal-ui)').matches ||
+                  navigator.standalone === true ||
+                  (!!window.opener && !window.menubar?.visible);
+if (inAppMode) document.body.classList.add('appmode');
+
+// an inline manifest, so the deck can be installed with no extra files
+(function manifest(){
+  try {
+    const m = {
+      name:'Indian Pop Music of 90s', short_name:'Indipop 90',
+      description:'A 41-song 90s Indian pop cassette, played on a stereo deck.',
+      start_url: location.pathname + location.search,
+      scope: location.pathname,
+      display:'standalone', orientation:'any',
+      background_color:'#0f0c12', theme_color:'#0f0c12',
+      icons:[{
+        src:'data:image/svg+xml,'+encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">'+
+          '<rect width="512" height="512" rx="96" fill="#141013"/>'+
+          '<rect x="64" y="150" width="384" height="212" rx="16" fill="#3a3743"/>'+
+          '<rect x="96" y="176" width="320" height="96" rx="6" fill="#f2ece2"/>'+
+          '<rect x="150" y="286" width="212" height="70" rx="10" fill="#0a0810"/>'+
+          '<circle cx="204" cy="321" r="27" fill="#ddd8cf"/>'+
+          '<circle cx="204" cy="321" r="15" fill="#0b0910"/>'+
+          '<circle cx="308" cy="321" r="27" fill="#ddd8cf"/>'+
+          '<circle cx="308" cy="321" r="15" fill="#0b0910"/></svg>'),
+        sizes:'512x512', type:'image/svg+xml', purpose:'any'
+      }]
+    };
+    const url = URL.createObjectURL(new Blob([JSON.stringify(m)], {type:'application/manifest+json'}));
+    const link = document.createElement('link');
+    link.rel = 'manifest'; link.href = url;
+    document.head.appendChild(link);
+  } catch(e){ /* manifest is a nicety, never a blocker */ }
+})();
+
+$('popBtn').addEventListener('click', () => {
+  const w = Math.min(1240, Math.round(screen.availWidth  * 0.82));
+  const h = Math.min(980,  Math.round(screen.availHeight * 0.90));
+  const x = Math.round((screen.availWidth  - w) / 2);
+  const y = Math.round((screen.availHeight - h) / 2);
+  const win = window.open(location.href, 'indipop90',
+    'popup=yes,width='+w+',height='+h+',left='+x+',top='+y+
+    ',menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes');
+  if (!win){
+    notice('Your browser blocked the pop-out',
+      'Allow pop-ups for this site and press ⤢ Pop out again. Or install it as an app — '+
+      'in Chrome, the install icon sits at the right-hand end of the address bar — which '+
+      'gives a window with no browser chrome at all.');
+    return;
+  }
+  win.focus();
+});
 
 /* ===== mechanical sound ===== */
 [...document.querySelectorAll('.key, .sidesw button, .srcbtns button')].forEach(b => {
