@@ -117,47 +117,25 @@ button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
 .sph{font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;
   color:var(--dim);margin-bottom:10px}
-.spine{display:block;width:100%;text-align:left;position:relative;overflow:hidden;
-  border-radius:7px;padding:9px 12px 10px 17px;margin-bottom:8px;font-family:var(--sans);
-  background:linear-gradient(168deg,#4a4553,#241f2c);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 5px 14px rgba(0,0,0,.5);
-  transition:transform .14s,box-shadow .14s}
-.spine:last-child{margin-bottom:0}
-.spine::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--amber)}
-.spine.b::before{background:var(--cyan)}
-.spine:hover{transform:translateX(3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 7px 18px rgba(0,0,0,.6)}
-.spine i{display:block;font-style:normal;font-family:var(--black);font-size:10.5px;
-  letter-spacing:.26em;text-transform:uppercase;color:var(--paper)}
-.spine b{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:rgba(242,236,226,.48)}
-.spine em{display:block;font-style:normal;font-family:var(--hand);font-size:15px;
-  line-height:1.1;color:#ff86b4;margin-top:1px}
-.spine.on{box-shadow:inset 0 0 0 1px var(--mag),inset 0 1px 0 rgba(255,255,255,.16),
-  0 6px 18px rgba(255,45,149,.22)}
-.slist{display:grid;gap:1px;max-height:min(300px,34vh);overflow-y:auto;overflow-x:hidden;
-  scrollbar-width:thin;scrollbar-color:rgba(242,236,226,.2) transparent}
-.slist::-webkit-scrollbar{width:6px}
-.slist::-webkit-scrollbar-thumb{background:rgba(242,236,226,.2);border-radius:3px}
-.slist button{display:flex;width:100%;gap:8px;align-items:baseline;text-align:left;
-  padding:4px 6px;border-radius:5px;font-family:var(--sans);font-size:11.5px;
-  color:rgba(242,236,226,.72);transition:background .12s,color .12s}
-.slist button:hover{background:rgba(242,236,226,.07);color:var(--paper)}
-.slist button span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.slist button b{font-family:var(--mono);font-size:9px;color:var(--dim);flex:none}
-.slist button:hover b{color:var(--mag)}
-.sfacts{display:grid;grid-template-columns:auto 1fr;gap:7px 10px;align-items:baseline}
-.sfacts dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim)}
-.sfacts dd{text-align:right;font-size:11.5px;color:rgba(242,236,226,.86);
-  font-variant-numeric:tabular-nums}
-
-.stnp{font-size:11px;line-height:1.5;color:rgba(242,236,226,.6);margin-bottom:10px}
-.spanel.stn{border-color:rgba(255,90,138,.32);
-  background:linear-gradient(172deg,rgba(255,45,149,.10),rgba(0,0,0,.32))}
-.stnbtn{display:block;width:100%;margin-top:11px;padding:8px 10px;border-radius:7px;
-  font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
-  border:1px solid rgba(255,90,138,.5);color:#ffd7e4;background:rgba(194,24,91,.2);
-  transition:.13s}
-.stnbtn:hover{background:var(--mag);border-color:var(--mag);color:#1a0a12;font-weight:700}
+/* ---------- the side rail screens ---------- */
+.sph{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.sph span{letter-spacing:.14em;color:rgba(242,236,226,.28);text-transform:none;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vizwrap{position:relative;border-radius:7px;overflow:hidden;height:clamp(88px,9.5vh,140px);
+  background:#06090b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),
+    inset 0 2px 10px rgba(0,0,0,.85)}
+.vizwrap canvas{display:block;width:100%;height:100%}
+.vizwrap.crt{height:clamp(84px,8.5vh,126px)}
+.vizwrap.vled{height:clamp(64px,6.5vh,94px)}
+.vizwrap.sq{height:auto;aspect-ratio:1}
+.vizwrap.map{height:clamp(70px,7vh,102px);cursor:pointer;background:transparent;box-shadow:none}
+.vizwrap::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:7px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,0) 40%)}
+.vizwrap.map::after{display:none}
+.vizax{display:flex;justify-content:space-between;gap:8px;margin-top:7px;
+  font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(242,236,226,.3)}
+.vizax span:nth-child(2){color:rgba(255,90,138,.75)}
 
 /* ---------- the inlay, the paper card that lived in the case ---------- */
 .jcard{position:relative;margin-top:14px;display:grid;
@@ -756,29 +734,26 @@ body.appmode .sfxbtn.popout{display:none}
   <!-- ============ SIDE RAIL (wide screens only) ============ -->
   <aside class="side">
     <div class="spanel">
-      <div class="sph">The tape</div>
-      <button class="spine" id="spineA" type="button">
-        <i>Side A</i><b id="spineAN">01–21</b><em id="spineAT">—</em>
-      </button>
-      <button class="spine b" id="spineB" type="button">
-        <i>Side B</i><b id="spineBN">22–54</b><em id="spineBT">—</em>
-      </button>
+      <div class="sph">Oscilloscope <span>1 kHz · 5 ms/div</span></div>
+      <div class="vizwrap crt"><canvas id="vizScope"></canvas></div>
     </div>
     <div class="spanel">
-      <div class="sph">Who's on it</div>
-      <div class="slist" id="artistList"></div>
+      <div class="sph">Spectrum <span>waterfall</span></div>
+      <div class="vizwrap"><canvas id="vizFall"></canvas></div>
+      <div class="vizax"><span>20 Hz</span><span>1 k</span><span>16 k</span></div>
     </div>
     <div class="spanel">
-      <div class="sph">The numbers</div>
-      <dl class="sfacts" id="tapeFacts"></dl>
+      <div class="sph">Levels <span>peak hold</span></div>
+      <div class="vizwrap vled"><canvas id="vizLed"></canvas></div>
     </div>
-    <div class="spanel stn" id="stnPanel">
-      <div class="sph">The station</div>
-      <p class="stnp">One running order, played off the clock. Everyone tuned in
-        hears the same second of the same song — open it on a second device and
-        it lands in the same place.</p>
-      <dl class="sfacts"><dt>Loop</dt><dd id="stnLoop">—</dd></dl>
-      <button class="stnbtn" id="stnBtn" type="button">Leave the station</button>
+    <div class="spanel">
+      <div class="sph">Phase <span>L / R</span></div>
+      <div class="vizwrap sq"><canvas id="vizPhase"></canvas></div>
+    </div>
+    <div class="spanel">
+      <div class="sph">Running order <span id="mapCap">54 tracks</span></div>
+      <div class="vizwrap map"><canvas id="vizMap"></canvas></div>
+      <div class="vizax"><span>Side A</span><span id="mapNow">—</span><span>Side B</span></div>
     </div>
   </aside>
 
@@ -1260,6 +1235,7 @@ const Stereo = (function(){
   let lv = new Float32Array(BARS), pk = new Float32Array(BARS), pv = new Float32Array(BARS);
   let vuL=0, vuR=0, nL=0, nR=0;
   let t=0, tone=0.5, bass=0.58, treb=0.5, bal=0.5, live=false, raf=0, last=0;
+  const sinks = [];        // the side rail draws off the same signal as the deck
 
   function size(){
     DPR = Math.min(devicePixelRatio||1, 2);
@@ -1423,6 +1399,9 @@ const Stereo = (function(){
     if (!live) for(let i=0;i<BARS;i++){ lv[i]*=0.86; pk[i]*=0.90; }
 
     drawSpectrum(); drawVU(env);
+    for (let i=0;i<sinks.length;i++){
+      try { sinks[i]({lv:lv, pk:pk, env:env, live:live, t:t}); } catch(e){}
+    }
     raf=requestAnimationFrame(loop);
   }
   function loop(now){ if(now-last>=32){ last=now; frame(); } else raf=requestAnimationFrame(loop); }
@@ -1440,6 +1419,7 @@ const Stereo = (function(){
     setBass(v){ bass = Math.max(0,Math.min(1,v)); },
     setTreble(v){ treb = Math.max(0,Math.min(1,v)); },
     setBalance(v){ bal = Math.max(0,Math.min(1,v)); },
+    onFrame(fn){ if (typeof fn === 'function') sinks.push(fn); },
     resize:size
   };
 })();
@@ -1659,56 +1639,6 @@ function secsOf(side){
   let n = 0; for (let k = from; k < to; k++) n += TAPE[k].d || 240;
   return n;
 }
-function buildSide(){
-  $('spineAN').textContent = '01–' + pad(SIDE_A_END);
-  $('spineBN').textContent = pad(SIDE_A_END+1) + '–' + TAPE.length;
-  $('spineAT').textContent = SIDE_A_END + ' songs, ' + hm(secsOf('A'));
-  $('spineBT').textContent = (TAPE.length - SIDE_A_END) + ' songs, ' + hm(secsOf('B'));
-  $('spineA').addEventListener('click', () => { leaveStation(); load(0, wantPlay); });
-  $('spineB').addEventListener('click', () => { leaveStation(); load(SIDE_A_END, wantPlay); });
-
-  const by = new Map();
-  TAPE.forEach((t,i) => {
-    const k = (t.a || '').trim() || 'Unknown';
-    if (!by.has(k)) by.set(k, {n:0, first:i});
-    by.get(k).n++;
-  });
-  const names = [...by.entries()].sort((a,b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
-  const box = $('artistList'); box.innerHTML = '';
-  names.forEach(([name, info]) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.innerHTML = '<span>' + esc(name) + '</span><b>' + info.n + '</b>';
-    b.title = info.n + (info.n > 1 ? ' songs on this tape' : ' song on this tape');
-    b.addEventListener('click', () =>
-      loadFrom(info.first, document.querySelector('.mini[data-i="' + info.first + '"]')));
-    box.appendChild(b);
-  });
-
-  const ds = TAPE.map(t => t.d || 240);
-  const total = ds.reduce((a,b) => a+b, 0);
-  const hi = TAPE[ds.indexOf(Math.max.apply(null, ds))];
-  const lo = TAPE[ds.indexOf(Math.min.apply(null, ds))];
-  const rows = [
-    ['Songs',    TAPE.length],
-    ['Runs for', hm(total)],
-    ['Voices',   names.length],
-    ['Longest',  fmt(hi.d || 240)],
-    ['Shortest', fmt(lo.d || 240)],
-    ['Average',  fmt(Math.round(total / ds.length))]
-  ];
-  $('tapeFacts').innerHTML =
-    rows.map(r => '<dt>' + r[0] + '</dt><dd>' + r[1] + '</dd>').join('');
-
-  $('stnLoop').textContent = hm(total);
-  $('stnBtn').addEventListener('click', () => setLive(!live));
-}
-function paintStation(){
-  const b = $('stnBtn'); if (!b) return;
-  const t = live ? 'Leave the station' : 'Tune in';
-  if (b.textContent !== t) b.textContent = t;
-}
-buildSide();
 
 /* ===== paint ===== */
 function paint(i){
@@ -1723,8 +1653,6 @@ function paint(i){
   $('pillSide').textContent = side;
   $('sideA').classList.toggle('on', side === 'A');
   $('sideB').classList.toggle('on', side === 'B');
-  $('spineA').classList.toggle('on', side === 'A');
-  $('spineB').classList.toggle('on', side === 'B');
 
   // the paper inlay
   $('jNum').textContent   = pad(i+1);
@@ -2104,7 +2032,7 @@ function setLive(on, opts){
   b.style.color = on ? '#fff' : '';
   $('tagState').textContent = on ? 'LIVE' : (playing ? 'PLAY' : 'STOP');
   if (!opts.silent) rememberStation(on);
-  paintOnAir(); paintStation();
+  paintOnAir();
   if (on){
     setShuffle(false);
     resyncStation(!opts.cue);
@@ -2638,6 +2566,261 @@ document.addEventListener('keydown', e => {
   else if (e.key.toLowerCase() === 'r') cycleRepeat();
   else if (e.key.toLowerCase() === 'l') setLive(!live);
 });
+
+/* ============================================================
+   SIDE RAIL SCREENS — scope, waterfall, phase, running order.
+   Same caveat as the deck's analyser: YouTube audio is cross-origin,
+   so nothing here can read the real waveform. The first three run off
+   the same synthesised signal that drives the deck, so everything on
+   the page moves together. The running order, by contrast, is real
+   data — one bar per track, scaled by its length.
+   ============================================================ */
+const Rail = (function(){
+  const el = {
+    scope: document.getElementById('vizScope'),
+    fall : document.getElementById('vizFall'),
+    led  : document.getElementById('vizLed'),
+    phase: document.getElementById('vizPhase'),
+    map  : document.getElementById('vizMap')
+  };
+  if (!el.scope || !el.fall || !el.led || !el.phase || !el.map) return { resize(){} };
+
+  const cx = {}, dm = {};
+  const buf = document.createElement('canvas');
+  const bx  = buf.getContext('2d');
+  let DPR = 1, ready = false, checks = 0;
+
+  function size(){
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    let ok = true;
+    for (const k in el){
+      const c = el[k], w = c.clientWidth, h = c.clientHeight;
+      if (!w || !h){ ok = false; continue; }
+      const W = Math.round(w*DPR), H = Math.round(h*DPR);
+      if (c.width !== W || c.height !== H){ c.width = W; c.height = H; }
+      cx[k] = cx[k] || c.getContext('2d');
+      dm[k] = {w:w, h:h, W:W, H:H};
+    }
+    if (dm.fall && (buf.width !== dm.fall.W || buf.height !== dm.fall.H)){
+      buf.width = dm.fall.W; buf.height = dm.fall.H;
+      // start the waterfall as a dark screen rather than an empty one
+      bx.setTransform(1,0,0,1,0,0);
+      bx.fillStyle = '#0a080e'; bx.fillRect(0,0,buf.width,buf.height);
+      if (cx.fall){ cx.fall.setTransform(1,0,0,1,0,0);
+        cx.fall.fillStyle = '#0a080e'; cx.fall.fillRect(0,0,dm.fall.W,dm.fall.H); }
+    }
+    ready = ok;
+    return ok;
+  }
+
+  /* ---------- oscilloscope ---------- */
+  function scope(s){
+    const c = cx.scope, d = dm.scope; if (!d) return;
+    c.setTransform(DPR,0,0,DPR,0,0);
+    const w = d.w, h = d.h;
+    c.fillStyle = '#050a07'; c.fillRect(0,0,w,h);
+    c.strokeStyle = 'rgba(120,255,190,.07)'; c.lineWidth = 1;
+    for (let i=1;i<4;i++){ const y=Math.round(h*i/4)+.5; c.beginPath(); c.moveTo(0,y); c.lineTo(w,y); c.stroke(); }
+    for (let i=1;i<6;i++){ const x=Math.round(w*i/6)+.5; c.beginPath(); c.moveTo(x,0); c.lineTo(x,h); c.stroke(); }
+    c.strokeStyle = 'rgba(120,255,190,.17)';
+    const my = Math.round(h/2)+.5;
+    c.beginPath(); c.moveTo(0,my); c.lineTo(w,my); c.stroke();
+
+    const amp = (h/2 - 5) * (s.live ? 0.26 + s.env*0.66 : 0.015);
+    const step = w > 320 ? 2 : 1;
+    c.beginPath();
+    for (let x=0;x<=w;x+=step){
+      const u = x/w*Math.PI*2;
+      const y = h/2
+        + Math.sin(u*2  + s.t*5.2)*amp*0.56
+        + Math.sin(u*5  - s.t*3.1)*amp*0.26
+        + Math.sin(u*11 + s.t*8.4)*amp*0.12
+        + Math.sin(u*23 - s.t*13.)*amp*0.06;
+      x ? c.lineTo(x,y) : c.moveTo(x,y);
+    }
+    c.strokeStyle = 'rgba(92,255,168,.22)'; c.lineWidth = 4.5; c.stroke();
+    c.strokeStyle = '#7dffc8';              c.lineWidth = 1.5; c.stroke();
+  }
+
+  /* ---------- spectrum waterfall ---------- */
+  const HEAT = [[10,8,14],[74,14,54],[168,24,96],[232,60,92],[255,150,54],[255,238,206]];
+  function heat(v){
+    if (v <= 0.015) return '#0a080e';
+    const p = Math.min(1,v)*(HEAT.length-1);
+    const i = Math.min(HEAT.length-2, Math.floor(p)), f = p-i;
+    const a = HEAT[i], b = HEAT[i+1];
+    return 'rgb('+((a[0]+(b[0]-a[0])*f)|0)+','+((a[1]+(b[1]-a[1])*f)|0)+','+((a[2]+(b[2]-a[2])*f)|0)+')';
+  }
+  function fall(s){
+    const c = cx.fall, d = dm.fall; if (!d) return;
+    const W = d.W, H = d.H, step = Math.max(1, Math.round(2*DPR));
+    // shift the old picture left through the spare buffer, never onto itself
+    bx.setTransform(1,0,0,1,0,0);
+    bx.globalCompositeOperation = 'copy';
+    bx.drawImage(el.fall, -step, 0);
+    bx.globalCompositeOperation = 'source-over';
+    const n = s.lv.length;
+    for (let i=0;i<n;i++){
+      const v  = s.live ? s.lv[i] : 0;
+      const y1 = Math.round(H*(1-i/n));
+      const y0 = Math.round(H*(1-(i+1)/n));
+      bx.fillStyle = heat(v);
+      bx.fillRect(W-step, y0, step, Math.max(1, y1-y0));
+    }
+    c.setTransform(1,0,0,1,0,0);
+    c.globalCompositeOperation = 'copy';
+    c.drawImage(buf, 0, 0);
+    c.globalCompositeOperation = 'source-over';
+  }
+
+  /* ---------- phase scope ---------- */
+  function phase(s){
+    const c = cx.phase, d = dm.phase; if (!d) return;
+    c.setTransform(DPR,0,0,DPR,0,0);
+    const w = d.w, h = d.h, ox = w/2, oy = h/2, R = Math.min(w,h)/2 - 7;
+    c.fillStyle = 'rgba(5,9,13,.46)'; c.fillRect(0,0,w,h);      // phosphor decay
+    c.strokeStyle = 'rgba(0,229,255,.055)'; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(ox,oy-R); c.lineTo(ox+R,oy); c.lineTo(ox,oy+R); c.lineTo(ox-R,oy);
+    c.closePath(); c.stroke();
+    c.beginPath(); c.arc(ox,oy,R*0.52,0,6.2832); c.stroke();
+    c.beginPath(); c.moveTo(ox,oy-R); c.lineTo(ox,oy+R); c.moveTo(ox-R,oy); c.lineTo(ox+R,oy); c.stroke();
+
+    const amp = R * (s.live ? 0.30 + s.env*0.58 : 0.03);
+    const spread = 0.45 + 0.35*Math.sin(s.t*0.63);
+    c.beginPath();
+    for (let k=0;k<=96;k++){
+      const u = k/96*Math.PI*2;
+      const L = Math.sin(u*3 + s.t*4.1)*0.72 + Math.sin(u*7 - s.t*2.3)*0.28;
+      const Rr= Math.sin(u*3 + s.t*4.1 + spread)*0.72 + Math.sin(u*5 + s.t*3.0)*0.28;
+      const x = ox + (L-Rr)*amp*0.72;
+      const y = oy - (L+Rr)*amp*0.50;
+      k ? c.lineTo(x,y) : c.moveTo(x,y);
+    }
+    c.strokeStyle = 'rgba(0,229,255,.20)'; c.lineWidth = 3.4; c.stroke();
+    c.strokeStyle = 'rgba(180,248,255,.95)'; c.lineWidth = 1.1; c.stroke();
+    c.font = '600 8px ui-monospace,monospace'; c.fillStyle = 'rgba(0,229,255,.34)';
+    c.textAlign='left';  c.fillText('L', 5, h-5);
+    c.textAlign='right'; c.fillText('R', w-5, h-5);
+    c.textAlign='center';c.fillText('+', ox, 11);
+  }
+
+  /* ---------- segmented level meters with peak hold ---------- */
+  let lL=0, lR=0, hL=0, hR=0, dL=0, dR=0;
+  function led(s){
+    const c = cx.led, d = dm.led; if (!d) return;
+    c.setTransform(DPR,0,0,DPR,0,0);
+    const w = d.w, h = d.h;
+    c.fillStyle = '#06090b'; c.fillRect(0,0,w,h);
+
+    const pan = 0.5 + 0.5*Math.sin(s.t*0.41);
+    const tL = s.live ? Math.min(1, (0.34 + s.env*0.52) * (0.82 + 0.18*pan))       : 0;
+    const tR = s.live ? Math.min(1, (0.34 + s.env*0.50) * (0.82 + 0.18*(1-pan)))   : 0;
+    lL += (tL-lL) * (tL>lL ? 0.5 : 0.11);
+    lR += (tR-lR) * (tR>lR ? 0.5 : 0.11);
+    if (lL > hL){ hL = lL; dL = 0; } else { dL += 0.0009; hL = Math.max(lL, hL-dL); }
+    if (lR > hR){ hR = lR; dR = 0; } else { dR += 0.0009; hR = Math.max(lR, hR-dR); }
+
+    const padL = 15, right = 6, foot = 13, top = 7, gap = 8;
+    const bh = Math.max(7, (h - top - foot - gap) / 2);
+    const y0 = top;
+    const trackW = w - padL - right;
+    const SEG = 30, sw = trackW / SEG;
+
+    c.font = '700 8px ui-monospace,monospace';
+    c.textBaseline = 'middle'; c.textAlign = 'left';
+    [['L', lL, hL, y0], ['R', lR, hR, y0 + bh + gap]].forEach(function(row){
+      const name = row[0], v = row[1], pk = row[2], y = row[3];
+      c.fillStyle = 'rgba(242,236,226,.4)';
+      c.fillText(name, 3, y + bh/2);
+      const lit = Math.round(v * SEG), pki = Math.round(pk * SEG);
+      for (let i=0;i<SEG;i++){
+        const f = i/(SEG-1);
+        const on = i < lit;
+        const col = f > 0.88 ? [255,59,48] : (f > 0.72 ? [255,212,0] : [18,217,74]);
+        c.fillStyle = on ? 'rgb('+col[0]+','+col[1]+','+col[2]+')'
+                         : 'rgba('+col[0]+','+col[1]+','+col[2]+',.10)';
+        c.fillRect(padL + i*sw, y, Math.max(1, sw-1.6), bh);
+      }
+      if (pki > 0){
+        const i = Math.min(SEG-1, pki);
+        c.fillStyle = 'rgba(240,255,248,.92)';
+        c.fillRect(padL + i*sw, y, Math.max(1.4, sw-1.6), bh);
+      }
+    });
+    c.fillStyle = 'rgba(242,236,226,.26)';
+    const sy = h - foot/2 - 1;
+    c.textAlign = 'left';  c.fillText('-20', padL, sy);
+    c.textAlign = 'center';c.fillText('-5', padL + trackW*0.76, sy);
+    c.textAlign = 'right'; c.fillText('+3', w-right, sy);
+    c.textBaseline = 'alphabetic';
+  }
+
+  /* ---------- the running order, as bars ---------- */
+  let hoverI = -1;
+  function map(){
+    const c = cx.map, d = dm.map; if (!d) return;
+    c.setTransform(DPR,0,0,DPR,0,0);
+    const w = d.w, h = d.h, n = TAPE.length;
+    c.clearRect(0,0,w,h);
+    const gap = n > 40 ? 1 : 2;
+    const bw  = (w - gap*(n-1)) / n;
+    let mx = 0; for (let i=0;i<n;i++) mx = Math.max(mx, TAPE[i].d || 240);
+    const base = h - 11;
+    for (let i=0;i<n;i++){
+      const x  = i*(bw+gap);
+      const bh = Math.max(3, ((TAPE[i].d||240)/mx) * (base-4));
+      const y  = base - bh;
+      const cur = i === idx, sideB = i >= SIDE_A_END;
+      c.fillStyle = cur ? '#ff2d95'
+                        : (i === hoverI ? 'rgba(242,236,226,.55)'
+                        : (sideB ? 'rgba(0,229,255,.32)' : 'rgba(255,171,46,.32)'));
+      c.fillRect(x, y, Math.max(1,bw), bh);
+      if (cur){
+        // how far into this track we are
+        c.fillStyle = 'rgba(255,255,255,.9)';
+        c.fillRect(x, y, Math.max(1,bw), Math.max(1, bh*Math.min(1,spool)));
+      }
+    }
+    // the side divider and the baseline
+    c.fillStyle = 'rgba(242,236,226,.18)'; c.fillRect(0, base+1, w, 1);
+    const dx = SIDE_A_END*(bw+gap) - gap/2;
+    c.fillStyle = 'rgba(242,236,226,.3)'; c.fillRect(dx, 2, 1, h-9);
+  }
+
+  el.map.parentNode.addEventListener('pointermove', e => {
+    const d = dm.map; if (!d) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const n = TAPE.length;
+    const i = Math.floor((e.clientX - r.left) / r.width * n);
+    hoverI = (i >= 0 && i < n) ? i : -1;
+    e.currentTarget.title = hoverI >= 0
+      ? pad(hoverI+1)+' · '+TAPE[hoverI].t+' — '+TAPE[hoverI].a : '';
+  });
+  el.map.parentNode.addEventListener('pointerleave', () => { hoverI = -1; });
+  el.map.parentNode.addEventListener('click', e => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const n = TAPE.length;
+    const i = Math.floor((e.clientX - r.left) / r.width * n);
+    if (i < 0 || i >= n) return;
+    loadFrom(i, document.querySelector('.mini[data-i="' + i + '"]'));
+  });
+
+  let rt = 0;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 160); });
+  size();
+
+  let lastCap = '';
+  Stereo.onFrame(s => {
+    // the rail is hidden on narrow screens; nothing to draw and nothing to cost
+    if (!ready){ if (++checks % 30 === 0 && !size()) return; if (!ready) return; }
+    if (!el.scope.clientWidth){ ready = false; return; }
+    scope(s); fall(s); led(s); phase(s); map();
+    const cap = pad(idx+1) + ' / ' + TAPE.length;
+    if (cap !== lastCap){ lastCap = cap; $('mapNow').textContent = cap; }
+  });
+
+  return { resize:size };
+})();
 
 /* ===== go ===== */
 paint(0); setPlayUI(false); setState('STOP'); tick();
