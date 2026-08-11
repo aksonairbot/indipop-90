@@ -323,9 +323,11 @@ body.appmode .sfxbtn.popout{display:none}
   background:linear-gradient(178deg,#6a626c,#332e35);box-shadow:0 1px 3px rgba(0,0,0,.8)}
 
 /* a cassette in flight, from the rack to the deck */
-.flyer{position:fixed;z-index:400;pointer-events:none;border-radius:5px;
+.flyer{position:fixed;z-index:400;pointer-events:none;border-radius:5px;overflow:hidden;
   transform-origin:50% 50%;will-change:transform,opacity;
-  box-shadow:0 26px 64px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.6)}
+  box-shadow:0 30px 70px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.2),
+             0 0 46px rgba(255,45,149,.34)}
+.flyer .mno{display:none}
 
 /* ---------- rack ---------- */
 .rack{margin-top:20px;border-radius:10px;padding:18px 18px 16px;
@@ -365,47 +367,39 @@ body.appmode .sfxbtn.popout{display:none}
 .nav:hover{background:var(--mag);border-color:var(--mag);color:#141013}
 .nav.l{left:-6px}.nav.r{right:-6px}
 
-.mini{flex:0 0 116px;width:116px;scroll-snap-align:start;display:block;text-align:left;
+.mini{flex:0 0 124px;width:124px;scroll-snap-align:start;display:block;text-align:left;
   padding:0;background:none;border:none;cursor:pointer;transition:transform .18s ease}
-.mini:hover{transform:translateY(-6px)}
+.mini:hover{transform:translateY(-5px)}
 
-/* A portrait slot holding a cassette stood on its end. The tape keeps its real
-   landscape proportions and is rotated a quarter turn, artwork and all, the way
-   they sit in a rack. */
-.qslot{position:relative;aspect-ratio:.621;overflow:hidden;border-radius:4px}
-.qslot .mcase{position:absolute;top:50%;left:50%;
-  width:161%;height:62.1%;                     /* becomes portrait once turned */
-  transform:translate(-50%,-50%) rotate(-90deg);
-  border-radius:4px;overflow:hidden;background:#151219;
-  box-shadow:0 6px 16px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.14);
+/* Just the cover, standing upright with room to breathe — no cassette here.
+   The tape itself only appears in the deck, once it is playing. */
+.qslot{position:relative;aspect-ratio:.75;border-radius:5px;overflow:hidden;
+  background:linear-gradient(168deg,#241f28,#141119);
+  padding:9%;display:grid;place-items:center;
+  box-shadow:0 7px 18px rgba(0,0,0,.68), inset 0 0 0 1px rgba(255,255,255,.11);
   transition:box-shadow .18s ease}
-.mini:hover .mcase{box-shadow:0 12px 28px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.26)}
-.mini.now .qslot{box-shadow:0 0 0 2px var(--mag),0 12px 30px rgba(255,45,149,.35)}
+.mini:hover .qslot{box-shadow:0 14px 30px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.24)}
+.mini.now .qslot{box-shadow:0 0 0 2px var(--mag),0 14px 32px rgba(255,45,149,.36),
+                 inset 0 0 0 1px rgba(255,255,255,.2)}
 
-.mshell{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
-.mwin{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
-
-/* the inlay, artwork filling every bit of it */
-.mlabel{position:absolute;z-index:2;left:5.5%;right:5.5%;top:6%;height:64%;
-  border-radius:2px;overflow:hidden;background:#e8e0cf;
-  box-shadow:0 1px 3px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.28)}
-.mlabel .mart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+.qbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   font-size:0;color:transparent;opacity:0;transition:opacity .35s;
-  filter:saturate(1.14) contrast(1.05)}
-.mlabel .mart.ok{opacity:1}
-.mpaper{position:absolute;inset:0;transition:opacity .35s;
-  background:linear-gradient(160deg,#f3ead6,#d8c9ad 58%,#bfa684 100%)}
-.mlabel .mart.ok ~ .mpaper{opacity:0}
-
-/* the index number stays the right way up, outside the turned tape */
-.mno{position:absolute;z-index:6;right:5px;top:5px;font-family:var(--mono);font-size:8px;
+  filter:blur(18px) saturate(1.6) brightness(.38);transform:scale(1.3)}
+.qart{position:relative;z-index:2;max-width:100%;max-height:100%;
+  width:auto;height:auto;object-fit:contain;display:block;
+  font-size:0;color:transparent;opacity:0;transition:opacity .35s;
+  border-radius:2px;filter:saturate(1.12) contrast(1.04);
+  box-shadow:0 3px 10px rgba(0,0,0,.7)}
+.qart.ok,.qbg.ok{opacity:1}
+.qpaper{position:absolute;z-index:1;inset:9%;border-radius:2px;transition:opacity .35s;
+  background:linear-gradient(160deg,#f3ead6,#cbbb9c)}
+.qart.ok ~ .qpaper{opacity:0}
+.qsheen{position:absolute;z-index:3;inset:0;pointer-events:none;
+  background:linear-gradient(122deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.02) 20%,
+             rgba(255,255,255,0) 46%,rgba(255,255,255,.07) 88%)}
+.mno{position:absolute;z-index:4;right:5px;top:5px;font-family:var(--mono);font-size:8px;
   font-weight:700;color:#fff;background:rgba(8,6,12,.78);padding:1px 5px;border-radius:2px}
 
-.mhub{transform-origin:50% 50%;animation:spin 2.4s linear infinite;animation-play-state:paused}
-.mini:hover .mhub{animation-play-state:running}
-body.playing .mini.now .mhub{animation-play-state:running}
-
-/* the only place the song is named in the queue */
 .mcap{margin-top:9px;padding:0 1px}
 .mcap .mt{font-family:var(--sans);font-weight:800;font-size:11.5px;line-height:1.2;
   overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
@@ -466,7 +460,7 @@ body.playing .mini.now .mhub{animation-play-state:running}
   .spacer{display:none}
   .sidesw{grid-column:1/-1;width:100%}
   .sidesw button{flex:1}
-  .mini{flex:0 0 96px;width:96px}
+  .mini{flex:0 0 104px;width:104px}
   .grid{gap:10px}
   .nav{display:none}
   .rack{padding:14px 13px 13px}
@@ -1287,49 +1281,7 @@ async function syncFromApi(){
   }
 }
 
-/* A compact copy of the deck's cassette for the queue: same shell, same inlay,
-   same spline hubs. No song title printed on it — the caption underneath names
-   it, and the deck's own tape carries the title while it plays. */
-const MINI_TAPE =
-  '<div class="mcase">'+
-    '<svg class="mshell" viewBox="0 0 1000 621" preserveAspectRatio="none" aria-hidden="true">'+
-      '<defs><linearGradient id="msg" x1="0" y1="0" x2="0.3" y2="1">'+
-        '<stop offset="0" stop-color="#7d7a86"/><stop offset=".2" stop-color="#565361"/>'+
-        '<stop offset=".6" stop-color="#3a3743"/><stop offset="1" stop-color="#26232c"/>'+
-      '</linearGradient></defs>'+
-      '<rect x="3" y="3" width="994" height="615" rx="22" fill="url(#msg)"/>'+
-      '<rect x="3" y="3" width="994" height="615" rx="22" fill="none" stroke="rgba(255,255,255,.26)" stroke-width="2"/>'+
-      '<circle cx="196" cy="536" r="38" fill="rgba(12,10,16,.45)"/>'+
-      '<circle cx="804" cy="536" r="38" fill="rgba(12,10,16,.45)"/>'+
-      '<rect x="410" y="502" width="180" height="48" rx="7" fill="rgba(10,9,14,.5)"/>'+
-      '<g fill="#08070c">'+
-        '<rect x="292" y="566" width="30" height="40" rx="6"/>'+
-        '<rect x="380" y="572" width="28" height="34" rx="6"/>'+
-        '<rect x="592" y="572" width="28" height="34" rx="6"/>'+
-        '<rect x="678" y="566" width="30" height="40" rx="6"/></g>'+
-    '</svg>'+
-    '<div class="mlabel">'+
-      '<img class="mart" alt="" referrerpolicy="no-referrer" src="data:image/svg+xml;utf8,'+
-        '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3C/svg%3E">'+
-      '<div class="mpaper"></div>'+
-    '</div>'+
-    '<svg class="mwin" viewBox="0 0 1000 621" preserveAspectRatio="none" aria-hidden="true">'+
-      '<rect x="250" y="252" width="500" height="156" rx="9" fill="#0a0810"/>'+
-      '<circle cx="362" cy="330" r="70" fill="#33200f"/>'+
-      '<circle cx="638" cy="330" r="48" fill="#33200f"/>'+
-      ['362','638'].map(cx =>
-        '<g class="mhub" style="transform-origin:'+(+cx/10)+'% 53.1%">'+
-          '<circle cx="'+cx+'" cy="330" r="44" fill="#ddd8cf"/>'+
-          '<circle cx="'+cx+'" cy="330" r="28" fill="#0b0910"/>'+
-          [0,60,120].map(a =>
-            '<g transform="rotate('+a+' '+cx+' 330)" fill="#ddd8cf">'+
-              '<rect x="'+(+cx-6)+'" y="300" width="12" height="16" rx="3"/>'+
-              '<rect x="'+(+cx-6)+'" y="344" width="12" height="16" rx="3"/>'+
-            '</g>').join('')+
-        '</g>').join('')+
-      '<rect x="250" y="252" width="500" height="156" rx="9" fill="none" stroke="rgba(0,0,0,.8)" stroke-width="4"/>'+
-    '</svg>'+
-  '</div>';
+const BLANK = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3C/svg%3E";
 
 function buildRack(){
   $('gridA').innerHTML = ''; $('gridB').innerHTML = '';
@@ -1338,12 +1290,17 @@ function buildRack(){
     b.className = 'mini'; b.dataset.i = i;
     b.title = pad(i+1)+' · '+tr.t+' — '+tr.a;
     b.innerHTML =
-      '<div class="qslot">'+ MINI_TAPE + '<div class="mno">'+pad(i+1)+'</div></div>'+
+      '<div class="qslot">'+
+        '<img class="qbg" alt="" aria-hidden="true" referrerpolicy="no-referrer" src="'+BLANK+'">'+
+        '<img class="qart" alt="" referrerpolicy="no-referrer" src="'+BLANK+'">'+
+        '<div class="qpaper"></div><div class="qsheen"></div>'+
+        '<div class="mno">'+pad(i+1)+'</div>'+
+      '</div>'+
       '<div class="mcap"><div class="mt">'+esc(tr.t)+'</div>'+
       '<div class="ma">'+esc(tr.a)+(tr.d?' · '+fmt(tr.d):'')+'</div></div>';
     b.addEventListener('click', () => loadFrom(i, b));
     (i < SIDE_A_END ? $('gridA') : $('gridB')).appendChild(b);
-    thumbFor(b.querySelector('.mart'), null, tr.id);
+    thumbFor(b.querySelector('.qart'), b.querySelector('.qbg'), tr.id);
   });
   $('cntA').textContent = '01–'+pad(SIDE_A_END);
   $('cntB').textContent = pad(SIDE_A_END+1)+'–'+TAPE.length;
@@ -1395,53 +1352,70 @@ function paint(i){
 
 function setState(s){ $('tagState').textContent = s; }
 
-/* ===== picking a cassette off the rack =====
-   The tape you tap lifts out of the rack, arcs across the page and drops
-   into the deck's well, which is roughly what your hands used to do. */
+/* ===== picking a cover off the rack =====
+   The sleeve you tap lifts out of the queue, arcs across the page and drops
+   into the deck's well. The rects are measured only once the page has finished
+   scrolling — measuring mid-scroll was sending it to the wrong place, which is
+   why the flight was invisible. */
+function afterScrollSettles(done){
+  let last = -1, still = 0, tries = 0;
+  (function poll(){
+    const y = window.scrollY;
+    if (y === last) still++; else { still = 0; last = y; }
+    if (still >= 3 || ++tries > 40) return done();
+    requestAnimationFrame(poll);
+  })();
+}
+
 function flyCassette(miniEl, done){
-  const srcEl = miniEl && miniEl.querySelector('.mcase');
+  const srcEl = miniEl && miniEl.querySelector('.qslot');
   const cass  = $('cass');
   if (!srcEl || !cass || matchMedia('(prefers-reduced-motion: reduce)').matches ||
       typeof srcEl.animate !== 'function'){ done(); return; }
 
   const s = srcEl.getBoundingClientRect();
   const d = cass.getBoundingClientRect();
+  // nothing sensible to animate between if either is off-layout
   if (!s.width || !d.width){ done(); return; }
 
   const ghost = srcEl.cloneNode(true);
   ghost.classList.add('flyer');
-  ghost.style.left   = s.left + 'px';
-  ghost.style.top    = s.top  + 'px';
+  ghost.style.left   = s.left   + 'px';
+  ghost.style.top    = s.top    + 'px';
   ghost.style.width  = s.width  + 'px';
   ghost.style.height = s.height + 'px';
   document.body.appendChild(ghost);
 
-  const scale = d.width / s.width;
+  // grow to roughly the height of the deck's tape, keeping the sleeve's shape
+  const scale = Math.max(1, (d.height * 0.92) / s.height);
   const dx = (d.left + d.width/2)  - (s.left + s.width/2);
   const dy = (d.top  + d.height/2) - (s.top  + s.height/2);
+  const lift = Math.max(90, Math.abs(dy) * 0.42);
 
   const anim = ghost.animate([
-    { transform:'translate(0,0) scale(1) rotate(0deg)', opacity:1 },
-    { transform:'translate('+(dx*0.5)+'px,'+(dy*0.5 - Math.max(50, d.height*0.35))+'px) '+
-                'scale('+(1+(scale-1)*0.55)+') rotate(-6deg)', opacity:1, offset:0.55 },
-    { transform:'translate('+dx+'px,'+(dy - d.height*0.16)+'px) scale('+scale+') rotate(0deg)',
-      opacity:1, offset:0.88 },
-    { transform:'translate('+dx+'px,'+dy+'px) scale('+scale+') rotate(0deg)', opacity:0 }
-  ], { duration: 760, easing:'cubic-bezier(.32,.08,.24,1)', fill:'forwards' });
+    { transform:'translate(0,0) scale(1) rotate(0deg)', opacity:1, offset:0 },
+    { transform:'translate('+(dx*0.22)+'px,'+(dy*0.22 - lift*0.75)+'px) '+
+                'scale('+(1+(scale-1)*0.30)+') rotate(-7deg)', opacity:1, offset:0.32 },
+    { transform:'translate('+(dx*0.68)+'px,'+(dy*0.68 - lift*0.55)+'px) '+
+                'scale('+(1+(scale-1)*0.78)+') rotate(-4deg)', opacity:1, offset:0.66 },
+    { transform:'translate('+dx+'px,'+(dy - d.height*0.10)+'px) scale('+scale+') rotate(0deg)',
+      opacity:1, offset:0.90 },
+    { transform:'translate('+dx+'px,'+dy+'px) scale('+scale+') rotate(0deg)', opacity:0, offset:1 }
+  ], { duration: 950, easing:'cubic-bezier(.28,.06,.22,1)', fill:'forwards' });
 
   let finished = false;
-  const finish = () => { if (finished) return; finished = true;
-                         ghost.remove(); done(); };
+  const finish = () => { if (finished) return; finished = true; ghost.remove(); done(); };
   anim.onfinish = finish;
-  setTimeout(finish, 1100);          // never strand the deck if the animation stalls
+  setTimeout(finish, 1400);          // never strand the deck if the animation stalls
 }
 
 function loadFrom(i, miniEl){
   if (busy) return;
+  SFX.wake();
   const deck = document.querySelector('.deck');
   if (deck) deck.scrollIntoView({behavior:'smooth', block:'center'});
-  SFX.wake();
-  setTimeout(() => flyCassette(miniEl, () => load(i, true)), 300);
+  // measure only once the scroll has actually stopped
+  afterScrollSettles(() => flyCassette(miniEl, () => load(i, true)));
 }
 
 /* ===== cassette load / eject ===== */
