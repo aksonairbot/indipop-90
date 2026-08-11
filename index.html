@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>इंडिपॉप ९० — 90s Music, a tape by Amit Singh</title>
+<meta name="theme-color" content="#0f0c12">
+<meta name="description" content="इंडिपॉप ९० — a 41-song 90s indipop cassette played on a stereo deck. Side A and Side B, reels rolling.">
+<meta property="og:title" content="इंडिपॉप ९० — नब्बे के गाने, एक घूमती हुई रील">
+<meta property="og:description" content="A 41-song 90s indipop cassette played on a stereo deck.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Archivo:ital,wght@0,400;0,600;0,800;1,700&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Caveat:wght@600;700&display=swap">
+<style>
+:root{
+  --room:#0f0c12; --paper:#f2ece2;
+  --wood:#6b4426; --wood2:#3a2314;
+  --lcd:#7dffc8; --amber:#ffab2e; --red:#ff3b30;
+  --mag:#ff2d95; --cyan:#00e5ff; --yel:#ffd400;
+  --dim:rgba(242,236,226,.42); --line:rgba(242,236,226,.13);
+  --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --black:'Archivo Black','Archivo',Impact,sans-serif;
+  --deva:'Baloo 2','Nirmala UI','Noto Sans Devanagari',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,Menlo,monospace;
+  --hand:'Caveat',ui-rounded,cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--room);color:var(--paper);font-family:var(--sans);
+  min-height:100svh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+button{font-family:var(--mono);cursor:pointer;border:none;background:none;color:inherit}
+
+#room{position:fixed;inset:0;z-index:0;
+  background:radial-gradient(ellipse at 50% 12%,#33162c 0%,#1a1119 46%,#0a080c 100%)}
+#grain{position:fixed;inset:-50%;z-index:81;pointer-events:none;opacity:.11;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.6'/></svg>");
+  animation:grain .5s steps(3) infinite}
+@keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}100%{transform:translate(0,0)}}
+#vig{position:fixed;inset:0;z-index:82;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 42%,transparent 46%,rgba(0,0,0,.72) 100%)}
+
+#wrap{position:relative;z-index:10;max-width:1180px;margin:0 auto;
+  padding:max(14px,env(safe-area-inset-top)) 16px max(22px,env(safe-area-inset-bottom))}
+
+/* ---------- header ---------- */
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.bug{display:flex;align-items:center;gap:11px}
+.bug .mark{width:42px;height:42px;flex:none;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--mag),#ff6b1a);
+  box-shadow:0 0 0 2px rgba(242,236,226,.85),0 6px 22px rgba(255,45,149,.45);
+  font-family:var(--black);font-size:19px;color:#141013;transform:rotate(-4deg)}
+.bug h1{font-family:var(--deva);font-size:23px;line-height:1;font-weight:800}
+.bug .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-top:5px}
+.hmeta{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--dim);white-space:nowrap}
+.pill b{color:var(--paper)}
+.clock{font-family:var(--mono);font-size:11px;letter-spacing:.13em;color:var(--amber)}
+
+/* ---------- cover ---------- */
+.cover{position:relative;height:clamp(200px,29vh,320px);border-radius:12px;overflow:hidden;
+  margin-bottom:16px;background:#0d0a1c;
+  box-shadow:0 20px 52px rgba(0,0,0,.68), inset 0 0 0 1px rgba(242,236,226,.11),
+             inset 0 1px 0 rgba(255,255,255,.14)}
+#cover{position:absolute;inset:0;width:100%;height:100%;display:block}
+.coveredge{position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:radial-gradient(ellipse at 52% 58%,transparent 42%,rgba(8,5,12,.66) 100%),
+             repeating-linear-gradient(to bottom,rgba(0,0,0,.14) 0 1px,transparent 1px 3px)}
+
+/* ---------- deck ---------- */
+.deck{position:relative;border-radius:12px;padding:16px;
+  background:linear-gradient(176deg,#4c454a 0%,#332d31 6%,#2b262a 40%,#221e21 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.16), inset 0 -3px 0 rgba(0,0,0,.6),
+    0 30px 70px rgba(0,0,0,.75), 0 0 0 1px rgba(0,0,0,.8);
+  border-top:1px solid rgba(255,255,255,.2)}
+.deck::before,.deck::after{content:"";position:absolute;top:0;bottom:0;width:20px;z-index:1;
+  background:linear-gradient(90deg,var(--wood2),var(--wood) 40%,#7d5432 60%,var(--wood2));
+  box-shadow:inset 0 0 22px rgba(0,0,0,.6)}
+.deck::before{left:0;border-radius:12px 0 0 12px}
+.deck::after{right:0;border-radius:0 12px 12px 0}
+.deckin{position:relative;z-index:2;margin:0 12px;display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:16px}
+
+.brandstrip{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding-bottom:11px;border-bottom:1px solid rgba(0,0,0,.55);
+  box-shadow:0 1px 0 rgba(255,255,255,.09);flex-wrap:wrap}
+.brandstrip .nm{font-family:var(--black);font-size:13px;letter-spacing:.26em;color:#cfc6bd;
+  text-shadow:0 1px 0 rgba(0,0,0,.9)}
+.brandstrip .nm i{color:var(--mag);font-style:normal}
+.brandstrip .spec{font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;
+  color:rgba(242,236,226,.3);text-transform:uppercase}
+.pwr{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:8.5px;
+  letter-spacing:.2em;color:rgba(242,236,226,.34);text-transform:uppercase}
+.pwr i{width:7px;height:7px;border-radius:50%;background:#3a1512;box-shadow:inset 0 1px 2px #000}
+body.playing .pwr i{background:var(--red);box-shadow:0 0 9px var(--red)}
+
+/* -------- cassette door -------- */
+.door{position:relative;border-radius:7px;overflow:hidden;aspect-ratio:1.62;
+  background:linear-gradient(170deg,#0a0a0c,#15131a 45%,#0b0a0d);
+  border:1px solid rgba(0,0,0,.9);
+  box-shadow:inset 0 3px 14px rgba(0,0,0,.95), inset 0 -1px 0 rgba(255,255,255,.07),
+             0 1px 0 rgba(255,255,255,.12)}
+.door .glass{position:absolute;inset:0;z-index:6;pointer-events:none;
+  background:linear-gradient(122deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.03) 22%,
+    transparent 40%,transparent 62%,rgba(255,255,255,.06) 84%,rgba(255,255,255,.02) 100%)}
+.door .flap{position:absolute;inset:0;z-index:7;transform-origin:top center;
+  background:linear-gradient(163deg,rgba(78,74,92,.30) 0%,rgba(20,18,26,.34) 34%,
+             rgba(10,9,13,.40) 66%,rgba(52,48,62,.26) 100%);
+  border-bottom:2px solid rgba(255,255,255,.13);
+  box-shadow:inset 0 -14px 26px rgba(0,0,0,.4);
+  transform:rotateX(0deg);transition:transform .42s cubic-bezier(.5,0,.3,1);
+  display:flex;align-items:flex-end;justify-content:flex-end;padding:6px 9px}
+.door .flap span{font-family:var(--mono);font-size:7.5px;letter-spacing:.3em;
+  color:rgba(242,236,226,.26);text-transform:uppercase}
+body.dooropen .door .flap{transform:rotateX(-104deg)}
+
+.cass{position:absolute;left:50%;top:50%;z-index:4;width:80%;aspect-ratio:1.61;
+  transform:translate(-50%,-50%);
+  transition:transform .58s cubic-bezier(.42,0,.28,1),opacity .3s ease;border-radius:5px;
+  background:linear-gradient(168deg,#4a4553 0%,#332f3b 45%,#211e28 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -2px 6px rgba(0,0,0,.9),
+             0 12px 30px rgba(0,0,0,.85);
+  border:1px solid rgba(255,255,255,.14);padding:6.5% 6% 5%}
+body.ejected .cass{transform:translate(-50%,132%) rotate(1.4deg);opacity:.25}
+
+.label{position:relative;height:56%;border-radius:2px;overflow:hidden;
+  background:linear-gradient(178deg,#f7f2e6,#e6dcc7);
+  box-shadow:0 1px 3px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.2)}
+.label .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 42%;display:block;font-size:0;color:transparent;
+  filter:saturate(1.2) contrast(1.06);opacity:0;transition:opacity .45s}
+.label.hasart .art{opacity:1}
+.label .scrim{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity .45s;
+  background:linear-gradient(to top,rgba(8,7,11,.94) 0%,rgba(8,7,11,.74) 28%,
+             rgba(8,7,11,.24) 58%,rgba(8,7,11,.42) 100%)}
+.label.hasart .scrim{opacity:1}
+.label .stripe{position:absolute;left:0;right:0;top:0;height:19%;z-index:4;
+  background:repeating-linear-gradient(90deg,var(--mag) 0 14%,var(--amber) 14% 28%,var(--cyan) 28% 42%);
+  opacity:.94;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+.label .ltxt{position:absolute;z-index:5;left:0;right:0;bottom:0;padding:5% 6% 4.5%}
+.label .lside{position:absolute;z-index:5;left:6%;top:24%;font-family:var(--black);
+  font-size:clamp(8px,1.35vw,12px);color:#141013;letter-spacing:.12em;transition:.3s}
+.label .ltitle{font-family:var(--hand);font-weight:700;font-size:clamp(15px,3vw,28px);
+  line-height:1.02;color:#17181e;overflow:hidden;display:-webkit-box;
+  -webkit-line-clamp:2;-webkit-box-orient:vertical;transition:.3s}
+.label .lartist{font-family:var(--hand);font-weight:600;font-size:clamp(11px,2vw,18px);
+  color:#5c4a3a;line-height:1.1;transition:.3s}
+.label.hasart .lside{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.95)}
+.label.hasart .ltitle{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.95)}
+.label.hasart .lartist{color:var(--yel);text-shadow:0 2px 8px rgba(0,0,0,.95)}
+.label .lno{position:absolute;z-index:5;right:5%;top:24%;font-family:var(--mono);
+  font-size:9px;color:#8a7a68;transition:.3s}
+.label.hasart .lno{color:rgba(255,255,255,.8);text-shadow:0 1px 5px rgba(0,0,0,.9)}
+
+.reels{position:absolute;left:6%;right:6%;bottom:5.5%;height:37%;
+  display:flex;align-items:center;justify-content:space-between;padding:0 5%}
+.win{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:52%;height:78%;border-radius:3px;background:rgba(0,0,0,.72);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),inset 0 2px 6px rgba(0,0,0,.9)}
+.reelbox{position:relative;width:30%;aspect-ratio:1;z-index:2}
+.reelbox svg{width:100%;height:100%;display:block}
+.spin{transform-origin:50% 50%;animation:spin 2.6s linear infinite;animation-play-state:paused}
+body.playing .spin{animation-play-state:running}
+.spin.b{animation-duration:3.9s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.holes{position:absolute;left:0;right:0;bottom:1%;height:8%;display:flex;
+  justify-content:space-around;align-items:center;padding:0 16%}
+.holes i{width:9%;aspect-ratio:1;border-radius:50%;background:#0a0a0c;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.07)}
+
+/* ================= STEREO SIDE ================= */
+.rightcol{display:flex;flex-direction:column;gap:10px;min-width:0}
+.sunk{border-radius:5px;border:1px solid rgba(0,0,0,.85);
+  box-shadow:inset 0 2px 9px rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.1)}
+
+/* LCD */
+.lcd{padding:10px 12px;background:linear-gradient(178deg,#123026,#0b2019);
+  font-family:var(--mono);color:var(--lcd);text-shadow:0 0 9px rgba(125,255,200,.5)}
+.lcd .r1{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.lcd .trkno{font-size:25px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.lcd .trkno small{font-size:10px;opacity:.5;font-weight:400}
+.lcd .time{font-size:14px;letter-spacing:.05em}
+.marq{position:relative;overflow:hidden;height:15px;margin:6px 0 5px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 22px,#000 calc(100% - 22px),transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 22px,#000 calc(100% - 22px),transparent)}
+.marq span{position:absolute;white-space:nowrap;font-size:11.5px;letter-spacing:.09em;
+  will-change:transform;animation:slide 22s linear infinite}
+body:not(.playing) .marq span{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.lcd .r2{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:8.5px;
+  letter-spacing:.19em;text-transform:uppercase;opacity:.75}
+.tag{border:1px solid rgba(125,255,200,.3);border-radius:3px;padding:2px 6px}
+.tag.hot{background:rgba(125,255,200,.2);color:#d8fff0}
+.seekbar{margin-top:8px;height:5px;border-radius:3px;background:rgba(125,255,200,.15);
+  overflow:hidden;cursor:pointer}
+.seekbar i{display:block;height:100%;width:0%;background:var(--lcd);
+  box-shadow:0 0 10px rgba(125,255,200,.85);transition:width .25s linear}
+
+/* analyser */
+.anal{position:relative;padding:7px 8px 6px;background:linear-gradient(178deg,#141118,#0a080c)}
+#spectrum{display:block;width:100%;height:74px;border-radius:3px}
+.anal .cap{display:flex;justify-content:space-between;margin-top:5px;
+  font-family:var(--mono);font-size:7.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(242,236,226,.3)}
+
+/* meters + knobs */
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:10px}
+.vuwrap{padding:7px;background:linear-gradient(178deg,#1a1519,#0f0c0f)}
+#vu{display:block;width:100%;height:80px}
+.knobs{display:grid;grid-template-rows:1fr 1fr;gap:8px;padding:7px;
+  background:linear-gradient(178deg,#3a3439,#221e23);border-radius:5px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 1px 0 rgba(0,0,0,.7),inset 0 -2px 6px rgba(0,0,0,.6);
+  border:1px solid rgba(0,0,0,.8)}
+.kwrap{display:flex;align-items:center;gap:8px}
+.knob{position:relative;width:38px;height:38px;flex:none;border-radius:50%;cursor:ns-resize;
+  background:conic-gradient(from 0deg,#6a626c,#3b353d 25%,#6a626c 50%,#3b353d 75%,#6a626c);
+  box-shadow:0 2px 5px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.14);
+  touch-action:none;outline:none}
+.knob::after{content:"";position:absolute;inset:5px;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#5c555f,#232027 72%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.knob:focus-visible{box-shadow:0 0 0 2px var(--cyan),0 2px 5px rgba(0,0,0,.8)}
+.knob .dial{position:absolute;inset:0;z-index:2;pointer-events:none}
+.knob .dial::before{content:"";position:absolute;left:50%;top:5px;width:2px;height:11px;
+  margin-left:-1px;border-radius:1px;background:var(--amber);box-shadow:0 0 6px var(--amber)}
+.klab{font-family:var(--mono);font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(242,236,226,.42);line-height:1.5}
+.klab b{display:block;color:var(--paper);font-size:9px;letter-spacing:.06em}
+
+/* transport */
+.transport{grid-column:1/-1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding-top:13px;border-top:1px solid rgba(0,0,0,.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09)}
+.key{min-width:56px;padding:12px 12px 10px;border-radius:4px;
+  background:linear-gradient(178deg,#59525a,#332e35 55%,#292429);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.65),
+             0 3px 0 rgba(0,0,0,.72),0 5px 10px rgba(0,0,0,.55);
+  font-size:11px;letter-spacing:.08em;color:#e8e0d6;text-align:center;transition:.08s;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.key:hover{background:linear-gradient(178deg,#665e68,#3b353d 55%,#2f2a30)}
+.key:active,.key.down{transform:translateY(3px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 2px 6px rgba(0,0,0,.75)}
+.key.big{min-width:74px;font-weight:700}
+.key.play.active{background:linear-gradient(178deg,#3ddc84,#1f9c58);color:#0b2015;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 0 rgba(0,0,0,.6)}
+.key.rec{color:#ffb4b0}
+.led{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4a1a18;flex:none}
+.led.on{background:var(--red);box-shadow:0 0 9px var(--red);animation:blink 1.5s steps(1) infinite}
+@keyframes blink{0%,55%{opacity:1}56%,100%{opacity:.32}}
+.spacer{flex:1;min-width:6px}
+.sidesw{display:flex;border-radius:4px;overflow:hidden;box-shadow:0 3px 0 rgba(0,0,0,.72)}
+.sidesw button{padding:11px 14px;font-size:10px;letter-spacing:.16em;
+  background:linear-gradient(178deg,#4b454d,#2c272d);color:#b9b0a8;transition:.1s}
+.sidesw button.on{background:linear-gradient(178deg,var(--amber),#c97c12);color:#241505;font-weight:700}
+
+
+/* ---------- amplifier strip ---------- */
+.amp{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1.15fr) minmax(0,1fr);
+  gap:14px;align-items:center;padding:12px 0 2px;margin-top:2px;
+  border-top:1px solid rgba(0,0,0,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.09)}
+.seclab{font-family:var(--mono);font-size:7.5px;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(242,236,226,.32);margin-bottom:6px}
+.srcbtns{display:flex;gap:5px}
+.srcbtns button{padding:7px 9px;border-radius:3px;font-size:8.5px;letter-spacing:.14em;
+  background:linear-gradient(178deg,#443e46,#282329);color:#9a938c;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 2px 0 rgba(0,0,0,.6);transition:.1s}
+.srcbtns button:hover{color:#e6ded4}
+.srcbtns button.on{background:linear-gradient(178deg,#3ddc84,#1f9c58);color:#0b2015;font-weight:700;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 0 rgba(0,0,0,.6),0 0 12px rgba(61,220,132,.4)}
+.dialstrip{position:relative;height:46px;border-radius:4px;overflow:hidden;
+  background:linear-gradient(178deg,#1d2a20,#0d1610);
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.9);border:1px solid rgba(0,0,0,.8)}
+#band{display:block;width:100%;height:100%}
+.needle{position:absolute;top:3px;bottom:3px;width:2px;margin-left:-1px;border-radius:1px;
+  background:#ff3b30;box-shadow:0 0 9px #ff3b30,0 0 2px #fff;left:50%;
+  transition:left .6s cubic-bezier(.4,0,.2,1)}
+.tones{display:grid;gap:5px}
+.slid{display:grid;grid-template-columns:30px minmax(0,1fr) 22px;align-items:center;gap:8px}
+.slid span{font-family:var(--mono);font-size:7.5px;letter-spacing:.14em;color:rgba(242,236,226,.4)}
+.slid b{font-family:var(--mono);font-size:8.5px;color:var(--amber);text-align:right;font-weight:400}
+.slid input{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(242,236,226,.1),rgba(242,236,226,.22));outline:none;cursor:pointer}
+.slid input::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:18px;border-radius:2px;
+  background:linear-gradient(178deg,#6a626c,#332e35);border:1px solid rgba(0,0,0,.8);
+  box-shadow:0 1px 3px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.3);cursor:ns-resize}
+.slid input::-moz-range-thumb{width:12px;height:18px;border-radius:2px;border:1px solid rgba(0,0,0,.8);
+  background:linear-gradient(178deg,#6a626c,#332e35);box-shadow:0 1px 3px rgba(0,0,0,.8)}
+
+/* ---------- 90s curio shelf ---------- */
+.shelf{margin-top:20px;border-radius:10px;padding:0 0 12px;
+  background:linear-gradient(178deg,#241a12 0%,#180f0a 100%);
+  box-shadow:0 16px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),
+             inset 0 0 0 1px rgba(0,0,0,.7);overflow:hidden}
+.shelf .plank{height:9px;background:linear-gradient(90deg,#3a2416,#6b4426 30%,#7d5432 55%,#3a2416);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 2px 6px rgba(0,0,0,.6)}
+.shelfin{display:flex;align-items:flex-end;gap:clamp(12px,2vw,22px);
+  padding:16px 20px 0;flex-wrap:wrap;justify-content:space-evenly}
+.curio{display:flex;flex-direction:column;align-items:center;gap:7px}
+.curio .cname{font-family:var(--mono);font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(242,236,226,.3);white-space:nowrap}
+.shelfcap{text-align:center;font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(242,236,226,.26);padding:14px 16px 0}
+
+/* pinwheel */
+.pinwheel{width:62px;height:70px;position:relative}
+.pinwheel .stick{position:absolute;left:50%;top:26px;bottom:0;width:3px;margin-left:-1.5px;
+  border-radius:2px;background:linear-gradient(180deg,#c9a06a,#6b4426)}
+.pinwheel svg{position:absolute;left:0;top:0;width:62px;height:62px;
+  animation:spin 2.4s linear infinite;transform-origin:50% 50%}
+body.playing .pinwheel svg{animation-duration:.55s}
+.pinwheel .pin{position:absolute;left:50%;top:31px;width:6px;height:6px;margin:-3px 0 0 -3px;
+  border-radius:50%;background:#ffd400;box-shadow:0 0 6px rgba(255,212,0,.7)}
+
+/* matchboxes */
+.boxes{display:flex;gap:7px;align-items:flex-end}
+.mbox{width:34px;height:46px;border-radius:2px;position:relative;overflow:hidden;
+  box-shadow:0 3px 8px rgba(0,0,0,.65),inset 0 0 0 1px rgba(0,0,0,.5);
+  transform:rotate(var(--rot));transition:transform .18s}
+.mbox:hover{transform:rotate(0deg) translateY(-5px)}
+.mbox .top{position:absolute;inset:0 0 62% 0;background:var(--c2)}
+.mbox .bot{position:absolute;inset:38% 0 0 0;background:var(--c1)}
+.mbox .disc{position:absolute;left:50%;top:34%;width:19px;height:19px;margin-left:-9.5px;
+  border-radius:50%;background:var(--c3);box-shadow:0 0 0 1.5px rgba(0,0,0,.35)}
+.mbox .txt{position:absolute;left:0;right:0;bottom:3px;text-align:center;font-family:var(--mono);
+  font-size:5px;letter-spacing:.08em;color:rgba(0,0,0,.6);font-weight:700}
+.mbox .strike{position:absolute;right:0;top:0;bottom:0;width:6px;
+  background:repeating-linear-gradient(180deg,#2a2018 0 2px,#4a3a2a 2px 4px)}
+
+/* spinning top */
+.lattu{width:44px;height:60px;position:relative}
+.lattu svg{width:44px;height:60px;transform-origin:50% 86%;
+  animation:wobble 1.6s ease-in-out infinite}
+body.playing .lattu svg{animation-duration:.42s}
+@keyframes wobble{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+
+/* paper boat */
+.boat{width:60px;height:56px;position:relative}
+.boat svg{width:60px;height:44px;position:absolute;bottom:8px;left:0;
+  animation:bob 3.2s ease-in-out infinite;transform-origin:50% 100%}
+body.playing .boat svg{animation-duration:1.3s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3.5deg)}50%{transform:translateY(-3px) rotate(3.5deg)}}
+.boat .water{position:absolute;left:0;right:0;bottom:0;height:9px;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 0%,rgba(90,150,190,.5),rgba(30,60,80,0) 70%)}
+
+/* kite */
+.kite{width:52px;height:66px;position:relative}
+.kite svg{width:52px;height:66px;animation:fly 4.2s ease-in-out infinite;transform-origin:50% 12%}
+body.playing .kite svg{animation-duration:1.7s}
+@keyframes fly{0%,100%{transform:rotate(-11deg)}50%{transform:rotate(11deg)}}
+
+/* marbles */
+.marbles{display:flex;gap:6px;align-items:flex-end;height:60px}
+.marble{width:var(--sz);height:var(--sz);border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,#fff 0 8%,var(--m1) 30%,var(--m2) 72%,#1a1018 100%);
+  box-shadow:0 3px 7px rgba(0,0,0,.7),inset -2px -3px 6px rgba(0,0,0,.45);
+  animation:jiggle 3.4s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes jiggle{0%,92%,100%{transform:translateY(0)}96%{transform:translateY(-4px)}}
+
+@media (max-width:900px){
+  .amp{grid-template-columns:1fr;gap:11px}
+  .shelfin{gap:18px;padding:14px 12px 0}
+}
+
+/* ---------- rack ---------- */
+.rack{margin-top:20px;border-radius:10px;padding:18px 18px 16px;
+  background:linear-gradient(178deg,#262029 0%,#1a161c 40%,#121016 100%);
+  box-shadow:0 18px 44px rgba(0,0,0,.62),inset 0 1px 0 rgba(255,255,255,.09),
+             inset 0 0 0 1px rgba(0,0,0,.7)}
+.rhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  border-bottom:2px solid rgba(242,236,226,.22);padding-bottom:9px;margin-bottom:16px}
+.rhead h2{font-family:var(--black);font-size:clamp(18px,3.2vw,28px);letter-spacing:-.02em;
+  text-transform:uppercase;line-height:1}
+.rhead h2 em{font-style:normal;color:var(--mag)}
+.rhead .by{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.shelfhead{display:flex;align-items:baseline;gap:10px;margin:4px 0 11px}
+.shelfhead b{font-family:var(--black);font-size:11px;letter-spacing:.3em;color:var(--amber)}
+.shelfhead span{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--dim)}
+.shelfhead .ln{flex:1;height:1px;background:rgba(242,236,226,.13)}
+.shelfhead .hint{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(242,236,226,.28)}
+.rail{position:relative;margin-bottom:20px}
+.grid{display:flex;gap:13px;overflow-x:auto;overflow-y:hidden;padding:2px 2px 12px;
+  scroll-snap-type:x proximity;scroll-behavior:smooth;
+  scrollbar-width:thin;scrollbar-color:rgba(242,236,226,.28) transparent}
+.grid::-webkit-scrollbar{height:7px}
+.grid::-webkit-scrollbar-track{background:rgba(0,0,0,.4);border-radius:4px}
+.grid::-webkit-scrollbar-thumb{background:rgba(242,236,226,.24);border-radius:4px}
+.grid::-webkit-scrollbar-thumb:hover{background:rgba(255,45,149,.6)}
+.rail .fade{position:absolute;top:0;bottom:14px;width:44px;pointer-events:none;z-index:3;
+  opacity:0;transition:opacity .22s}
+.rail .fade.l{left:0;background:linear-gradient(90deg,#1a161c,transparent)}
+.rail .fade.r{right:0;background:linear-gradient(270deg,#1a161c,transparent)}
+.rail.canL .fade.l,.rail.canR .fade.r{opacity:1}
+.nav{position:absolute;top:38%;transform:translateY(-50%);z-index:4;width:32px;height:32px;
+  border-radius:50%;display:grid;place-items:center;font-size:13px;
+  background:rgba(20,16,22,.9);border:1px solid rgba(242,236,226,.28);color:var(--paper);
+  box-shadow:0 4px 14px rgba(0,0,0,.7);opacity:0;transition:.18s;pointer-events:none}
+.rail.canL .nav.l,.rail.canR .nav.r{opacity:1;pointer-events:auto}
+.nav:hover{background:var(--mag);border-color:var(--mag);color:#141013}
+.nav.l{left:-6px}.nav.r{right:-6px}
+
+.mini{flex:0 0 152px;width:152px;scroll-snap-align:start;display:block;text-align:left;
+  padding:0;background:none;border:none;cursor:pointer;transition:transform .16s}
+.mini:hover{transform:translateY(-4px)}
+.mcase{position:relative;aspect-ratio:1.6;border-radius:4px;padding:6.5% 6% 5%;
+  background:linear-gradient(168deg,#4a4553 0%,#332f3b 45%,#211e28 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -2px 5px rgba(0,0,0,.85),
+             0 6px 16px rgba(0,0,0,.6);
+  border:1px solid rgba(255,255,255,.1);transition:.16s}
+.mini:hover .mcase{box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 12px 26px rgba(0,0,0,.7)}
+.mini.now .mcase{border-color:var(--mag);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 0 0 2px rgba(255,45,149,.55),
+             0 12px 28px rgba(255,45,149,.28),0 8px 20px rgba(0,0,0,.7)}
+.mlabel{position:relative;height:60%;border-radius:2px;overflow:hidden;
+  background:linear-gradient(178deg,#f7f2e6,#e2d8c3);
+  box-shadow:0 1px 2px rgba(0,0,0,.55),inset 0 0 0 1px rgba(0,0,0,.2)}
+.mlabel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 42%;font-size:0;color:transparent;opacity:0;transition:opacity .35s;
+  filter:saturate(1.2) contrast(1.05)}
+.mlabel img.ok{opacity:1}
+.mfall{position:absolute;z-index:2;left:0;right:0;bottom:0;top:20%;padding:6% 7%;
+  display:flex;align-items:center;transition:opacity .3s;font-family:var(--hand);
+  font-weight:700;font-size:13px;line-height:1.05;color:#22201c;overflow:hidden}
+.mlabel img.ok ~ .mfall{opacity:0}
+.mstripe{position:absolute;left:0;right:0;top:0;height:20%;z-index:3;
+  background:repeating-linear-gradient(90deg,var(--mag) 0 14%,var(--amber) 14% 28%,var(--cyan) 28% 42%);
+  opacity:.94}
+.mno{position:absolute;z-index:4;right:4%;bottom:4%;font-family:var(--mono);font-size:8.5px;
+  font-weight:700;color:#fff;background:rgba(8,7,11,.72);padding:1px 5px;border-radius:2px}
+.mreels{position:relative;height:34%;margin-top:5%;display:flex;align-items:center;
+  justify-content:space-around;padding:0 12%}
+.mreels::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:46%;height:64%;border-radius:2px;background:rgba(0,0,0,.66);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.09)}
+.mreels i{position:relative;z-index:2;width:26%;aspect-ratio:1;border-radius:50%;
+  background:#2b1a12;box-shadow:inset 0 0 0 1.5px #503424}
+.mreels i::before{content:"";position:absolute;inset:20%;border-radius:50%;
+  border:2.5px dashed #d3cabf;animation:spin 2.4s linear infinite;animation-play-state:paused}
+.mreels i:last-child::before{animation-duration:3.6s}
+.mini:hover .mreels i::before{animation-play-state:running}
+body.playing .mini.now .mreels i::before{animation-play-state:running}
+.mcap{margin-top:8px}
+.mcap .mt{font-family:var(--sans);font-weight:800;font-size:11.5px;line-height:1.22;
+  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.mcap .ma{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini.now .mcap .mt{color:var(--mag)}
+.mini.now .mcap .ma{color:rgba(255,45,149,.6)}
+.mini.blocked .mcase{opacity:.5;filter:grayscale(.6)}
+.mini.blocked .mcase::after{content:"EMBED OFF";position:absolute;left:50%;top:50%;z-index:6;
+  transform:translate(-50%,-50%) rotate(-9deg);font-family:var(--mono);font-size:8px;
+  letter-spacing:.14em;background:rgba(10,7,16,.9);border:1px solid rgba(255,59,48,.7);
+  color:#ff6b60;padding:3px 7px;border-radius:2px;white-space:nowrap}
+.mini.blocked .mcap .mt{color:rgba(242,236,226,.5)}
+
+.foot{margin-top:4px;padding-top:11px;border-top:1px solid rgba(242,236,226,.12);
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot a{color:rgba(242,236,226,.55)}
+.foot a:hover{color:var(--mag)}
+
+/* The player must be a real, on-screen, sensibly-sized element: browsers
+   refuse to start media in a 1x1 or off-screen frame. It lives inside the
+   cassette door, behind the tape, effectively invisible but genuinely there. */
+#yt{position:absolute;inset:0;z-index:1;width:100%!important;height:100%!important;
+  border:0;opacity:.004;pointer-events:none}
+/* Plain embed fallback: no JS API handshake, so it survives file:// where the
+   scripted player gets rejected with error 150/153. */
+#direct{position:absolute;inset:0;z-index:9;display:none;background:#0b0910}
+#direct.pane{display:grid;place-items:center;padding:6%;text-align:center}
+#direct .ptitle{font-family:var(--black);font-size:clamp(13px,2vw,18px);text-transform:uppercase;
+  letter-spacing:-.01em;color:var(--paper);margin-bottom:5px;line-height:1.15}
+#direct .partist{font-family:var(--sans);font-style:italic;font-weight:700;font-size:12px;
+  color:var(--yel);margin-bottom:13px}
+#direct .pwhy{font-family:var(--mono);font-size:9px;line-height:1.8;letter-spacing:.05em;
+  color:rgba(242,236,226,.45);max-width:34ch;margin:0 auto 15px}
+#direct .pgo{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:700;text-decoration:none;
+  padding:13px 20px;border-radius:5px;color:#0b2015;
+  background:linear-gradient(178deg,#3ddc84,#1f9c58);border:2px solid rgba(255,255,255,.55);
+  box-shadow:4px 4px 0 rgba(10,7,16,.9);transition:.12s}
+#direct .pgo:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(61,220,132,.6)}
+#direct .pgo:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(10,7,16,.9)}
+#direct.on{display:block}
+#direct iframe{width:100%;height:100%;border:0;display:block}
+#direct .dtag{position:absolute;left:8px;top:8px;z-index:2;font-family:var(--mono);font-size:8px;
+  letter-spacing:.2em;background:rgba(10,7,16,.8);border:1px solid rgba(61,220,132,.5);
+  color:#3ddc84;padding:3px 7px;border-radius:3px;pointer-events:none}
+.notice{margin-top:12px;border-radius:8px;padding:11px 13px;
+  background:linear-gradient(178deg,#4a2214,#2c1409);border:1px solid rgba(255,171,46,.45);
+  font-family:var(--mono);font-size:10.5px;line-height:1.75;letter-spacing:.04em;color:#ffd8a8}
+.notice b{color:var(--amber);letter-spacing:.14em;text-transform:uppercase;
+  display:block;font-size:9px;margin-bottom:4px}
+.notice code{background:rgba(0,0,0,.45);padding:1px 5px;border-radius:3px;color:#fff}
+
+@media (max-width:900px){
+  .deckin{grid-template-columns:1fr;gap:13px}
+  .door{aspect-ratio:1.5}
+  .cass{width:86%}
+  .mrow{grid-template-columns:minmax(0,1fr) 88px}
+  #spectrum{height:62px} #vu{height:70px}
+  .transport{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  .key{min-width:0;width:100%;padding:14px 6px 12px;font-size:10px;letter-spacing:.04em}
+  .spacer{display:none}
+  .sidesw{grid-column:1/-1;width:100%}
+  .sidesw button{flex:1}
+  .mini{flex:0 0 124px;width:124px}
+  .grid{gap:10px}
+  .nav{display:none}
+  .rack{padding:14px 13px 13px}
+    }
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important}
+  #grain{display:none}
+}
+</style>
+</head>
+<body class="ejected">
+
+<div id="room"></div><div id="grain"></div><div id="vig"></div>
+
+<div id="wrap">
+
+  <header>
+    <div class="bug">
+      <div class="mark">९०</div>
+      <div>
+        <h1>इंडिपॉप ९०</h1>
+        <div class="sub">Nabbe ke gaane, ek ghoomti hui reel</div>
+      </div>
+    </div>
+    <div class="hmeta">
+      <div class="pill">Tape · <b>41</b> songs</div>
+      <div class="pill">Side <b id="pillSide">A</b> · SP</div>
+      <div class="pill">API <b id="apiTag" style="color:rgba(242,236,226,.4)">…</b></div>
+      <div class="clock" id="clock">00:00:00</div>
+    </div>
+  </header>
+
+  <!-- ============ COVER ============ -->
+  <div class="cover">
+    <canvas id="cover"></canvas>
+    <div class="coveredge"></div>
+  </div>
+
+  <!-- ============ DECK ============ -->
+  <div class="deck">
+    <div class="deckin">
+
+      <div class="brandstrip">
+        <div class="nm">INDI<i>·</i>SONIC <span style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#8a8076">TD-90</span></div>
+        <div class="spec">Stereo Cassette Deck · Dolby B/C NR · Auto Reverse</div>
+        <div class="pwr"><i></i> Power</div>
+      </div>
+
+      <!-- cassette door -->
+      <div class="door" id="door">
+        <div id="yt"></div>
+        <div id="direct"></div>
+        <div class="cass" id="cass">
+          <div class="label" id="label">
+            <img class="art" id="lArt" alt="" referrerpolicy="no-referrer"
+                 src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3C/svg%3E">
+            <div class="scrim"></div>
+            <div class="stripe"></div>
+            <div class="lno" id="lNo">01</div>
+            <div class="lside" id="lSide">SIDE A</div>
+            <div class="ltxt">
+              <div class="ltitle" id="lTitle">—</div>
+              <div class="lartist" id="lArtist">—</div>
+            </div>
+          </div>
+          <div class="reels">
+            <div class="win"></div>
+            <div class="reelbox">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="46" fill="#0d0c10"/>
+                <circle id="tapeL" cx="50" cy="50" r="40" fill="#2b1a12" stroke="#4a2f20" stroke-width="1"/>
+                <g class="spin">
+                  <circle cx="50" cy="50" r="21" fill="none" stroke="#d9d2c8" stroke-width="4"/>
+                  <g stroke="#d9d2c8" stroke-width="7" stroke-linecap="round">
+                    <path d="M50 32V21M50 79V68M32 50H21M79 50H68M37 37l-8-8M71 71l-8-8M63 37l8-8M29 71l8-8"/>
+                  </g>
+                  <circle cx="50" cy="50" r="8" fill="#141013"/>
+                </g>
+              </svg>
+            </div>
+            <div class="reelbox">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="46" fill="#0d0c10"/>
+                <circle id="tapeR" cx="50" cy="50" r="24" fill="#2b1a12" stroke="#4a2f20" stroke-width="1"/>
+                <g class="spin b">
+                  <circle cx="50" cy="50" r="21" fill="none" stroke="#d9d2c8" stroke-width="4"/>
+                  <g stroke="#d9d2c8" stroke-width="7" stroke-linecap="round">
+                    <path d="M50 32V21M50 79V68M32 50H21M79 50H68M37 37l-8-8M71 71l-8-8M63 37l8-8M29 71l8-8"/>
+                  </g>
+                  <circle cx="50" cy="50" r="8" fill="#141013"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="holes"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="glass"></div>
+        <div class="flap"><span>Dolby NR</span></div>
+      </div>
+
+      <!-- ---------- stereo side ---------- -->
+      <div class="rightcol">
+
+        <div class="lcd sunk">
+          <div class="r1">
+            <div class="trkno" id="lcdNo">00<small> / 41</small></div>
+            <div class="time" id="lcdTime">0:00 / 0:00</div>
+          </div>
+          <div class="marq"><span id="marq">—</span></div>
+          <div class="r2">
+            <span class="tag" id="tagSide">SIDE A</span>
+            <span class="tag">DOLBY B</span>
+            <span class="tag">44.1kHz</span>
+            <span class="tag hot" id="tagState">STOP</span>
+            <span id="counter" style="margin-left:auto">C 0000</span>
+          </div>
+          <div class="seekbar" id="bar"><i id="fill"></i></div>
+        </div>
+
+        <div class="anal sunk">
+          <canvas id="spectrum"></canvas>
+          <div class="cap"><span>Spectrum Analyser</span><span>28 Band</span></div>
+        </div>
+
+        <div class="mrow">
+          <div class="vuwrap sunk"><canvas id="vu"></canvas></div>
+          <div class="knobs">
+            <div class="kwrap">
+              <div class="knob" id="kVol" tabindex="0" role="slider"
+                   aria-label="Volume" aria-valuemin="0" aria-valuemax="100"><div class="dial"></div></div>
+              <div class="klab">Vol<b id="volVal">70</b></div>
+            </div>
+            <div class="kwrap">
+              <div class="knob" id="kTone" tabindex="0" role="slider"
+                   aria-label="Tone" aria-valuemin="0" aria-valuemax="100"><div class="dial"></div></div>
+              <div class="klab">Tone<b id="toneVal">50</b></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ---------- amplifier ---------- -->
+      <div class="amp">
+        <div class="ampsec">
+          <div class="seclab">Source</div>
+          <div class="srcbtns">
+            <button class="on" data-src="TAPE">TAPE</button>
+            <button data-src="TUNER">TUNER</button>
+            <button data-src="AUX">AUX</button>
+            <button data-src="PHONO">PHONO</button>
+          </div>
+        </div>
+        <div class="ampsec">
+          <div class="seclab">Tuning · FM</div>
+          <div class="dialstrip">
+            <canvas id="band"></canvas>
+            <div class="needle" id="bandNeedle"></div>
+          </div>
+        </div>
+        <div class="ampsec tones">
+          <div class="slid"><span>BASS</span><input type="range" id="sBass" min="0" max="100" value="58"><b id="vBass">+2</b></div>
+          <div class="slid"><span>TREB</span><input type="range" id="sTreb" min="0" max="100" value="50"><b id="vTreb">0</b></div>
+          <div class="slid"><span>BAL</span><input type="range" id="sBal" min="0" max="100" value="50"><b id="vBal">C</b></div>
+        </div>
+      </div>
+
+      <!-- transport -->
+      <div class="transport">
+        <button class="key" id="ejectBtn" title="Eject (E)">⏏ EJECT</button>
+        <button class="key" id="rewBtn" title="Previous track">◀◀</button>
+        <button class="key big play" id="playBtn" title="Play / pause (Space)">▶ PLAY</button>
+        <button class="key" id="ffBtn" title="Next track">▶▶</button>
+        <button class="key" id="stopBtn" title="Stop">■ STOP</button>
+        <button class="key rec" id="recBtn" title="Tab's punched out"><span class="led" id="recLed"></span>REC</button>
+        <button class="key" id="shufBtn" title="Shuffle (S)">⤨ SHUF</button>
+        <button class="key" id="rptBtn" title="Repeat (R)">↻ RPT</button>
+        <button class="key" id="vidBtn" title="Show the video window">▣ VIDEO</button>
+        <div class="spacer"></div>
+        <div class="sidesw">
+          <button id="sideA" class="on">SIDE A</button>
+          <button id="sideB">SIDE B</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="notice" id="notice" hidden></div>
+
+
+  <!-- ============ CURIO SHELF ============ -->
+  <div class="shelf">
+    <div class="plank"></div>
+    <div class="shelfin">
+
+      <div class="curio">
+        <div class="pinwheel">
+          <svg viewBox="0 0 62 62" aria-hidden="true">
+            <path d="M31 31 L31 3 A28 28 0 0 1 59 31 Z" fill="#ff2d95"/>
+            <path d="M31 31 L59 31 A28 28 0 0 1 31 59 Z" fill="#ffd400"/>
+            <path d="M31 31 L31 59 A28 28 0 0 1 3 31 Z" fill="#00e5ff"/>
+            <path d="M31 31 L3 31 A28 28 0 0 1 31 3 Z" fill="#3ddc84"/>
+          </svg>
+          <div class="pin"></div>
+          <div class="stick"></div>
+        </div>
+        <div class="cname">Kaagaz ki chakri</div>
+      </div>
+
+      <div class="curio">
+        <div class="boxes">
+          <div class="mbox" style="--rot:-7deg;--c1:#e03a2f;--c2:#f5e6c8;--c3:#1b4fa8"><div class="top"></div><div class="bot"></div><div class="disc"></div><div class="strike"></div><div class="txt">SAFETY</div></div>
+          <div class="mbox" style="--rot:4deg;--c1:#1f7a44;--c2:#f0d84a;--c3:#e03a2f"><div class="top"></div><div class="bot"></div><div class="disc"></div><div class="strike"></div><div class="txt">TIGER</div></div>
+          <div class="mbox" style="--rot:-3deg;--c1:#1b4fa8;--c2:#f5e6c8;--c3:#f0a01a"><div class="top"></div><div class="bot"></div><div class="disc"></div><div class="strike"></div><div class="txt">SHIP</div></div>
+          <div class="mbox" style="--rot:8deg;--c1:#f0a01a;--c2:#2a2018;--c3:#1f7a44"><div class="top"></div><div class="bot"></div><div class="disc"></div><div class="strike"></div><div class="txt">DEER</div></div>
+        </div>
+        <div class="cname">Matchbox labels</div>
+      </div>
+
+      <div class="curio">
+        <div class="lattu">
+          <svg viewBox="0 0 44 60" aria-hidden="true">
+            <path d="M22 4 L22 14" stroke="#c9a06a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M6 20 Q22 8 38 20 Q34 40 22 52 Q10 40 6 20 Z" fill="#8a3b1c"/>
+            <path d="M6 20 Q22 8 38 20 Q30 24 22 25 Q14 24 6 20 Z" fill="#b5552a"/>
+            <ellipse cx="22" cy="30" rx="15" ry="3.2" fill="#5e2712" opacity=".7"/>
+            <ellipse cx="22" cy="38" rx="11" ry="2.4" fill="#5e2712" opacity=".55"/>
+            <path d="M22 52 L22 58" stroke="#3a2414" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="cname">Lattu</div>
+      </div>
+
+
+      <div class="curio">
+        <div class="boat">
+          <svg viewBox="0 0 60 44" aria-hidden="true">
+            <path d="M30 3 L30 26" stroke="#c9b89a" stroke-width="2"/>
+            <path d="M30 4 L48 24 L30 24 Z" fill="#f2ead6"/>
+            <path d="M30 4 L12 24 L30 24 Z" fill="#ddd2b8"/>
+            <path d="M4 26 L56 26 L46 40 L14 40 Z" fill="#f2ead6"/>
+            <path d="M4 26 L56 26 L52 31 L8 31 Z" fill="#cfc3a6"/>
+          </svg>
+          <div class="water"></div>
+        </div>
+        <div class="cname">Kaagaz ki kashti</div>
+      </div>
+
+      <div class="curio">
+        <div class="kite">
+          <svg viewBox="0 0 52 66" aria-hidden="true">
+            <path d="M26 2 L48 24 L26 46 L4 24 Z" fill="#e0483c"/>
+            <path d="M26 2 L48 24 L26 46 Z" fill="#f0c53c"/>
+            <path d="M26 2 L26 46 M4 24 L48 24" stroke="rgba(0,0,0,.35)" stroke-width="1.2"/>
+            <path d="M26 46 Q20 54 27 58 Q34 62 26 66" stroke="#c9b89a" stroke-width="1.4" fill="none"/>
+            <path d="M22 52 L31 55 M23 60 L31 62" stroke="#3f8fd0" stroke-width="2.4"/>
+          </svg>
+        </div>
+        <div class="cname">Patang</div>
+      </div>
+
+      <div class="curio">
+        <div class="marbles">
+          <div class="marble" style="--sz:22px;--m1:#4fd6ff;--m2:#1b4fa8;--d:0s"></div>
+          <div class="marble" style="--sz:18px;--m1:#ffd86b;--m2:#c2571a;--d:.7s"></div>
+          <div class="marble" style="--sz:25px;--m1:#8affc0;--m2:#177a4a;--d:1.5s"></div>
+          <div class="marble" style="--sz:16px;--m1:#ff9ecb;--m2:#a11d63;--d:2.2s"></div>
+        </div>
+        <div class="cname">Kanche</div>
+      </div>
+
+    </div>
+    <div class="shelfcap">Things that also spun, before the internet did · they speed up when the tape plays</div>
+  </div>
+
+  <!-- ============ RACK ============ -->
+  <div class="rack">
+    <div class="rhead">
+      <h2>90s Music <em>·</em> इंडिपॉप ९०</h2>
+      <div class="by">A tape by Amit Singh · 41 songs</div>
+    </div>
+
+    <div class="shelfhead"><b>SIDE A</b><span id="cntA">01–21</span><span class="ln"></span><span class="hint">scroll →</span></div>
+    <div class="rail" id="railA">
+      <div class="fade l"></div><div class="fade r"></div>
+      <button class="nav l" data-rail="railA" data-d="-1" aria-label="Scroll left">◀</button>
+      <button class="nav r" data-rail="railA" data-d="1" aria-label="Scroll right">▶</button>
+      <div class="grid" id="gridA"></div>
+    </div>
+
+    <div class="shelfhead"><b>SIDE B</b><span id="cntB">22–41</span><span class="ln"></span><span class="hint">scroll →</span></div>
+    <div class="rail" id="railB">
+      <div class="fade l"></div><div class="fade r"></div>
+      <button class="nav l" data-rail="railB" data-d="-1" aria-label="Scroll left">◀</button>
+      <button class="nav r" data-rail="railB" data-d="1" aria-label="Scroll right">▶</button>
+      <div class="grid" id="gridB"></div>
+    </div>
+
+    <div class="foot">
+      <span>Click a cassette to load it · Space = play/pause · ← → = track · S = shuffle · R = repeat · E = eject</span>
+      <span id="apiLine">Checking the playlist…</span>
+      <span>after <a href="https://roadways.wtf/" target="_blank" rel="noopener">roadways.wtf</a></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const TAPE = [
+ {id:'4R9Sy4PEOH8', t:'Ab Mujhe Raat Din',        a:'Sonu Nigam'},
+ {id:'4TPlNOiUK9k', t:'Dooba Dooba',              a:'Silk Route'},
+ {id:'8wRX93nSsOQ', t:'Ahista',                   a:'Pankaj Udhas'},
+ {id:'YW6deNQMoe8', t:'Piya Basanti',             a:'Ustad Sultan Khan & Chitra'},
+ {id:'iSlc3DnC_GY', t:'Jab Samne Tum Aa Jate Ho', a:'Jagjit Singh'},
+ {id:'EHhCVN825zs', t:'Dekha Hai Teri Aankhon Ko',a:'Sadu'},
+ {id:'qECTS-t_eQU', t:'Sochta Hun Uska Dil',      a:'Babul Supriyo'},
+ {id:'X00i-KKbmu4', t:'Kitni Haseen Zindagi',     a:'Lucky Ali'},
+ {id:'PzAsTeHT77E', t:'Meri Chunar Udd Udd Jaye', a:'Falguni Pathak'},
+ {id:'gZjnUcJy-Rw', t:'Dil Kya Kare',             a:'Adnan Sami'},
+ {id:'vbT7V13P8a4', t:'Aiyo Rama',                a:'Indipop'},
+ {id:'yroiJib3avQ', t:'Tera Chehra',              a:'Adnan Sami'},
+ {id:'m91koeJzRfw', t:'Aana Meri Gully',          a:'Euphoria'},
+ {id:'KD8TxFY_hwY', t:'Pal Pal Teri Yaad',        a:'Falguni Pathak'},
+ {id:'VnuAKmEwXiA', t:'Tanha Dil',                a:'Shaan'},
+ {id:'CTZ0ylAudZI', t:'Kabhi Yaadon Mein Aaun',   a:'Abhijeet'},
+ {id:'7eT7Ibyj0QI', t:'Chalne Lagi Hawayein',     a:'Abhijeet'},
+ {id:'78MvcVuXGHY', t:'Is Kadar Pyar Hai Tumse',  a:'Sonu Nigam'},
+ {id:'HtlJykR0rtI', t:'Kya Soorat Hai',           a:'Bombay Vikings'},
+ {id:'6NjEobhb0Qc', t:'Yaaron',                   a:'KK'},
+ {id:'TdjY9Tk7ZCM', t:'Yeh Hawa Kehti Hai Kya',   a:'Jai Walia'},
+ {id:'h7r3VMVVpLk', t:'Deewana Tera',             a:'Sonu Nigam'},
+ {id:'N0wST_k_feA', t:'Woh Pehli Baar',           a:'Vishal Dadlani'},
+ {id:'FxzzLucsx9A', t:'Aankhon Mein',             a:'Jai Walia'},
+ {id:'BUzCnq4xcMo', t:'Deewane Hoke Hum',         a:'Sonu Nigam'},
+ {id:'UU-vP3WWYrA', t:'Ho Gayi Hai Mohabbat',     a:'Aslam'},
+ {id:'2LkKAcnLcHM', t:'Deewana Tera',             a:'Sonu Nigam'},
+ {id:'rII0ikL9cdQ', t:'Dhoom Pichuck',            a:'Euphoria'},
+ {id:'nwXq1iKFmjY', t:'Tera Mera Pyar',           a:'Prem & Hardeep'},
+ {id:'myds4MqB_pQ', t:'Ab Mujhe Raat Din',        a:'Sonu Nigam'},
+ {id:'lFycsQXQpW8', t:'Tera Milna Pal Do Pal Ka', a:'Sonu Nigam'},
+ {id:'fC2v9Qy_m4c', t:'Kuchh Tum Socho',          a:'Sonu Nigam'},
+ {id:'fMKwk8jlur0', t:'Mohabbat Kabhi Maine',     a:'Sonu Nigam'},
+ {id:'Z96jt2jIDfM', t:'Mona Re',                  a:'Bombay Vikings'},
+ {id:'-Q2SWVgKWOc', t:'Koi Lauta De Woh',         a:'Abhijeet'},
+ {id:'5jhJEg7JOa4', t:'Tu',                       a:'Sonu Nigam'},
+ {id:'S4LFWlv9Xm4', t:'Sun Soniye',               a:'Nitin Bali'},
+ {id:'QYik1AmONiI', t:'Lafzon Mein',              a:'Abhijeet Sawant'},
+ {id:'wRCnWDa_W10', t:'Neele Neele Ambar Par',    a:'Nitin Bali'},
+ {id:'96XGtKC1cdQ', t:'Woh Beete Din',            a:'Tanya'},
+ {id:'-DUoP6iDr6E', t:'Tu Tu Hai Wahi (Remix)',   a:'Vaishali Samant'}
+];
+
+/* ============================================================
+   BANNER — monsoon evening breaking over a hill town.
+   Sunset behind the rain, terraced fields, a bus on the ghat
+   road, prayer flags, fireflies. Static layers bake once.
+   ============================================================ */
+(function cover(){
+  const cv = document.getElementById('cover'); if (!cv) return;
+  const c  = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const baked = document.createElement('canvas');
+  const bc = baked.getContext('2d');
+
+  let W=0,H=0,DPR=1,t=0,raf=0,last=0;
+  let rain=[], mists=[], windows=[], birds=[], flies=[], fronds=[], drips=[];
+  let roadPts=[], bus={p:0.02,dir:1};
+
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const lerp=(a,b,k)=>a+(b-a)*k;
+
+  /* rolling ridge; returns its height function so things can stand on it */
+  function ridge(baseY, amp, ph, fill, haze, hazeCol){
+    const yAt = x => baseY
+      - Math.sin(x*0.0040 + ph)*amp
+      - Math.sin(x*0.0107 + ph*2.3)*amp*0.44
+      - Math.sin(x*0.0261 + ph*0.7)*amp*0.15;
+    const path = () => {
+      bc.beginPath(); bc.moveTo(-8,H); bc.lineTo(-8,yAt(-8));
+      for(let x=-8;x<=W+8;x+=4) bc.lineTo(x,yAt(x));
+      bc.lineTo(W+8,H); bc.closePath();
+    };
+    path(); bc.fillStyle=fill; bc.fill();
+    if(haze>0){
+      const top=Math.min(yAt(0),yAt(W*0.33),yAt(W*0.66),yAt(W));
+      bc.save(); path(); bc.clip();
+      const g=bc.createLinearGradient(0,top,0,top+H*0.46);
+      g.addColorStop(0,'rgba('+hazeCol+','+haze+')');
+      g.addColorStop(1,'rgba('+hazeCol+',0)');
+      bc.fillStyle=g; bc.fillRect(0,top,W,H); bc.restore();
+    }
+    return yAt;
+  }
+
+  function conifer(x,y,h,col){
+    bc.fillStyle=col; const w=h*0.40;
+    bc.beginPath(); bc.moveTo(x,y-h);
+    for(let i=0;i<4;i++){ const ty=y-h+h*0.30+h*0.22*i, tw=w*(0.42+0.20*i);
+      bc.lineTo(x+tw,ty); bc.lineTo(x+tw*0.55,ty); }
+    bc.lineTo(x+w*0.15,y); bc.lineTo(x-w*0.15,y);
+    for(let i=3;i>=0;i--){ const ty=y-h+h*0.30+h*0.22*i, tw=w*(0.42+0.20*i);
+      bc.lineTo(x-tw*0.55,ty); bc.lineTo(x-tw,ty); }
+    bc.closePath(); bc.fill();
+  }
+
+  function broadleaf(x,y,r,col){
+    bc.fillStyle=col;
+    bc.fillRect(x-r*0.045,y-r*0.6,r*0.09,r*0.6);
+    for(let i=0;i<7;i++){ const a=rnd(0,6.2832), rr=rnd(r*0.17,r*0.40);
+      bc.beginPath();
+      bc.ellipse(x+Math.cos(a)*r*0.32, y-r*0.72+Math.sin(a)*r*0.22, rr, rr*0.76, rnd(0,3.14),0,6.2832);
+      bc.fill(); }
+  }
+
+  function litWindow(x,y,w,h,rgb,a){
+    const g=bc.createRadialGradient(x+w/2,y+h/2,0,x+w/2,y+h/2,Math.max(w,h)*3.6);
+    g.addColorStop(0,'rgba('+rgb+','+(a*0.40)+')'); g.addColorStop(1,'rgba('+rgb+',0)');
+    bc.fillStyle=g; bc.beginPath(); bc.arc(x+w/2,y+h/2,Math.max(w,h)*3.6,0,6.2832); bc.fill();
+    bc.fillStyle='rgba('+rgb+','+a+')'; bc.fillRect(x,y,w,h);
+  }
+
+  function house(x,y,s,body,roof){
+    const w=s*1.35,h=s*0.90;
+    bc.fillStyle=body; bc.fillRect(x-w/2,y-h,w,h);
+    bc.fillStyle=roof;
+    bc.beginPath(); bc.moveTo(x-w*0.64,y-h); bc.lineTo(x,y-h-s*0.46);
+    bc.lineTo(x+w*0.64,y-h); bc.closePath(); bc.fill();
+    const n=s>16?2:1;
+    for(let i=0;i<n;i++){
+      const wx=x-w*0.24+i*w*0.46, wy=y-h*0.64;
+      const ww=Math.max(2.2,s*0.20), wh=Math.max(2.4,s*0.24);
+      if(Math.random()<0.80){
+        const warm=Math.random()<0.86?'255,190,104':'188,224,255';
+        litWindow(wx-ww/2,wy,ww,wh,warm,rnd(.7,1));
+        if(windows.length<90) windows.push({x:wx-ww/2,y:wy,w:ww,h:wh,p:Math.random()*6.28,sp:rnd(.22,1.1)});
+      } else { bc.fillStyle='rgba(14,20,20,.9)'; bc.fillRect(wx-ww/2,wy,ww,wh); }
+    }
+  }
+
+  /* ============ BAKE ============ */
+  function bake(){
+    baked.width=W*DPR; baked.height=H*DPR;
+    bc.setTransform(DPR,0,0,DPR,0,0); bc.clearRect(0,0,W,H);
+    windows=[]; birds=[]; roadPts=[];
+
+    // --- sunset breaking under the storm ---
+    const sky=bc.createLinearGradient(0,0,0,H);
+    sky.addColorStop(0.00,'#1b1033');
+    sky.addColorStop(0.22,'#392052');
+    sky.addColorStop(0.44,'#71355c');
+    sky.addColorStop(0.62,'#bf5a4e');
+    sky.addColorStop(0.76,'#f0894a');
+    sky.addColorStop(0.88,'#ffc06a');
+    bc.fillStyle=sky; bc.fillRect(0,0,W,H);
+
+    // the sun, low and drowned in rain
+    const sx=W*0.685, sy=H*0.735, sr=Math.max(14,H*0.075);
+    let g=bc.createRadialGradient(sx,sy,0,sx,sy,sr*7.5);
+    g.addColorStop(0,'rgba(255,238,196,.55)');
+    g.addColorStop(.18,'rgba(255,196,120,.26)');
+    g.addColorStop(.55,'rgba(255,150,90,.10)');
+    g.addColorStop(1,'rgba(255,140,90,0)');
+    bc.fillStyle=g; bc.beginPath(); bc.arc(sx,sy,sr*7.5,0,6.2832); bc.fill();
+    bc.fillStyle='rgba(255,244,214,.72)';
+    bc.beginPath(); bc.arc(sx,sy,sr,0,6.2832); bc.fill();
+
+    // storm cloud, warm along its underside
+    for(let i=0;i<9;i++){
+      const cy=H*0.03+i*H*0.052, cw=rnd(W*0.26,W*0.66), cx=rnd(-W*0.1,W);
+      const ch=H*rnd(.028,.055);
+      g=bc.createLinearGradient(0,cy-ch,0,cy+ch);
+      g.addColorStop(0,'rgba(26,16,42,'+rnd(.30,.60)+')');
+      g.addColorStop(.72,'rgba(40,22,52,'+rnd(.24,.46)+')');
+      g.addColorStop(1,'rgba(255,150,110,'+rnd(.04,.13)+')');
+      bc.fillStyle=g; bc.beginPath(); bc.ellipse(cx,cy,cw,ch,0,0,6.2832); bc.fill();
+    }
+
+    // --- ridges, far to near: violet haze giving way to wet green ---
+    const r1 = ridge(H*0.575, H*0.105, 0.8, '#6a5480', .60, '255,176,130');
+    const r2 = ridge(H*0.660, H*0.095, 2.4, '#4e4670', .44, '255,166,120');
+    const r3 = ridge(H*0.755, H*0.085, 4.1, '#2f4553', .26, '255,158,110');
+    const r4 = ridge(H*0.870, H*0.062, 5.6, '#1b3025', .10, '255,150,100');
+
+    for(let x=-12;x<W+12;x+=rnd(9,22)) conifer(x,r1(x)+2,rnd(H*.04,H*.085),'rgba(104,86,124,.7)');
+    for(let x=-12;x<W+12;x+=rnd(8,19)) conifer(x,r2(x)+2,rnd(H*.05,H*.10),'rgba(66,58,92,.82)');
+    for(let x=-12;x<W+12;x+=rnd(7,16)) conifer(x,r3(x)+2,rnd(H*.055,H*.115),'rgba(34,58,62,.9)');
+
+    // --- terraced fields carved into the third ridge ---
+    for(let k=0;k<7;k++){
+      const off=H*0.016*k+H*0.012;
+      bc.beginPath(); bc.moveTo(-8,r3(-8)+off);
+      for(let x=-8;x<=W+8;x+=6) bc.lineTo(x, r3(x)+off+Math.sin(x*0.02+k)*H*0.004);
+      bc.strokeStyle='rgba(150,190,130,'+(0.16-k*0.017)+')';
+      bc.lineWidth=Math.max(1,H*0.006); bc.stroke();
+    }
+
+    // --- the ghat road, switchbacking down the near ridge ---
+    for(let i=0;i<=140;i++){
+      const p=i/140, x=lerp(-W*0.05, W*1.05, p);
+      const y=r4(x) + H*0.030 + Math.sin(p*Math.PI*2.4)*H*0.028;
+      roadPts.push({x,y});
+    }
+    bc.beginPath(); bc.moveTo(roadPts[0].x,roadPts[0].y);
+    roadPts.forEach(pt=>bc.lineTo(pt.x,pt.y));
+    bc.strokeStyle='#3d3a3a'; bc.lineWidth=Math.max(2.6,H*0.017); bc.lineCap='round'; bc.stroke();
+    bc.strokeStyle='rgba(255,206,150,.20)'; bc.lineWidth=Math.max(1,H*0.005); bc.stroke();
+
+    // --- the town, strung along the near ridge ---
+    const spots=[]; for(let i=0;i<14;i++) spots.push(rnd(W*0.04,W*0.96));
+    spots.sort((a,b)=>a-b);
+    spots.forEach(x=>{ if(Math.random()<.75)
+      broadleaf(x+rnd(-22,22), r4(x)+rnd(0,H*.04), rnd(H*.06,H*.11), '#16281d'); });
+    spots.forEach(x => house(x, r4(x)+rnd(H*.012,H*.05), H*rnd(.052,.082), '#2b3f34','#7a4f34'));
+
+    // the temple, with a lamp burning in it
+    (function spire(){
+      const x=W*0.44, y=r4(x)+H*0.012, s=H*0.052;
+      bc.fillStyle='#2b3f34'; bc.fillRect(x-s*0.30,y-s*1.7,s*0.60,s*1.7);
+      bc.fillStyle='#7a4f34';
+      bc.beginPath(); bc.moveTo(x-s*0.46,y-s*1.7); bc.lineTo(x,y-s*2.9);
+      bc.lineTo(x+s*0.46,y-s*1.7); bc.closePath(); bc.fill();
+      bc.strokeStyle='#7a4f34'; bc.lineWidth=1.4;
+      bc.beginPath(); bc.moveTo(x,y-s*2.9); bc.lineTo(x,y-s*3.3); bc.stroke();
+      litWindow(x-s*0.14,y-s*1.28,s*0.28,s*0.38,'255,196,110',.95);
+    })();
+
+    // --- prayer flags, strung between two poles ---
+    (function flags(){
+      const x0=W*0.08, x1=W*0.30, y0=r4(x0)-H*0.10, y1=r4(x1)-H*0.055, sag=H*0.055;
+      bc.strokeStyle='#20301f'; bc.lineWidth=1.6;
+      bc.beginPath(); bc.moveTo(x0,r4(x0)); bc.lineTo(x0,y0); bc.stroke();
+      bc.beginPath(); bc.moveTo(x1,r4(x1)); bc.lineTo(x1,y1); bc.stroke();
+      const cols=['#e0483c','#3f8fd0','#f2f0e6','#4aa661','#f0c53c'];
+      bc.strokeStyle='rgba(30,40,32,.9)'; bc.lineWidth=1;
+      bc.beginPath(); bc.moveTo(x0,y0);
+      bc.quadraticCurveTo((x0+x1)/2, (y0+y1)/2+sag, x1,y1); bc.stroke();
+      for(let i=1;i<15;i++){
+        const p=i/15;
+        const fx=(1-p)*(1-p)*x0+2*(1-p)*p*((x0+x1)/2)+p*p*x1;
+        const fy=(1-p)*(1-p)*y0+2*(1-p)*p*((y0+y1)/2+sag)+p*p*y1;
+        bc.fillStyle=cols[i%5];
+        bc.globalAlpha=.85;
+        bc.fillRect(fx-H*0.007, fy, H*0.014, H*0.026);
+        bc.globalAlpha=1;
+      }
+    })();
+
+    // --- wet foreground ---
+    const gy=H*0.965;
+    g=bc.createLinearGradient(0,gy-H*0.06,0,H);
+    g.addColorStop(0,'rgba(9,20,14,.55)'); g.addColorStop(1,'rgba(5,12,9,1)');
+    bc.fillStyle=g; bc.fillRect(0,gy-H*0.06,W,H-gy+H*0.06);
+    bc.strokeStyle='#0b1a12'; bc.lineCap='round';
+    for(let i=0;i<Math.round(W/5);i++){
+      const x=rnd(0,W), h=rnd(H*.012,H*.045);
+      bc.lineWidth=rnd(.8,1.8);
+      bc.beginPath(); bc.moveTo(x,H);
+      bc.quadraticCurveTo(x+rnd(-4,4),H-h*.6,x+rnd(-8,8),H-h); bc.stroke();
+    }
+
+    for(let i=0;i<6;i++) birds.push({x:rnd(W*.1,W*.9),y:rnd(H*.12,H*.30),p:Math.random()*6.28,sp:rnd(.25,.6)});
+  }
+
+  function frond(x,y,len,ang,sway,col){
+    c.save(); c.translate(x,y); c.rotate(ang+sway);
+    c.fillStyle=col;
+    c.beginPath(); c.moveTo(0,0);
+    c.bezierCurveTo(len*.30,-len*.30, len*.78,-len*.34, len,-len*.06);
+    c.bezierCurveTo(len*.74,-len*.02, len*.34, len*.10, 0,0);
+    c.closePath(); c.fill();
+    c.strokeStyle='rgba(0,0,0,.3)'; c.lineWidth=1;
+    for(let i=1;i<6;i++){ const p=i/6;
+      c.beginPath(); c.moveTo(len*p*.9,-len*.03*p); c.lineTo(len*p*.98,-len*.26*p); c.stroke(); }
+    c.restore();
+  }
+
+  /* ============ INIT ============ */
+  function size(){
+    DPR=Math.min(devicePixelRatio||1,2);
+    W=cv.clientWidth; H=cv.clientHeight;
+    if(!W||!H) return;
+    cv.width=W*DPR; cv.height=H*DPR; c.setTransform(DPR,0,0,DPR,0,0);
+    bake();
+    rain=Array.from({length:Math.round(W*H/2400)},()=>{
+      const d=Math.random();
+      return {x:Math.random()*W,y:Math.random()*H,d:d,l:5+d*26,v:4+d*15,o:.05+d*.22,w:.4+d*1.1};
+    });
+    mists=Array.from({length:5},(_,i)=>({y:H*(0.60+i*0.075),x:rnd(-W,0),
+      sp:rnd(.08,.24),h:H*rnd(.035,.075),a:rnd(.05,.11)}));
+    flies=Array.from({length:22},()=>({x:rnd(0,W),y:rnd(H*.72,H*.97),
+      p:Math.random()*6.28,sp:rnd(.25,.8),r:rnd(.8,1.7)}));
+    fronds=[
+      {x:-8,  y:H*0.02, len:H*0.32, ang: 0.52, ph:0.0, col:'#0b1a12'},
+      {x:-12, y:H*0.21, len:H*0.25, ang: 0.22, ph:1.4, col:'#0f2217'},
+      {x:W+8, y:H*0.02, len:H*0.33, ang: Math.PI-0.50, ph:2.6, col:'#0b1a12'},
+      {x:W+12,y:H*0.20, len:H*0.24, ang: Math.PI-0.18, ph:0.7, col:'#0f2217'}
+    ];
+    drips=[]; bus={p:0.02,dir:1};
+  }
+
+  /* ============ FRAME ============ */
+  function frame(){
+    t+=0.016;
+    c.clearRect(0,0,W,H);
+    c.drawImage(baked,0,0,W,H);
+
+    windows.forEach(w=>{ if(Math.sin(t*w.sp+w.p)>0.94){
+      c.fillStyle='rgba(14,20,20,.9)'; c.fillRect(w.x,w.y,w.w,w.h); } });
+
+    // the last bus of the evening, working its way along the ghat
+    if(roadPts.length){
+      bus.p += 0.00042*bus.dir;
+      if(bus.p>1){ bus.p=1; bus.dir=-1; } if(bus.p<0){ bus.p=0; bus.dir=1; }
+      const i=Math.min(roadPts.length-2, Math.floor(bus.p*(roadPts.length-1)));
+      const a=roadPts[i], b=roadPts[i+1];
+      const bw=Math.max(7,H*0.040), bh=Math.max(4,H*0.024);
+      const ang=Math.atan2(b.y-a.y,b.x-a.x);
+      c.save(); c.translate(a.x,a.y-bh*0.55); c.rotate(ang);
+      c.fillStyle='#c8541f'; c.fillRect(-bw/2,-bh,bw,bh*0.78);
+      c.fillStyle='#e8e2d2'; c.fillRect(-bw/2,-bh*0.34,bw,bh*0.34);
+      c.fillStyle='rgba(255,214,150,.9)';
+      for(let k=0;k<4;k++) c.fillRect(-bw/2+2+k*(bw-4)/4, -bh*0.86, (bw-6)/5, bh*0.34);
+      // headlight beam down the road
+      const hx=bus.dir>0?bw/2:-bw/2;
+      const hg=c.createLinearGradient(hx,0,hx+bus.dir*bw*2.6,0);
+      hg.addColorStop(0,'rgba(255,226,160,.5)'); hg.addColorStop(1,'rgba(255,226,160,0)');
+      c.fillStyle=hg;
+      c.beginPath(); c.moveTo(hx,-bh*0.5);
+      c.lineTo(hx+bus.dir*bw*2.6,-bh*1.5); c.lineTo(hx+bus.dir*bw*2.6,bh*0.6); c.closePath(); c.fill();
+      c.fillStyle='rgba(255,90,60,.9)'; c.fillRect(-hx-bus.dir*1.5,-bh*0.6,1.8,1.8);
+      c.restore();
+    }
+
+    // birds
+    c.strokeStyle='rgba(26,20,34,.7)'; c.lineWidth=1.3; c.lineCap='round';
+    birds.forEach(b=>{ b.x+=b.sp; if(b.x>W+16) b.x=-16;
+      const f=Math.sin(t*5+b.p)*3;
+      c.beginPath(); c.moveTo(b.x-4,b.y+f);
+      c.quadraticCurveTo(b.x-2,b.y-2+f,b.x,b.y+f);
+      c.quadraticCurveTo(b.x+2,b.y-2+f,b.x+4,b.y+f); c.stroke(); });
+
+    // mist rivers in the valleys
+    mists.forEach(m=>{ m.x+=m.sp; if(m.x>W) m.x=-W*0.7;
+      const g=c.createLinearGradient(0,m.y-m.h,0,m.y+m.h);
+      g.addColorStop(0,'rgba(226,206,214,0)');
+      g.addColorStop(.5,'rgba(226,206,214,'+m.a+')');
+      g.addColorStop(1,'rgba(226,206,214,0)');
+      c.fillStyle=g; c.beginPath(); c.ellipse(m.x,m.y,W*0.42,m.h,0,0,6.2832); c.fill(); });
+
+    // rain
+    c.lineCap='butt';
+    rain.forEach(d=>{ d.y+=d.v; d.x+=d.v*.15;
+      if(d.y>H){ d.y=-d.l; d.x=Math.random()*W; } if(d.x>W) d.x=0;
+      c.strokeStyle='rgba(238,224,220,'+d.o+')'; c.lineWidth=d.w;
+      c.beginPath(); c.moveTo(d.x,d.y); c.lineTo(d.x-d.l*.15,d.y+d.l); c.stroke(); });
+
+    // fireflies over the wet grass
+    flies.forEach(f=>{
+      f.x+=Math.sin(t*0.6+f.p)*0.35; f.y+=Math.cos(t*0.45+f.p*1.7)*0.18;
+      const b=Math.max(0,Math.sin(t*f.sp*2.4+f.p));
+      if(b<=0.02) return;
+      const g=c.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r*5);
+      g.addColorStop(0,'rgba(255,236,150,'+(b*.75)+')');
+      g.addColorStop(1,'rgba(255,236,150,0)');
+      c.fillStyle=g; c.beginPath(); c.arc(f.x,f.y,f.r*5,0,6.2832); c.fill();
+    });
+
+    // foreground leaves in the wind
+    const wind=Math.sin(t*0.9)*0.055+Math.sin(t*2.3)*0.018;
+    fronds.forEach(f=>frond(f.x,f.y,f.len,f.ang,
+      wind*Math.cos(f.ph)+Math.sin(t*1.4+f.ph)*0.022, f.col));
+
+    if(Math.random()<0.20){
+      const f=fronds[(Math.random()*fronds.length)|0];
+      drips.push({x:f.x+Math.cos(f.ang)*f.len, y:f.y+Math.sin(f.ang)*f.len, v:0.6});
+    }
+    c.strokeStyle='rgba(238,224,220,.45)'; c.lineWidth=1.1;
+    for(let i=drips.length-1;i>=0;i--){
+      const d=drips[i]; d.v+=0.16; d.y+=d.v;
+      if(d.y>H){ drips.splice(i,1); continue; }
+      c.beginPath(); c.moveTo(d.x,d.y); c.lineTo(d.x,d.y+d.v*1.5); c.stroke();
+    }
+
+    // warm damp air pooling at the bottom
+    const air=c.createLinearGradient(0,H*0.5,0,H);
+    air.addColorStop(0,'rgba(255,170,120,0)');
+    air.addColorStop(1,'rgba(255,160,110,.09)');
+    c.fillStyle=air; c.fillRect(0,H*0.5,W,H*0.5);
+
+    raf=requestAnimationFrame(loop);
+  }
+  function loop(now){ if(now-last>=32){ last=now; frame(); } else raf=requestAnimationFrame(loop); }
+
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden) cancelAnimationFrame(raf); else if(!reduce) raf=requestAnimationFrame(loop); });
+  let rt=0; addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(size,160); });
+
+  size();
+  if(reduce){ t=.6; frame(); cancelAnimationFrame(raf); } else raf=requestAnimationFrame(loop);
+})();
+
+/* ============================================================
+   STEREO PANEL — spectrum analyser, twin analog VU meters, knobs.
+   NOTE: YouTube audio is cross-origin, so the Web Audio API cannot
+   read the real waveform. Levels are synthesised from playback
+   state and shaped by the tone knob. Volume, however, is real.
+   ============================================================ */
+const Stereo = (function(){
+  const spec = document.getElementById('spectrum');
+  const vum  = document.getElementById('vu');
+  const sc = spec.getContext('2d');
+  const vc = vum.getContext('2d');
+  const BARS = 28;
+
+  let SW=0,SH=0,VW=0,VH=0,DPR=1;
+  let lv = new Float32Array(BARS), pk = new Float32Array(BARS), pv = new Float32Array(BARS);
+  let vuL=0, vuR=0, nL=0, nR=0;
+  let t=0, tone=0.5, bass=0.58, treb=0.5, bal=0.5, live=false, raf=0, last=0;
+
+  function size(){
+    DPR = Math.min(devicePixelRatio||1, 2);
+    SW=spec.clientWidth; SH=spec.clientHeight;
+    VW=vum.clientWidth;  VH=vum.clientHeight;
+    spec.width=SW*DPR; spec.height=SH*DPR; sc.setTransform(DPR,0,0,DPR,0,0);
+    vum.width=VW*DPR;   vum.height=VH*DPR; vc.setTransform(DPR,0,0,DPR,0,0);
+  }
+
+  /* a plausible spectrum: bass-tilted, several drifting partials,
+     a kick on a ~104bpm clock, and a little noise on top */
+  function spectrum(){
+    const beatHz = 104/60;
+    const ph = (t*beatHz) % 1;
+    const kick = Math.exp(-ph*7.5);
+    const snare = Math.exp(-(((t*beatHz)+0.5)%1)*11)*0.55;
+    const env = 0.60 + 0.40*kick + 0.16*snare;
+
+    for(let i=0;i<BARS;i++){
+      const f = i/(BARS-1);
+      // tone knob tilts the balance from bass-heavy to bright
+      const tilt = Math.pow(1-f, 2.1-tone*1.5) * (0.45+tone*0.9)
+                 + Math.pow(f, 2.4)*tone*0.55;
+      const w = 0.50*Math.sin(t*2.3 + i*0.62)
+              + 0.28*Math.sin(t*3.9 - i*1.31)
+              + 0.20*Math.sin(t*6.1 + i*2.07)
+              + 0.14*Math.sin(t*9.4 - i*0.44);
+      const kickLow = f<0.16 ? kick*0.75 : 0;
+      // a couple of standing formants, so the mid and top have life of their own
+      const form = 0.30*Math.exp(-Math.pow((f-0.30)/0.11,2))*(0.6+0.4*Math.sin(t*1.7))
+                 + 0.24*Math.exp(-Math.pow((f-0.58)/0.14,2))*(0.6+0.4*Math.sin(t*2.6+1.9))
+                 + 0.18*Math.exp(-Math.pow((f-0.84)/0.12,2))*(0.5+0.5*Math.sin(t*4.1+0.7));
+      // bass / treble shelves from the amplifier sliders
+      const shelf = f<0.30 ? (0.45+bass*1.3) : (f>0.62 ? (0.45+treb*1.3) : 1);
+      let v = (0.30 + 0.30*w + kickLow + form*1.5 + (Math.random()-0.5)*0.16)
+              * tilt * env * shelf * 1.5;
+      v = Math.max(0, Math.min(1, v));
+
+      // fast attack, slow release — like a real analyser
+      lv[i] += (v - lv[i]) * (v > lv[i] ? 0.55 : 0.14);
+      if (lv[i] > pk[i]) { pk[i] = lv[i]; pv[i] = 0; }
+      else { pv[i] += 0.0016; pk[i] = Math.max(lv[i], pk[i] - pv[i]); }
+    }
+    return env;
+  }
+
+  function drawSpectrum(){
+    sc.clearRect(0,0,SW,SH);
+    // screen
+    sc.fillStyle='#050806'; sc.fillRect(0,0,SW,SH);
+    // faint grid
+    sc.strokeStyle='rgba(120,255,190,.06)'; sc.lineWidth=1;
+    for(let y=1;y<5;y++){ const gy=SH*y/5; sc.beginPath(); sc.moveTo(0,gy+.5); sc.lineTo(SW,gy+.5); sc.stroke(); }
+
+    const gap=2, bw=(SW-gap*(BARS+1))/BARS;
+    for(let i=0;i<BARS;i++){
+      const x=gap+i*(bw+gap);
+      const h=Math.max(1.5, lv[i]*(SH-6));
+      const y=SH-3-h;
+      const g=sc.createLinearGradient(0,SH,0,SH-(SH-6));
+      g.addColorStop(0,'#12d94a'); g.addColorStop(.55,'#7cf03a');
+      g.addColorStop(.8,'#ffd400'); g.addColorStop(1,'#ff3b30');
+      sc.fillStyle=g; sc.fillRect(x,y,bw,h);
+      // segment gaps, so it reads as an LED ladder
+      sc.fillStyle='rgba(5,8,6,.55)';
+      for(let yy=SH-3; yy>y; yy-=4) sc.fillRect(x,yy-1,bw,1.4);
+      // peak cap
+      const py=SH-3-Math.max(2,pk[i]*(SH-6));
+      sc.fillStyle='rgba(230,255,240,.85)'; sc.fillRect(x,py-1.5,bw,1.8);
+    }
+    // glass
+    const gl=sc.createLinearGradient(0,0,0,SH);
+    gl.addColorStop(0,'rgba(255,255,255,.09)'); gl.addColorStop(.4,'rgba(255,255,255,0)');
+    sc.fillStyle=gl; sc.fillRect(0,0,SW,SH*0.5);
+  }
+
+  /* two cream-faced analog meters with needles that overshoot and settle */
+  function meter(cx,cy,r,val,label){
+    // face
+    vc.save();
+    const fg=vc.createLinearGradient(0,cy-r,0,cy+r*0.5);
+    fg.addColorStop(0,'#f3e6c8'); fg.addColorStop(1,'#cbb894');
+    vc.fillStyle=fg;
+    vc.beginPath(); vc.moveTo(cx-r,cy+r*0.52);
+    vc.lineTo(cx-r,cy-r*0.62); vc.lineTo(cx+r,cy-r*0.62); vc.lineTo(cx+r,cy+r*0.52);
+    vc.closePath(); vc.fill();
+
+    const A0=-Math.PI*0.80, A1=-Math.PI*0.20;
+    const ox=cx, oy=cy+r*0.40;               // pivot, below the face
+    const AR=r*0.86;
+    // arc + red zone
+    vc.lineWidth=Math.max(1.3,r*0.035); vc.strokeStyle='#3d3320';
+    vc.beginPath(); vc.arc(ox,oy,AR,A0,A1); vc.stroke();
+    vc.strokeStyle='#c62828'; vc.lineWidth=Math.max(1.6,r*0.05);
+    vc.beginPath(); vc.arc(ox,oy,AR,A0+(A1-A0)*0.76,A1); vc.stroke();
+
+    // ticks, then numbers sitting well inside them
+    vc.strokeStyle='#3d3320'; vc.fillStyle='#3d3320';
+    vc.textAlign='center'; vc.textBaseline='middle';
+    const marks=['-20','','-10','','-5','','0','','+3'];
+    for(let i=0;i<9;i++){
+      const a=A0+(A1-A0)*(i/8), big=i%2===0;
+      vc.lineWidth=big?1.5:0.9;
+      vc.beginPath();
+      vc.moveTo(ox+Math.cos(a)*AR,           oy+Math.sin(a)*AR);
+      vc.lineTo(ox+Math.cos(a)*AR*(big?.80:.87), oy+Math.sin(a)*AR*(big?.80:.87));
+      vc.stroke();
+    }
+    vc.font='700 '+Math.max(4.5,r*0.125)+'px ui-monospace,monospace';
+    for(let i=0;i<9;i+=2){
+      if(!marks[i]) continue;
+      const a=A0+(A1-A0)*(i/8);
+      vc.fillText(marks[i], ox+Math.cos(a)*AR*0.66, oy+Math.sin(a)*AR*0.66);
+    }
+    // channel plate, tucked into the top-left corner away from the needle
+    vc.textAlign='left';
+    vc.font='700 '+Math.max(5,r*0.15)+'px ui-monospace,monospace';
+    vc.fillStyle='rgba(61,51,32,.9)';
+    vc.fillText('VU', cx-r*0.92, cy-r*0.48);
+    vc.textAlign='right';
+    vc.fillText(label, cx+r*0.92, cy-r*0.48);
+    vc.textAlign='center'; vc.textBaseline='alphabetic';
+
+    // needle
+    const a=A0+(A1-A0)*Math.max(0,Math.min(1,val));
+    vc.strokeStyle='#1a1208'; vc.lineWidth=Math.max(1.1,r*0.033); vc.lineCap='round';
+    vc.beginPath(); vc.moveTo(ox,oy);
+    vc.lineTo(ox+Math.cos(a)*AR*0.94, oy+Math.sin(a)*AR*0.94); vc.stroke();
+    vc.fillStyle='#1a1208';
+    vc.beginPath(); vc.arc(ox,oy,r*0.07,0,6.2832); vc.fill();
+
+    // glass + bezel
+    const gg=vc.createLinearGradient(0,cy-r*0.62,0,cy+r*0.52);
+    gg.addColorStop(0,'rgba(255,255,255,.30)'); gg.addColorStop(.42,'rgba(255,255,255,.04)');
+    gg.addColorStop(1,'rgba(0,0,0,.10)');
+    vc.fillStyle=gg;
+    vc.fillRect(cx-r,cy-r*0.62,r*2,r*1.14);
+    vc.strokeStyle='rgba(0,0,0,.85)'; vc.lineWidth=1.4;
+    vc.strokeRect(cx-r+.7,cy-r*0.62+.7,r*2-1.4,r*1.14-1.4);
+    vc.restore();
+  }
+
+  function drawVU(env){
+    vc.clearRect(0,0,VW,VH);
+    const r=Math.min(VW*0.235, VH*0.62);
+    meter(VW*0.26, VH*0.50, r, nL, 'L');
+    meter(VW*0.74, VH*0.50, r, nR, 'R');
+  }
+
+  function frame(){
+    t += 0.032;
+    const env = spectrum();
+
+    // needles: ballistic, with a touch of overshoot
+    const panL = Math.min(1, 2-bal*2), panR = Math.min(1, bal*2);
+    const tgtL = live ? Math.min(1,(0.30+env*0.46+Math.sin(t*3.1)*0.09)*panL) : 0;
+    const tgtR = live ? Math.min(1,(0.30+env*0.44+Math.sin(t*2.7+1.4)*0.10)*panR) : 0;
+    vuL += (tgtL-vuL)*0.26; vuR += (tgtR-vuR)*0.26;
+    nL  += (vuL-nL)*0.42;   nR  += (vuR-nR)*0.42;
+
+    if (!live) for(let i=0;i<BARS;i++){ lv[i]*=0.86; pk[i]*=0.90; }
+
+    drawSpectrum(); drawVU(env);
+    raf=requestAnimationFrame(loop);
+  }
+  function loop(now){ if(now-last>=32){ last=now; frame(); } else raf=requestAnimationFrame(loop); }
+
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden) cancelAnimationFrame(raf); else raf=requestAnimationFrame(loop);
+  });
+  let rt=0; addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(size,160); });
+
+  size(); raf=requestAnimationFrame(loop);
+
+  return {
+    setLive(v){ live = !!v; },
+    setTone(v){ tone = Math.max(0,Math.min(1,v)); },
+    setBass(v){ bass = Math.max(0,Math.min(1,v)); },
+    setTreble(v){ treb = Math.max(0,Math.min(1,v)); },
+    setBalance(v){ bal = Math.max(0,Math.min(1,v)); },
+    resize:size
+  };
+})();
+
+/* ---------- rotary knobs ---------- */
+function makeKnob(el, value, onChange){
+  let v = value;                     // 0..1
+  const dial = el.querySelector('.dial');
+  function render(){
+    dial.style.transform = 'rotate('+(-135 + v*270)+'deg)';
+    el.setAttribute('aria-valuenow', Math.round(v*100));
+  }
+  function set(nv){ v = Math.max(0, Math.min(1, nv)); render(); onChange(v); }
+  let dragging=false, sy=0, sv=0;
+  el.addEventListener('pointerdown', e=>{
+    dragging=true; sy=e.clientY; sv=v; el.setPointerCapture(e.pointerId); e.preventDefault();
+  });
+  el.addEventListener('pointermove', e=>{ if(dragging) set(sv + (sy-e.clientY)/140); });
+  el.addEventListener('pointerup',   ()=>{ dragging=false; });
+  el.addEventListener('pointercancel',()=>{ dragging=false; });
+  el.addEventListener('wheel', e=>{ set(v - Math.sign(e.deltaY)*0.05); e.preventDefault(); }, {passive:false});
+  el.addEventListener('keydown', e=>{
+    if(e.key==='ArrowUp'||e.key==='ArrowRight') { set(v+0.05); e.preventDefault(); }
+    if(e.key==='ArrowDown'||e.key==='ArrowLeft'){ set(v-0.05); e.preventDefault(); }
+  });
+  render(); onChange(v);
+  return { set, get:()=>v };
+}
+
+const SIDE_A_END = 21;                       // tracks 1..21 = side A
+const GLOWS = ['#ff2d95','#8a3fd6','#ff6b1a','#00b6d6','#d62f7a','#ff9a1f','#5b2bff','#e0356b'];
+
+let idx = 0, player = null, ready = false, playing = false, wantPlay = false;
+let loaded = false, busy = false, vol = 0.7;
+let shuffle = false, repeatMode = 0;   // 0 off, 1 all, 2 one
+let bag = [], errStreak = 0;
+
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,'0');
+const fmt = s => { s = Math.max(0, Math.floor(s||0)); return Math.floor(s/60)+':'+pad(s%60); };
+const sideOf = i => i < SIDE_A_END ? 'A' : 'B';
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ===== rack ===== */
+function thumbFor(imgEl, id){
+  const hi = new Image(); hi.referrerPolicy = 'no-referrer';
+  function lo(){
+    const m = new Image(); m.referrerPolicy = 'no-referrer';
+    m.onload = () => { imgEl.src = m.src; imgEl.classList.add('ok'); };
+    m.src = 'https://i.ytimg.com/vi/'+id+'/mqdefault.jpg';
+  }
+  hi.onload = () => { if (hi.naturalWidth >= 200){ imgEl.src = hi.src; imgEl.classList.add('ok'); } else lo(); };
+  hi.onerror = lo;
+  hi.src = 'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';
+}
+
+/* ============================================================
+   YOUTUBE DATA API — metadata only
+   ------------------------------------------------------------
+   This does NOT enable playback. The Data API serves titles,
+   durations and playlist contents; it cannot deliver audio, and
+   no key defeats the embed-origin check behind error 153.
+
+   What it does buy, once the page is on a real server:
+     · the playlist stays in sync — add a song on YouTube and it
+       turns up here with no rebuild
+     · real durations on the display and the cassettes
+     · titles straight from the source
+     · an embeddable check, so tracks the owner has blocked get
+       flagged in the rack instead of failing silently mid-play
+
+   SECURITY: a key in a web page is readable by anyone who opens
+   view-source. Lock it down in Google Cloud Console — restrict
+   by HTTP referrer to your own domain, and to the YouTube Data
+   API alone. Set it to '' to run purely on the built-in list.
+   ============================================================ */
+const YT_API_KEY  = 'AIzaSyCYmzxVNbFilz-6XNfooeuQyE_5DCfTZ6k';
+const YT_PLAYLIST = 'PLErS26AGDxXQ';
+
+const durSec = iso => {
+  const m = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(iso||'') || [];
+  return (+m[1]||0)*3600 + (+m[2]||0)*60 + (+m[3]||0);
+};
+
+function apiStatus(tag, msg){
+  const el = $('apiTag');
+  if (el){ el.textContent = tag; el.title = msg;
+    el.style.color = tag==='SYNCED' ? '#7dffc8' : 'rgba(242,236,226,.4)'; }
+  const f = $('apiLine'); if (f) f.textContent = msg;
+}
+
+async function syncFromApi(){
+  if (!YT_API_KEY){ apiStatus('OFF','Running on the built-in track list.'); return; }
+  const base = 'https://www.googleapis.com/youtube/v3/';
+  try {
+    let items = [], pageToken = '';
+    do {
+      const r = await fetch(base+'playlistItems?part=snippet&maxResults=50&playlistId='+
+        YT_PLAYLIST+'&key='+YT_API_KEY+(pageToken?'&pageToken='+pageToken:''));
+      const j = await r.json();
+      if (j.error) throw new Error(j.error.message || 'API error');
+      items = items.concat(j.items||[]);
+      pageToken = j.nextPageToken || '';
+    } while (pageToken && items.length < 200);
+    if (!items.length) throw new Error('playlist came back empty');
+
+    const fresh = items
+      .filter(it => it.snippet && it.snippet.resourceId && it.snippet.resourceId.videoId)
+      .map(it => ({
+        id: it.snippet.resourceId.videoId,
+        t : (it.snippet.title||'').replace(/\s*\((?:official|lyrical?|full|audio)[^)]*\)/ig,'').trim(),
+        a : (it.snippet.videoOwnerChannelTitle||'').replace(/\s*-\s*Topic$/,'').trim(),
+        d : 0, ok: true
+      }))
+      .filter(v => v.t && !/^(Private|Deleted) video$/i.test(v.t));
+    if (!fresh.length) throw new Error('no playable items in the playlist');
+
+    for (let i=0;i<fresh.length;i+=50){
+      const slice = fresh.slice(i,i+50);
+      const r = await fetch(base+'videos?part=contentDetails,status&id='+
+        slice.map(v=>v.id).join(',')+'&key='+YT_API_KEY);
+      const j = await r.json();
+      if (j.error) throw new Error(j.error.message || 'API error');
+      (j.items||[]).forEach(v => {
+        const hit = fresh.find(f => f.id === v.id);
+        if (!hit) return;
+        hit.d  = durSec(v.contentDetails && v.contentDetails.duration);
+        hit.ok = !(v.status && v.status.embeddable === false);
+      });
+    }
+
+    // keep the hand-corrected artist names where YouTube only knows a label channel
+    fresh.forEach(f => {
+      const old = TAPE.find(o => o.id === f.id);
+      if (old && (!f.a || /VEVO|Records|Music India|Topic|Saregama|T-Series/i.test(f.a))) f.a = old.a;
+      if (!f.a) f.a = 'Unknown';
+    });
+
+    TAPE.length = 0; fresh.forEach(f => TAPE.push(f));
+    idx = Math.min(idx, TAPE.length-1);
+    buildRack(); paint(idx); railsRefresh();
+
+    const blocked = TAPE.filter(v => !v.ok).length;
+    apiStatus('SYNCED', TAPE.length+' tracks live from your playlist'+
+      (blocked ? ' · '+blocked+' cannot be embedded (flagged in the rack)' : ''));
+  } catch(err){
+    apiStatus('OFFLINE', String(err.message||err).slice(0,140)+
+      ' — running on the built-in track list.');
+  }
+}
+
+function buildRack(){
+  $('gridA').innerHTML = ''; $('gridB').innerHTML = '';
+  TAPE.forEach((tr,i) => {
+    const b = document.createElement('button');
+    b.className = 'mini'; b.dataset.i = i;
+    b.title = pad(i+1)+' · '+tr.t+' — '+tr.a;
+    b.innerHTML =
+      '<div class="mcase"><div class="mlabel">'+
+        '<img alt="" referrerpolicy="no-referrer" src="data:image/svg+xml;utf8,'+
+          '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3C/svg%3E">'+
+        '<div class="mfall">'+esc(tr.t)+'</div><div class="mstripe"></div>'+
+        '<div class="mno">'+pad(i+1)+'</div></div>'+
+        '<div class="mreels"><i></i><i></i></div></div>'+
+      '<div class="mcap"><div class="mt">'+esc(tr.t)+'</div>'+
+      '<div class="ma">'+esc(tr.a)+(tr.d?' · '+fmt(tr.d):'')+'</div></div>';
+    if (tr.ok === false){
+      b.classList.add('blocked');
+      b.title += '  (owner has disabled embedding — opens on YouTube)';
+    }
+    b.addEventListener('click', () => load(i, true));
+    (i < SIDE_A_END ? $('gridA') : $('gridB')).appendChild(b);
+    thumbFor(b.querySelector('img'), tr.id);
+  });
+  $('cntA').textContent = '01–'+pad(SIDE_A_END);
+  $('cntB').textContent = pad(SIDE_A_END+1)+'–'+TAPE.length;
+}
+buildRack();
+
+/* ===== paint ===== */
+function paint(i){
+  const tr = TAPE[i], side = sideOf(i);
+  $('lNo').textContent      = pad(i+1);
+  $('lSide').textContent    = 'SIDE ' + side;
+  $('lTitle').textContent   = tr.t;
+  $('lArtist').textContent  = tr.a;
+  $('lcdNo').innerHTML      = pad(i+1) + '<small> / ' + TAPE.length + '</small>';
+  if (tr.d && !playing) $('lcdTime').textContent = '0:00 / ' + fmt(tr.d);
+  $('tagSide').textContent  = 'SIDE ' + side;
+  $('pillSide').textContent = side;
+  $('sideA').classList.toggle('on', side === 'A');
+  $('sideB').classList.toggle('on', side === 'B');
+
+  const nx = TAPE[(i+1) % TAPE.length];
+  const line = pad(i+1)+'. '+tr.t.toUpperCase()+'  —  '+tr.a.toUpperCase()
+             + '     ✦     NEXT: '+nx.t.toUpperCase()+'  —  '+nx.a.toUpperCase()+'     ✦     ';
+  $('marq').textContent = line + line;      // doubled so the loop is seamless
+
+  const lab = $('label'), art = $('lArt');
+  lab.classList.remove('hasart');
+  const sizes = ['maxresdefault','sddefault','hqdefault','mqdefault'];
+  let si = 0;
+  (function tryNext(){
+    if (si >= sizes.length) return;
+    const probe = new Image(); probe.referrerPolicy = 'no-referrer';
+    probe.onload = () => {
+      if (probe.naturalWidth < 200 && si < sizes.length-1){ si++; tryNext(); return; }
+      art.src = probe.src; lab.classList.add('hasart');
+    };
+    probe.onerror = () => { si++; tryNext(); };
+    probe.src = 'https://i.ytimg.com/vi/'+tr.id+'/'+sizes[si]+'.jpg';
+  })();
+  art.alt = tr.t + ' — ' + tr.a;
+
+  [...document.querySelectorAll('.mini')].forEach(r =>
+    r.classList.toggle('now', +r.dataset.i === i));
+  if (window.tuneTo) window.tuneTo(i);
+  document.title = tr.t + ' — ' + tr.a + ' · इंडिपॉप ९०';
+}
+
+function setState(s){ $('tagState').textContent = s; }
+
+/* ===== cassette load / eject ===== */
+function load(i, play){
+  if (busy) return;
+  i = ((i % TAPE.length) + TAPE.length) % TAPE.length;
+  const first = !loaded;
+  busy = true;
+  if (play) wantPlay = true;
+
+  const seat = () => {
+    idx = i; paint(i); revealMini(i);
+    document.body.classList.add('dooropen');
+    setState('LOAD');
+    setTimeout(() => {
+      document.body.classList.remove('ejected');
+      setTimeout(() => {
+        document.body.classList.remove('dooropen');
+        loaded = true; busy = false;
+        if (IS_FILE && videoShown){ localPanel(i); return; }
+        if (videoShown){ goDirect(i, true); return; }   // stay in direct mode
+        setState(wantPlay ? 'PLAY' : 'STOP');
+        if (ready && player){
+          if (wantPlay) player.loadVideoById(TAPE[i].id);
+          else player.cueVideoById(TAPE[i].id);
+        }
+      }, 620);
+    }, 220);
+  };
+
+  if (first){ seat(); return; }
+  if (ready && player) player.stopVideo();
+  playing = false;
+  document.body.classList.remove('playing');
+  Stereo.setLive(false);
+  document.body.classList.add('dooropen');
+  setState('EJECT');
+  setTimeout(() => { document.body.classList.add('ejected'); setTimeout(seat, 480); }, 260);
+}
+
+function eject(){
+  if (busy || !loaded) return;
+  busy = true;
+  if (ready && player) player.stopVideo();
+  playing = false; wantPlay = false; loaded = false;
+  document.body.classList.remove('playing');
+  Stereo.setLive(false);
+  document.body.classList.add('dooropen');
+  setState('EJECT');
+  setTimeout(() => {
+    document.body.classList.add('ejected');
+    setTimeout(() => { busy = false; setState('STOP'); }, 500);
+  }, 260);
+}
+
+/* ===== what plays next =====
+   Shuffle draws from a bag so nothing repeats until the tape is exhausted. */
+function refillBag(){ bag = TAPE.map((_,i)=>i).filter(i => i !== idx); }
+function nextIndex(){
+  if (repeatMode === 2) return idx;
+  if (shuffle){
+    if (!bag.length) refillBag();
+    const k = Math.floor(Math.random()*bag.length);
+    return bag.splice(k,1)[0];
+  }
+  return idx + 1;
+}
+function advance(){
+  if (repeatMode === 2){ load(idx, true); return; }
+  // walk past anything YouTube says cannot be embedded
+  let guard = 0;
+  const playable = j => TAPE[j] && TAPE[j].ok !== false;
+  if (!shuffle){
+    let nx = idx + 1;
+    while (nx < TAPE.length && !playable(nx) && guard++ < TAPE.length) nx++;
+    if (nx < TAPE.length && nx !== idx + 1){ load(nx, true); return; }
+  }
+  if (shuffle){ load(nextIndex(), true); return; }
+  const nx = idx + 1;
+  if (nx >= TAPE.length){
+    if (repeatMode === 1){ setState('REWIND'); load(0, true); }
+    else { setState('END'); stopAll(); }
+    return;
+  }
+  if (sideOf(idx) === 'A' && sideOf(nx) === 'B') setState('FLIP');
+  load(nx, true);
+}
+
+/* ===== transport ===== */
+function toggle(){
+  if (IS_FILE){ localPanel(idx); return; }
+  if (!loaded){ load(idx, true); return; }
+  if (!ready || !player){ wantPlay = true; return; }
+  if (playing) player.pauseVideo(); else { wantPlay = true; player.playVideo(); }
+}
+function stopAll(){
+  if (videoShown){ hideDirect(); return; }
+  if (ready && player){ player.pauseVideo(); player.seekTo(0, true); }
+  playing = false; wantPlay = false;
+  document.body.classList.remove('playing');
+  Stereo.setLive(false);
+  setPlayUI(false); setState('STOP');
+}
+function setPlayUI(on){
+  const b = $('playBtn');
+  b.classList.toggle('active', on);
+  b.textContent = on ? '❚❚ PAUSE' : '▶ PLAY';
+}
+
+/* ===== diagnostics =====
+   If audio never starts, say why rather than sitting there mute. */
+function ytLink(){
+  return '<a href="https://www.youtube.com/watch?v='+TAPE[idx].id+'" target="_blank" rel="noopener" '+
+         'style="color:#ffd400">Open this song on YouTube \u2197</a>, or press VIDEO to play it in the door.';
+}
+function notice(title, html){
+  const n = $('notice');
+  n.innerHTML = '<b>'+title+'</b>'+html;
+  n.hidden = false;
+}
+if (location.protocol === 'file:'){
+  notice('Opened from disk — YouTube will not play here',
+    'YouTube blocks embedded playback on any <code>file://</code> page (error 153), and that '+
+    'applies to every workaround, so this copy cannot produce sound. Press PLAY and you get a '+
+    'direct link to the song instead. To get the real deck — sound, analyser, auto-advance — '+
+    'put <code>index.html</code> on a web server, or run <code>npx serve .</code> in this '+
+    'folder and open <code>localhost:3000</code>.');
+}
+let apiOK = false;
+setTimeout(() => {
+  if (!apiOK && location.protocol !== 'file:')
+    notice('Player did not load',
+      'The YouTube player script could not start. That is usually a blocked network, '+
+      'an ad-blocker, or an embedded preview pane that sandboxes external frames. '+
+      'Opening this page in a normal browser tab will fix it.');
+}, 8000);
+
+/* ===== YouTube ===== */
+function onYouTubeIframeAPIReady(){
+  apiOK = true;
+  player = new YT.Player('yt', {
+    height:'1', width:'1', videoId: TAPE[0].id,
+    playerVars:Object.assign(
+      {autoplay:0,controls:0,disablekb:1,playsinline:1,rel:0,modestbranding:1},
+      /^https?:$/.test(location.protocol) ? {origin:location.origin} : {}
+    ),
+    events:{
+      onReady: () => {
+        ready = true;
+        player.setVolume(Math.round(vol*100));
+        if (loaded){ wantPlay ? player.loadVideoById(TAPE[idx].id) : player.cueVideoById(TAPE[idx].id); }
+      },
+      onStateChange: e => {
+        if (e.data === YT.PlayerState.PLAYING){
+          playing = true; wantPlay = true;
+          document.body.classList.add('playing');
+          Stereo.setLive(true);
+          setPlayUI(true); setState('PLAY');
+          $('notice').hidden = true; errStreak = 0;
+        } else if (e.data === YT.PlayerState.PAUSED){
+          playing = false;
+          document.body.classList.remove('playing');
+          Stereo.setLive(false);
+          setPlayUI(false); setState('PAUSE');
+        } else if (e.data === YT.PlayerState.BUFFERING){
+          setState('CUE');
+        } else if (e.data === YT.PlayerState.ENDED){
+          playing = false;
+          document.body.classList.remove('playing');
+          Stereo.setLive(false); setPlayUI(false);
+          errStreak = 0;
+          advance();
+        }
+      },
+      onError: e => {
+        setState('ERR');
+        const why = ({2:'bad video id',5:'playback error',100:'video removed',
+                      101:'embedding disabled by the owner',150:'embedding disabled by the owner'})[e.data]
+                    || ('error '+e.data);
+        // 101/150/153 = YouTube will not honour the scripted embed here.
+        // Skipping is pointless; every track will fail the same way.
+        if (e.data === 101 || e.data === 150 || e.data === 153){
+          errStreak = 0;
+          goDirect(idx, true);
+          notice('Switched to direct mode',
+            'YouTube refused the scripted player (error '+e.data+'), which is what happens when '+
+            'the page is opened straight from disk. The song is now in a plain YouTube window '+
+            'inside the cassette door \u2014 press play in there. Picking another cassette still '+
+            'works. To get the full deck back, serve the file over http rather than opening it '+
+            'from a folder.');
+          return;
+        }
+        errStreak++;
+        // Bail out instead of stampeding through the whole tape.
+        if (errStreak >= 3){
+          wantPlay = false; playing = false;
+          document.body.classList.remove('playing');
+          Stereo.setLive(false); setPlayUI(false); setState('HALT');
+          notice('Stopped — nothing will play here',
+            errStreak+' tracks in a row failed ('+why+'), so the deck has stopped rather than '+
+            'skipping through all 41. This is almost always the page being opened from disk or '+
+            'inside a preview pane that blocks embedded players. '+ytLink()+
+            ' Press PLAY to try again.');
+          errStreak = 0;
+          return;
+        }
+        notice('Skipped a track',
+          '\u201C'+TAPE[idx].t+'\u201D could not play here \u2014 '+why+'. Trying the next one. '+ytLink());
+        setTimeout(() => advance(), 1400);
+      }
+    }
+  });
+}
+
+/* ===== 4Hz loop ===== */
+function tick(){
+  const d = new Date();
+  $('clock').textContent = pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+
+  let prog = 0;
+  if (ready && player && player.getDuration){
+    const dur = player.getDuration()||0, cu = player.getCurrentTime()||0;
+    prog = dur ? cu/dur : 0;
+    $('lcdTime').textContent = fmt(cu)+' / '+fmt(dur);
+    $('fill').style.width = (prog*100)+'%';
+    $('counter').textContent = 'C ' + String(Math.floor(cu*2.1) % 10000).padStart(4,'0');
+  }
+  $('tapeL').setAttribute('r', (40 - prog*22).toFixed(1));
+  $('tapeR').setAttribute('r', (18 + prog*22).toFixed(1));
+  $('recLed').classList.toggle('on', playing);
+}
+
+/* ===== tuning dial =====
+   Decorative, but it moves with the tape: each track sits at its own
+   spot on the band, so the needle sweeps when you change songs. */
+(function bandDial(){
+  const cv=$('band'); if(!cv) return;
+  const c=cv.getContext('2d');
+  function draw(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    const w=cv.clientWidth, h=cv.clientHeight;
+    if(!w||!h) return;
+    cv.width=w*dpr; cv.height=h*dpr; c.setTransform(dpr,0,0,dpr,0,0);
+    c.clearRect(0,0,w,h);
+    c.strokeStyle='rgba(125,255,200,.30)'; c.fillStyle='rgba(125,255,200,.55)';
+    c.font='600 7px ui-monospace,monospace'; c.textAlign='center';
+    for(let mhz=88; mhz<=108; mhz+=0.5){
+      const p=(mhz-88)/20, x=6+p*(w-12);
+      const big=Math.abs(mhz%2)<0.01;
+      c.lineWidth=big?1.2:0.7;
+      c.beginPath(); c.moveTo(x,h-10); c.lineTo(x,h-10-(big?11:6)); c.stroke();
+      if(big) c.fillText(String(mhz), x, h-2);
+    }
+    c.strokeStyle='rgba(125,255,200,.18)'; c.lineWidth=1;
+    c.beginPath(); c.moveTo(4,h-10.5); c.lineTo(w-4,h-10.5); c.stroke();
+    c.fillStyle='rgba(125,255,200,.35)'; c.textAlign='left';
+    c.font='600 6.5px ui-monospace,monospace';
+    c.fillText('MHz', 6, 9);
+  }
+  let rt=0; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(draw,160);});
+  draw(); setTimeout(draw,300);
+  window.tuneTo = i => {
+    const p = TAPE.length>1 ? i/(TAPE.length-1) : 0.5;
+    $('bandNeedle').style.left = (5 + p*90) + '%';
+  };
+})();
+
+/* ===== rails ===== */
+function railState(id){
+  const rail = $(id), g = rail.querySelector('.grid');
+  rail.classList.toggle('canL', g.scrollLeft > 4);
+  rail.classList.toggle('canR', g.scrollLeft + g.clientWidth < g.scrollWidth - 4);
+}
+['railA','railB'].forEach(id => {
+  const g = $(id).querySelector('.grid');
+  g.addEventListener('scroll', () => railState(id), {passive:true});
+  g.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)){ g.scrollLeft += e.deltaY; e.preventDefault(); }
+  }, {passive:false});
+});
+[...document.querySelectorAll('.nav')].forEach(b => b.addEventListener('click', () => {
+  const g = $(b.dataset.rail).querySelector('.grid');
+  g.scrollLeft += (+b.dataset.d) * Math.max(300, g.clientWidth * 0.8);
+}));
+function railsRefresh(){ ['railA','railB'].forEach(railState); }
+addEventListener('resize', railsRefresh);
+
+function revealMini(i){
+  const el = document.querySelector('.mini[data-i="'+i+'"]');
+  if (!el) return;
+  const g = el.parentElement;
+  g.scrollTo({ left: Math.max(0, el.offsetLeft - g.clientWidth/2 + el.clientWidth/2), behavior:'smooth' });
+}
+
+/* ===== knobs ===== */
+makeKnob($('kVol'), 0.7, v => {
+  vol = v;
+  $('volVal').textContent = Math.round(v*100);
+  if (ready && player) player.setVolume(Math.round(v*100));
+});
+makeKnob($('kTone'), 0.5, v => {
+  $('toneVal').textContent = Math.round(v*100);
+  Stereo.setTone(v);
+});
+
+/* ===== amplifier controls ===== */
+const dB = v => { const d=Math.round((v-50)/50*10); return (d>0?'+':'')+d; };
+function wireSlider(id, valId, apply, fmt){
+  const el=$(id);
+  const run=()=>{ const v=+el.value; $(valId).textContent=(fmt||dB)(v); apply(v/100); };
+  el.addEventListener('input', run); run();
+}
+wireSlider('sBass','vBass', v=>Stereo.setBass(v));
+wireSlider('sTreb','vTreb', v=>Stereo.setTreble(v));
+wireSlider('sBal','vBal',  v=>Stereo.setBalance(v),
+  v => v===50 ? 'C' : (v<50 ? 'L'+Math.round((50-v)/5) : 'R'+Math.round((v-50)/5)));
+
+[...document.querySelectorAll('.srcbtns button')].forEach(b=>{
+  b.addEventListener('click',()=>{
+    const src=b.dataset.src;
+    if(src!=='TAPE'){
+      setState('NO SIG');
+      notice('Nothing plugged into '+src,
+        'This deck only has a tape in it. Switching back to TAPE.');
+      setTimeout(()=>{
+        [...document.querySelectorAll('.srcbtns button')].forEach(x=>x.classList.toggle('on',x.dataset.src==='TAPE'));
+        setState(playing?'PLAY':'STOP');
+      },1200);
+    }
+    [...document.querySelectorAll('.srcbtns button')].forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+  });
+});
+
+/* ===== shuffle / repeat / video ===== */
+function setShuffle(on){
+  shuffle=on; refillBag();
+  $('shufBtn').classList.toggle('active-key',on);
+  $('shufBtn').style.background = on ? 'linear-gradient(178deg,#3ddc84,#1f9c58)' : '';
+  $('shufBtn').style.color = on ? '#0b2015' : '';
+}
+function cycleRepeat(){
+  repeatMode=(repeatMode+1)%3;
+  const b=$('rptBtn');
+  b.textContent = repeatMode===2 ? '↻ RPT 1' : '↻ RPT';
+  b.style.background = repeatMode ? 'linear-gradient(178deg,#3ddc84,#1f9c58)' : '';
+  b.style.color = repeatMode ? '#0b2015' : '';
+}
+/* ===== direct mode =====
+   When the scripted player is refused (error 150/153 — YouTube cannot verify the
+   origin of a file:// page), fall back to a plain embed with YouTube's own
+   controls. No postMessage handshake, so it often plays where the API cannot. */
+let videoShown = false;
+const IS_FILE = location.protocol === 'file:';
+
+/* On a file:// page YouTube rejects every embed, scripted or plain, with 153.
+   Nothing client-side changes that — so show a clean way out instead of
+   letting Google's error card sit in the cassette door. */
+function localPanel(i){
+  const d = $('direct'), tr = TAPE[i];
+  d.className = 'pane on';
+  d.innerHTML =
+    '<div class="dtag">LOCAL \u00b7 ' + pad(i+1) + '</div>' +
+    '<div>' +
+      '<div class="ptitle">' + esc(tr.t) + '</div>' +
+      '<div class="partist">' + esc(tr.a) + '</div>' +
+      '<div class="pwhy">This page is running from a folder on your disk, and YouTube ' +
+        'refuses to embed anywhere it cannot verify an origin. Put the file on a web ' +
+        'server and the deck plays properly.</div>' +
+      '<a class="pgo" href="https://www.youtube.com/watch?v=' + tr.id + '" ' +
+        'target="_blank" rel="noopener">\u25b6 Play on YouTube \u2197</a>' +
+    '</div>';
+  videoShown = true;
+  $('vidBtn').style.background='linear-gradient(178deg,#3ddc84,#1f9c58)';
+  $('vidBtn').style.color='#0b2015';
+  setState('LOCAL');
+}
+
+function goDirect(i, autoplay){
+  if (IS_FILE) return localPanel(i);   // embeds are hopeless here; don't pretend
+  const d = $('direct');
+  d.className = 'on';
+  const src = 'https://www.youtube.com/embed/' + TAPE[i].id +
+              '?rel=0&playsinline=1&modestbranding=1' + (autoplay ? '&autoplay=1' : '');
+  d.innerHTML = '<div class="dtag">DIRECT · ' + pad(i+1) + '</div>' +
+    '<iframe src="'+src+'" title="'+esc(TAPE[i].t)+'" allow="autoplay; encrypted-media" '+
+    'allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+  videoShown = true;
+  $('vidBtn').style.background='linear-gradient(178deg,#3ddc84,#1f9c58)';
+  $('vidBtn').style.color='#0b2015';
+  setState('DIRECT');
+  // the scripted player is out of the picture now; drive the reels ourselves
+  document.body.classList.add('playing');
+  Stereo.setLive(true); setPlayUI(true);
+}
+function hideDirect(){
+  const d=$('direct'); d.className=''; d.innerHTML='';
+  videoShown=false;
+  $('vidBtn').style.background=''; $('vidBtn').style.color='';
+  document.body.classList.remove('playing');
+  Stereo.setLive(false); setPlayUI(false); setState('STOP');
+}
+function toggleVideo(){
+  if (videoShown) hideDirect();
+  else {
+    goDirect(idx, true);
+    notice('Direct mode',
+      'The song is now loaded in a plain YouTube window inside the cassette door, with '+
+      'YouTube\u2019s own controls. Press play in there if it has not started. This path '+
+      'skips the scripted player, so it works in places the deck\u2019s remote control '+
+      'cannot reach. Track changes still work \u2014 pick any cassette. Press VIDEO to close it.');
+  }
+}
+$('shufBtn').addEventListener('click',()=>setShuffle(!shuffle));
+$('rptBtn').addEventListener('click',cycleRepeat);
+$('vidBtn').addEventListener('click',toggleVideo);
+
+/* ===== wiring ===== */
+$('playBtn').addEventListener('click', toggle);
+$('stopBtn').addEventListener('click', stopAll);
+$('ejectBtn').addEventListener('click', () => loaded ? eject() : load(idx, false));
+$('rewBtn').addEventListener('click', () => load(idx-1, wantPlay));
+$('ffBtn').addEventListener('click',  () => shuffle ? load(nextIndex(), wantPlay) : load(idx+1, wantPlay));
+$('recBtn').addEventListener('click', () => {
+  setState('PROT'); setTimeout(() => setState(playing?'PLAY':'STOP'), 1400);
+});
+$('sideA').addEventListener('click', () => load(0, wantPlay));
+$('sideB').addEventListener('click', () => load(SIDE_A_END, wantPlay));
+$('bar').addEventListener('click', e => {
+  if (!ready || !player || !player.getDuration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  player.seekTo(Math.min(1,Math.max(0,(e.clientX-r.left)/r.width)) * (player.getDuration()||0), true);
+});
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.classList.contains('knob')) return;
+  if (e.code === 'Space'){ e.preventDefault(); toggle(); }
+  else if (e.key === 'ArrowRight') load(idx+1, wantPlay);
+  else if (e.key === 'ArrowLeft')  load(idx-1, wantPlay);
+  else if (e.key.toLowerCase() === 'e') loaded ? eject() : load(idx, false);
+  else if (e.key.toLowerCase() === 's') setShuffle(!shuffle);
+  else if (e.key.toLowerCase() === 'r') cycleRepeat();
+});
+
+/* ===== go ===== */
+paint(0); setPlayUI(false); setState('STOP'); tick();
+setInterval(tick, 250);
+railsRefresh(); setTimeout(railsRefresh, 400);
+setTimeout(() => load(0, false), 450);
+syncFromApi();
+
+if (!IS_FILE){
+  const s = document.createElement('script');
+  s.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(s);
+} else {
+  apiOK = true;                       // suppress the "player did not load" watchdog
+  setState('LOCAL');
+}
+</script>
+</body>
+</html>
